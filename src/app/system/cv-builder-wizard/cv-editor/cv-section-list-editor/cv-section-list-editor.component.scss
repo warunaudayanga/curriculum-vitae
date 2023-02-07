@@ -1,0 +1,18 @@
+@import "../../../../../variables";
+
+:host {
+    display: block;
+}
+.editor {
+    width: 100%;
+    height: 100%;
+}
+.scrollable-area {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+}
+.btn-add {
+    bottom: 110px;
+    right: 45px;
+}

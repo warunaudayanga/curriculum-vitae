@@ -1,0 +1,13 @@
+:host {
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    z-index: 100;
+}
+
+.intro-label {
+    position: absolute;
+    font-weight: bold;
+    font-size: 20px;
+}

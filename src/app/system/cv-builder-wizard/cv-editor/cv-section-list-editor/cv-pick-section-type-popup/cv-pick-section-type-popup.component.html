@@ -1,0 +1,9 @@
+<div class="items">
+    <div class="title">SECTION TYPES</div>
+    <div *ngFor="let item of items" class="item" (click)="select(item)">{{labelKey && item?.[labelKey]? item[labelKey] : item | titlecase}}</div>
+    <ng-container *ngIf="preDefined?.length">
+        <hr>
+        <div class="title">PRE DEFINED SECTIONS</div>
+        <div *ngFor="let item of preDefined" class="item"  (click)="select(item.name, item.id)">{{item.name | titlecase}}</div>
+    </ng-container>
+</div>

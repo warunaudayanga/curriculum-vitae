@@ -1,0 +1,17 @@
+:host {
+    display: block;
+}
+
+.paragraph {
+    padding: 6px 12px;
+    line-height: 1.5;
+    cursor: pointer;
+    border: 1px dashed grey;
+    border-radius: 0.375rem;
+    min-height: 90px;
+}
+textarea {
+    resize: none;
+}
+
+

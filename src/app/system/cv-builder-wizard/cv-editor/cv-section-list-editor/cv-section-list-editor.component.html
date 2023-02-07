@@ -1,0 +1,21 @@
+<div class="editor form-control p-3 px-2">
+    <div class="scrollable-area h-100 px-2">
+        <app-x-section
+            *ngFor="let section of sections; let i = index"
+            class="mb-3"
+            [id]="'section-' + section.id"
+            [position]="i === 0 ? 'first' : i === sections.length - 1 ? 'last' : 'middle'"
+            [section]="section" (sectionChange)="onSectionChange($event, i)"
+            (onRemove)="deleteSection($event)"
+            (onMoveUp)="onMoveUp($event, i)"
+            (onMoveDown)="onMoveDown($event, i)"
+        ></app-x-section>
+    </div>
+</div>
+<app-cv-pick-section-type-popup
+    #popup [items]="sectionTypes"
+    (onSelect)="addSection($event)"
+    [preDefined]="getPreDefinedTypes()"
+></app-cv-pick-section-type-popup>
+
+<button class="btn btn-lg btn-primary btn-floating btn-add" (click)="popup.open()"><i class="bi bi-plus-lg"></i></button>

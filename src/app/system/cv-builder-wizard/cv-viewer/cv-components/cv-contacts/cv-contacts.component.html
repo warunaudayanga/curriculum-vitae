@@ -1,0 +1,16 @@
+<table class="w-100">
+    <tr class="email" *ngIf="email">
+        <td><i class="bi bi-envelope-at-fill" style="{{'font-size: ' + iconSize + 'px'}}"></i></td>
+        <td class="ps-2" style="{{'font-size: ' + fontSize + 'px; line-height:' + fontSize + 'px'}}">{{email}}</td>
+    </tr>
+    <tr class="phone" *ngIf="phoneNumbers">
+        <td><i class="bi bi-telephone-fill" style="{{'font-size: ' + iconSize + 'px'}}"></i></td>
+        <td class="ps-2">
+            <div class="d-inline-block number" style="{{'font-size: ' + fontSize + 'px; line-height:' + fontSize + 'px'}}" *ngFor="let phone of phoneNumbers; let i = index">{{phone}}{{i !== phoneNumbers.length - 1? ',': ''}} </div>
+        </td>
+    </tr>
+    <tr class="address" *ngIf="address">
+        <td><i class="bi bi-geo-alt-fill" style="{{'font-size: ' + iconSize + 'px'}}"></i></td>
+        <td class="ps-2" style="{{'font-size: ' + fontSize + 'px; line-height:' + fontSize + 'px'}}">{{address}}</td>
+    </tr>
+</table>

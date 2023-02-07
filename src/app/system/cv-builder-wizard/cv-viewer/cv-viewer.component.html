@@ -1,0 +1,63 @@
+<div class="cv" *ngIf="cvData">
+    <div #page class="page" size="A4">
+        <div class="d-flex w-100 h-100">
+            <div class="column-1">
+                <app-cv-heading
+                    [title]="this.cvData.header.title"
+                    [fontSize]="this.cvData.header.fontSize"
+                    [includeImage]="this.cvData.header.includeImage"
+                    [image]="this.cvData.header.image"
+                    [imageWidth]="this.cvData.header.imageWidth"
+                    [imageHeight]="this.cvData.header.imageHeight"
+                ></app-cv-heading>
+                <app-cv-contacts
+                    [email]="this.cvData.contacts.email"
+                    [phoneNumbers]="this.cvData.contacts.phoneNumbers"
+                    [address]="this.cvData.contacts.address"
+                    [fontSize]="this.cvData.contacts.fontSize"
+                    [iconSize]="this.cvData.contacts.iconSize"
+                ></app-cv-contacts>
+                <app-sidebar [sidebar]="cvData.sidebar" (forward)="onPage1SidebarForward($event)"></app-sidebar>
+            </div>
+            <app-main-details class="column-2 flex-fill" [sections]="cvData.sections" (forward)="onPage1MainForward($event)"></app-main-details>
+        </div>
+    </div>
+
+    <!--suppress JSUnusedGlobalSymbols -->
+    <div #page *ngIf="page2" class="page" size="A4">
+        <div class="d-flex w-100 h-100">
+            <div class="column-1">
+                <app-cv-heading></app-cv-heading>
+                <app-sidebar [sidebar]="page2.sidebar" (forward)="onPage2SidebarForward($event)" [test]="true"></app-sidebar>
+            </div>
+            <app-main-details class="column-2 flex-fill" *ngIf="page2.sections" [sections]="page2.sections" (forward)="onPage2MainForward($event)" test=""></app-main-details>
+        </div>
+    </div>
+
+    <!--suppress JSUnusedGlobalSymbols -->
+    <div #page *ngIf="page3" class="page" size="A4">
+        <div class="d-flex w-100 h-100">
+            <div class="column-1">
+                <div class="heading mb-5">
+                    <app-top-shape></app-top-shape>
+                </div>
+                <app-sidebar [sidebar]="page3.sidebar" (forward)="onPage3SidebarForward($event)"></app-sidebar>
+            </div>
+            <app-main-details class="column-2 flex-fill" *ngIf="page3.sections" [sections]="page3.sections" (forward)="onPage3MainForward($event)"></app-main-details>
+        </div>
+    </div>
+
+    <!--suppress JSUnusedGlobalSymbols -->
+    <div #page *ngIf="page4" class="page" size="A4">
+        <div class="d-flex w-100 h-100">
+            <div class="column-1">
+                <div class="heading mb-5">
+                    <app-top-shape></app-top-shape>
+                </div>
+                <app-sidebar [sidebar]="page4.sidebar" (forward)="onPage4SidebarForward($event)"></app-sidebar>
+            </div>
+            <app-main-details class="column-2 flex-fill" *ngIf="page4.sections" [sections]="page4.sections" (forward)="onPage4MainForward($event)"></app-main-details>
+        </div>
+    </div>
+
+</div>

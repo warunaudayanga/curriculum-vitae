@@ -1,0 +1,23 @@
+:host {
+
+}
+
+.list {
+    gap: 8px;
+}
+.disc {
+    position: relative;
+    width: 24px;
+    i {
+        font-size: 8px;
+        position: absolute;
+        top: 15px;
+        left: 10px;
+    }
+}
+.controls {
+    width: 72px;
+}
+app-x-paragraph {
+    width: calc((100% - 72px - 24px - 8px * 3) / 2);
+}

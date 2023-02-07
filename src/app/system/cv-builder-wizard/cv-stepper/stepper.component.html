@@ -1,0 +1,70 @@
+<div class="stepper h-100 pt-3"
+     [class.pb-3]="activeIndex !== 0"
+     [class.smaller]="activeIndex === 0 || activeIndex === 5"
+     [class.finished]="finished"
+>
+    <div class="steps d-flex">
+        <div class="line"></div>
+        <div class="line-filled"></div>
+        <div #step class="step" (click)="activate(0)" [class.active]="activeIndex === 0">
+            <span>1</span>
+            <div class="title">Intro</div>
+        </div>
+        <div class="line-filled"></div>
+        <!--suppress JSUnusedGlobalSymbols -->
+        <div #step class="step" (click)="activate(1)" [class.active]="activeIndex === 1">
+            <span>2</span>
+            <div class="title">Set Heading</div>
+        </div>
+        <div class="line-filled"></div>
+        <!--suppress JSUnusedGlobalSymbols -->
+        <div #step class="step" (click)="activate(2)" [class.active]="activeIndex === 2">
+            <span>3</span>
+            <div class="title">Set Contacts</div>
+        </div>
+        <div class="line-filled"></div>
+        <!--suppress JSUnusedGlobalSymbols -->
+        <div #step class="step" (click)="activate(3)" [class.active]="activeIndex === 3">
+            <span>4</span>
+            <div class="title">Set Main Content</div>
+        </div>
+        <div class="line-filled"></div>
+        <!--suppress JSUnusedGlobalSymbols -->
+        <div #step class="step" (click)="activate(4)" [class.active]="activeIndex === 4">
+            <span>5</span>
+            <div class="title">Set Sidebar Content</div>
+        </div>
+        <div class="line-filled"></div>
+        <!--suppress JSUnusedGlobalSymbols -->
+        <div #step class="step" (click)="activate(5)" [class.active]="activeIndex === 5">
+            <span>6</span>
+            <div class="title">Tune Up</div>
+        </div>
+        <div class="line-filled"></div>
+    </div>
+    <div class="content p-3 set-heading">
+        <div *ngIf="activeIndex === 0" class="step-content">
+            <app-cv-intro></app-cv-intro>
+        </div>
+        <div *ngIf="activeIndex === 1" class="step-content">
+            <app-cv-heading-editor></app-cv-heading-editor>
+        </div>
+        <div *ngIf="activeIndex === 2" class="step-content">
+            <app-cv-contacts-editor></app-cv-contacts-editor>
+        </div>
+        <div *ngIf="activeIndex === 3" class="step-content">
+            <app-cv-main-content-editor></app-cv-main-content-editor>
+        </div>
+        <div *ngIf="activeIndex === 4" class="step-content">
+            <app-cv-sidebar-editor></app-cv-sidebar-editor>
+        </div>
+        <div *ngIf="activeIndex === 5 || finished" class="step-content">
+            <app-cv-tune-up></app-cv-tune-up>
+        </div>
+    </div>
+    <div class="controls d-flex gap-3 justify-content-end" [class.justify-content-between]="activeIndex !== 0">
+        <button *ngIf="activeIndex > 0 || finished" class="btn btn-primary btn-floating btn-prev" (click)="prev()"><i class="bi bi-caret-left-fill"></i></button>
+        <button *ngIf="activeIndex < 5" class="btn btn-primary btn-floating btn-next" (click)="next()"><i class="bi bi-caret-right-fill"></i></button>
+        <button  *ngIf="activeIndex === 5" class="btn btn-success btn-floating btn-next" (click)="finish()"><i class="bi bi-check-lg"></i></button>
+    </div>
+</div>

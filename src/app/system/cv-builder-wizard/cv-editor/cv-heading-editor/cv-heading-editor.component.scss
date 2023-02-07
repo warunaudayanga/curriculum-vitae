@@ -1,0 +1,41 @@
+@import "../../../../../variables";
+
+:host {
+    height: calc(100% - 80px);
+}
+
+.column-1 {
+    position: relative;
+    width: $sidebar-width;
+    height: 100%;
+    overflow: hidden;
+    background-color: $app-secondary-color;
+    margin: 15px 15px 15px auto;
+    &.controls {
+        width: 350px;
+    }
+    app-cv-heading {
+        position: relative;
+        padding-top: 15px;
+        flex: 0 1 auto;
+    }
+}
+
+.column-2 {
+    width: $sidebar-width;
+    height: 100%;
+    margin: 15px auto 15px 15px;
+    padding: 5px !important;
+    .editor {
+        padding: 5px;
+        height: 100%;
+        overflow-y: auto;
+    }
+}
+
+.col-size-group {
+    width: 125px;
+    input {
+        text-align: center;
+    }
+}

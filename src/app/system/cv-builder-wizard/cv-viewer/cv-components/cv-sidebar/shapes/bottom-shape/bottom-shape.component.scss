@@ -1,0 +1,11 @@
+@import "../../../../../../../../variables";
+
+:host {
+    position: absolute;
+    top: 0;
+    height: 1100px;
+}
+
+svg path {
+    fill: $app-primary-color;
+}

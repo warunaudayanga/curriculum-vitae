@@ -1,0 +1,10 @@
+# Compiled output
+# Node
+/node_modules
+# IDEs and editors
+.idea/
+# Visual Studio Code
+# Miscellaneous
+/.angular/cache
+# System files
+/package-lock.json

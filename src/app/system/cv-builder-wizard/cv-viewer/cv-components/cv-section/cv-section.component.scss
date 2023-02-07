@@ -1,0 +1,115 @@
+@import "../../../../../../variables";
+
+:host {
+    display: block;
+}
+
+* {
+    word-break: break-word;
+}
+
+::ng-deep app-section a {
+    color: $main-link-color !important;
+}
+
+.title {
+    font-weight: bolder;
+    font-size: 20px;
+    color: $app-text-color;
+}
+.hr {
+    height: 2px;
+    background-color: $app-separator-color;
+}
+.paragraph {
+    margin-top: $section-item-margin;
+    font-size: $section-font-size;
+    line-height: $section-line-height;
+    text-align: justify;
+    color: $app-text-color;
+}
+.list {
+    margin-top: $section-item-margin;
+    font-size: $section-font-size;
+    line-height: $section-line-height;
+    color: $app-text-color;
+    > ul {
+        margin-top: $section-item-margin;
+        > li {
+            margin-top: $section-item-margin;
+        }
+    }
+    li {
+        line-height: $section-line-height;
+        margin-top: $section-item-margin;
+        + ul {
+            margin-bottom: 5px;
+        }
+    }
+}
+.key-value-list {
+    margin-top: $section-item-margin;
+    font-size: $section-font-size;
+    line-height: $section-line-height;
+    color: $app-text-color;
+    .key {
+        position: relative;
+        padding-left: 32px;
+        vertical-align: top;
+        white-space: nowrap;
+        .bullet {
+            position: absolute;
+            font-size: 22px;
+            line-height: $section-line-height;
+            top: -2px;
+            left: 15px;
+        }
+    }
+    .separator {
+        width: 5px;
+        vertical-align: top;
+        padding-left: 10px;
+        padding-right: 5px;
+    }
+    .value {
+        vertical-align: top;
+    }
+    td {
+        padding-top: $section-item-margin;
+    }
+}
+.column {
+    margin-top: $section-item-margin;
+    font-size: $section-font-size;
+    line-height: $section-line-height;
+    padding-left: 16px;
+    color: $app-text-color;
+    .divider {
+        border-left: 2px solid $app-secondary-color;
+        padding-left: 16px;
+    }
+}
+.signature {
+    margin-top: $section-item-margin;
+    font-size: $section-font-size;
+    line-height: $section-line-height;
+    color: $app-text-color;
+    .values {
+        position: relative;
+        top: 20px;
+        td {
+            vertical-align: bottom;
+        }
+    }
+    .dots {
+        position: relative;
+        top: 5px;
+    }
+    table {
+        table-layout: fixed;
+        td {
+            padding: 0 10px;
+            overflow: hidden;
+        }
+    }
+}

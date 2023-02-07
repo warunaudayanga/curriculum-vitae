@@ -1,0 +1,31 @@
+<ul *ngFor="let item of list">
+    <li [hidden]="false" class="list-item d-flex align-items-start" >
+        <app-x-paragraph class="mb-3 d-inline-block pe-2" [(paragraph)]="item.title" (paragraphChange)="onChange()" minHeight="38px"></app-x-paragraph>
+        <div class="controls main-controls mb-3 d-inline-flex align-items-center gap-2 mt-1">
+            <button [disabled]="(list?.length ?? 0) < 2" class="btn btn-sm btn-danger" (click)="removeItem(item.id)">
+                <i class="bi bi-x"></i>
+            </button>
+            <button class="btn btn-sm btn-success" (click)="addItem(item.id)">
+                <i class="bi bi-plus"></i>
+            </button>
+            <button class="btn btn-sm btn-primary" (click)="addSubList(item.id)">
+                <i class="bi bi-list-ul"></i>
+            </button>
+        </div>
+    </li>
+    <ul *ngFor="let subItem of item?.list">
+        <li class="list-sub-item">
+            <div class="d-flex align-items-center">
+                <app-x-paragraph class="mb-3 flex-fill" [(paragraph)]="subItem.title" (paragraphChange)="onChange()" minHeight="38px"></app-x-paragraph>
+                <div class="controls sub-controls mb-3 d-flex align-items-center gap-2 px-2">
+                    <button class="btn btn-sm btn-danger" (click)="removeSubItem(subItem.id)">
+                        <i class="bi bi-x"></i>
+                    </button>
+                    <button class="btn btn-sm btn-success" (click)="addSubItem(item.id, subItem.id)">
+                        <i class="bi bi-plus"></i>
+                    </button>
+                </div>
+            </div>
+        </li>
+    </ul>
+</ul>

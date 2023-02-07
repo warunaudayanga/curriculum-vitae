@@ -1,0 +1,6 @@
+<div class="tag-input form-control pt-0 pe-0">
+    <div class="chips pr-3">
+        <span class="chip" *ngFor="let tag of tags">{{tag}}<button *ngIf="!readonly" type="button" (click)="remove(tag)">&times;</button></span>
+    </div>
+    <input type="text" [name]="name" spellcheck="false" [readonly]="readonly" class="form-control mr-3" (keydown)="keyDown($event)" [disabled]="disabled">
+</div>

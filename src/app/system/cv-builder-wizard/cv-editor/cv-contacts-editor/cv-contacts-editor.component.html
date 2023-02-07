@@ -1,0 +1,79 @@
+<div class="d-flex h-100">
+    <div class="column-1">
+        <app-cv-heading
+            [title]="this.header.title"
+            [fontSize]="this.header.fontSize"
+            [includeImage]="this.header.includeImage"
+            [image]="this.header.image"
+            [imageWidth]="this.header.imageWidth"
+            [imageHeight]="this.header.imageHeight"
+        ></app-cv-heading>
+        <app-cv-contacts
+            [email]="this.contacts.email"
+            [phoneNumbers]="this.contacts.phoneNumbers"
+            [address]="this.contacts.address"
+            [fontSize]="this.contacts.fontSize"
+            [iconSize]="this.contacts.iconSize"
+        ></app-cv-contacts>
+    </div>
+    <div class="column-2 p-3 controls form-control p-3">
+        <div class="editor">
+            <label class="form-label">Email</label>
+            <input type="text" class="form-control form-control-sm mb-3" placeholder="Enter your name..."
+                   [(ngModel)]="this.contacts.email" (ngModelChange)="setEmail()">
+
+            <label class="form-label">Phone</label>
+            <ng-tag-input class="mb-3" [(ngModel)]="this.contacts.phoneNumbers" (ngModelChange)="setPhoneNumbers()"></ng-tag-input>
+
+            <label class="form-label">Address</label>
+            <textarea rows="3" class="form-control form-control-sm mb-3" placeholder="Enter your name..."
+                      [(ngModel)]="this.contacts.address" (ngModelChange)="setAddress()">
+        </textarea>
+
+            <div class="d-flex mb-3 justify-content-between">
+                <div class="col-size-group">
+                    <label class="form-label">Font size</label>
+                    <div>
+                        <div class="input-group input-group-sm">
+                            <button class="btn btn-outline-secondary" type="button"
+                                    (click)="click('fontSize', true)"
+                                    (mousedown)="mousedown('fontSize', true)"
+                                    (mouseup)="mouseUp()">
+                                <i class="bi bi-dash"></i>
+                            </button>
+                            <input type="text" class="form-control" [(ngModel)]="this.contacts.fontSize"
+                                   (ngModelChange)="setFontSize()" readonly>
+                            <button class="btn btn-outline-secondary" type="button"
+                                    (click)="click('fontSize')"
+                                    (mousedown)="mousedown('fontSize')"
+                                    (mouseup)="mouseUp()">
+                                <i class="bi bi-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-size-group">
+                    <label class="form-label">Icon size</label>
+                    <div>
+                        <div class="input-group input-group-sm">
+                            <button class="btn btn-outline-secondary" type="button"
+                                    (click)="click('iconSize', true)"
+                                    (mousedown)="mousedown('iconSize', true)"
+                                    (mouseup)="mouseUp()">
+                                <i class="bi bi-dash"></i>
+                            </button>
+                            <input type="text" class="form-control" [(ngModel)]="this.contacts.iconSize"
+                                   (ngModelChange)="setIconSize()" readonly>
+                            <button class="btn btn-outline-secondary" type="button"
+                                    (click)="click('iconSize')"
+                                    (mousedown)="mousedown('iconSize')"
+                                    (mouseup)="mouseUp()">
+                                <i class="bi bi-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

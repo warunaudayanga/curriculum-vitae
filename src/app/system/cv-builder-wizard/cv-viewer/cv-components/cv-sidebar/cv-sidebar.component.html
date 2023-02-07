@@ -1,0 +1,7 @@
+<ng-container *ngFor="let section of sidebar; let i = index">
+    <app-section *ngIf="checkAccepted(i)" class="section" [section]="section"></app-section>
+    <ng-container *ngIf="checkHeight(section)"></ng-container>
+</ng-container>
+<div class="footer">
+    <app-bottom-shape></app-bottom-shape>
+</div>

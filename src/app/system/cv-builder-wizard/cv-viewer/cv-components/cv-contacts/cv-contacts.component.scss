@@ -1,0 +1,35 @@
+@import "../../../../../../variables";
+
+:host {
+    display: block;
+}
+
+tr:not(:first-child) td {
+    padding-top: 10px;
+}
+
+td {
+    vertical-align: middle;
+    font-size: $contact-font-size;
+    i {
+        font-size: $contact-icon-size;
+        display: inline-block;
+        padding: 6px;
+        border-radius: 50%;
+        color: white;
+    }
+}
+.email i {
+    background-color: #ff8a00;
+}
+.phone {
+    i {
+        background: #00c600;
+    }
+    .number {
+        margin-right: 5px;
+    }
+}
+.address i {
+    background: #DB0404;
+}

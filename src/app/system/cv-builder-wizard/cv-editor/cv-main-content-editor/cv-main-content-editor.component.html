@@ -1,0 +1,14 @@
+<div class="d-flex h-100 editor">
+    <div class="main py-4 px-2">
+        <div class="sections">
+            <app-section *ngFor="let section of sections" class="mb-3 px-3" [section]="section"></app-section>
+        </div>
+    </div>
+    <div class="controls">
+        <app-cv-section-list-editor
+            [(sections)]="sections"
+            (sectionsChange)="onSectionsChange()"
+            [preDefined]="preDefinedSections"
+        ></app-cv-section-list-editor>
+    </div>
+</div>

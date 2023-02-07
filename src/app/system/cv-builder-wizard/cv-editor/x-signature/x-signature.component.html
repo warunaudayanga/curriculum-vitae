@@ -1,0 +1,23 @@
+<!--<label class="form-label" >Name</label>-->
+<!--<app-x-paragraph class="mb-3" [(paragraph)]="name" [multiLine]="true" (paragraphChange)="onChange()" minHeight="38px"></app-x-paragraph>-->
+<label class="form-label" >Name</label>
+<div [hidden]="editName" class="name mb-3" (click)="showNameInput()">{{signature?.name}}</div>
+<input #nameInput class="name-input form-control mb-3"
+       [hidden]="!editName" [(ngModel)]="name"
+       (blur)="editName = false" (ngModelChange)="onChange()">
+
+<label class="form-label" >Date</label>
+<div [hidden]="editDate" class="date mb-3" (click)="showDateInput()">{{date | date:'MM/dd/yyyy'}}</div>
+<input #dateInput type="date" class="date-input form-control mb-3"
+       [hidden]="!editDate" [(ngModel)]="date"
+       (blur)="editDate = false" (ngModelChange)="onChange()">
+
+<label class="form-label" >Digital Signature</label>
+<div class="image" [class.cover]="!sign" (click)="file.click()"
+     style="{{'background-image: url(' + (sign || 'assets/images/placeholder.png') + ');'}}">
+    <i class="bi bi-camera-fill"></i>
+    <div *ngIf="sign" class="close btn btn-danger" (click)="removeSign($event)">
+        <i class="bi bi-x"></i>
+    </div>
+    <input #file type="file" class="d-none" accept="image/*" (change)="setSign($event)">
+</div>

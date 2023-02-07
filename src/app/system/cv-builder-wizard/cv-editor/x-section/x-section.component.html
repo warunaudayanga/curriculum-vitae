@@ -1,0 +1,61 @@
+<div class="card" *ngIf="section">
+    <div class="card-header d-flex align-items-center justify-content-between">
+        <div>
+            <span>{{section.type}}</span>
+        </div>
+        <div class="d-flex align-items-center justify-content-end gap-2 controls">
+            <span class="btn-remove" *ngIf="position !== 'first'" (click)="moveUp(section.id)"><i class="bi bi-chevron-compact-up"></i></span>
+            <span class="btn-remove" *ngIf="position !== 'last'" (click)="moveDown(section.id)"><i class="bi bi-chevron-compact-down"></i></span>
+            <span class="btn-remove" (click)="remove(section.id)"><i class="bi bi-x"></i></span>
+        </div>
+    </div>
+    <div class="card-body">
+        <div [hidden]="editTitle" class="title" (click)="showTitleInput()">{{section.title}}</div>
+        <input #titleInput class="title-input form-control"
+               [hidden]="!editTitle" [(ngModel)]="section.title"
+               (blur)="editTitle = false" (ngModelChange)="onSectionChange()">
+        <hr>
+
+        <app-x-paragraph
+            *ngIf="section.type === SectionType.PARAGRAPH"
+            [(paragraph)]="section.paragraph"
+            (paragraphChange)="onSectionChange()"
+        ></app-x-paragraph>
+
+        <app-x-list
+            *ngIf="section.type === SectionType.LIST"
+            [(list)]="section.list"
+            (listChange)="onSectionChange()"
+        ></app-x-list>
+
+        <app-x-name-value-list
+            *ngIf="section.type === SectionType.NAME_VALUE_LIST"
+            [(list)]="section.keyValueList"
+            (listChange)="onSectionChange()"
+        ></app-x-name-value-list>
+
+        <ng-container *ngIf="section.type === SectionType.LIST_WITH_PARAGRAPH && section.listWithParagraph">
+            <app-x-paragraph
+                class="mb-3"
+                [(paragraph)]="section.listWithParagraph!.title"
+                (paragraphChange)="onSectionChange()"
+            ></app-x-paragraph>
+            <app-x-list
+                [(list)]="section.listWithParagraph!.list"
+                (listChange)="onSectionChange()"
+            ></app-x-list>
+        </ng-container>
+
+        <app-x-columns
+            *ngIf="section.type === SectionType.COLUMNS"
+            [(columns)]="section.columns"
+            (columnsChange)="onSectionChange()"
+        ></app-x-columns>
+
+        <app-x-signature
+            *ngIf="section.type === SectionType.SIGNATURE"
+            [(signature)]="section.signature"
+            (signatureChange)="onSectionChange()"
+        ></app-x-signature>
+    </div>
+</div>

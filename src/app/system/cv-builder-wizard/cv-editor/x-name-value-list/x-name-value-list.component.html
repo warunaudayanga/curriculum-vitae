@@ -1,0 +1,15 @@
+<div *ngFor="let item of list" class="list d-flex align-items-start">
+    <div class="disc">
+        <i class="bi bi-circle-fill"></i>
+    </div>
+    <app-x-paragraph class="mb-3 flex-fill" [(paragraph)]="item.title" (paragraphChange)="onChange()" minHeight="38px"></app-x-paragraph>
+    <app-x-paragraph class="mb-3 flex-fill" [(paragraph)]="item.value" (paragraphChange)="onChange()" minHeight="38px"></app-x-paragraph>
+    <div class="controls mb-3 d-flex align-items-center gap-2 mt-1">
+        <button [disabled]="(list?.length ?? 0) < 2" class="btn btn-sm btn-danger" (click)="removeItem(item.id)">
+            <i class="bi bi-x"></i>
+        </button>
+        <button class="btn btn-sm btn-success" (click)="addItem(item.id)">
+            <i class="bi bi-plus"></i>
+        </button>
+    </div>
+</div>

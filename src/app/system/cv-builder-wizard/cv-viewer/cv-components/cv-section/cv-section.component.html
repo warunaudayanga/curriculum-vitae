@@ -1,0 +1,66 @@
+<ng-container *ngIf="section">
+    <div class="title">{{trimTitle(section.title) | uppercase}}</div>
+    <div class="hr"></div>
+    <div *ngIf="section.type === SectionType.PARAGRAPH" class="paragraph" [innerHTML]="trim(section.paragraph, true)"></div>
+    <div *ngIf="section.type === SectionType.LIST" class="list">
+        <ul>
+            <ng-container *ngFor="let item of section.list">
+                <li [innerHTML]="trim(item.title, true)"></li>
+                <ul *ngIf="item.list">
+                    <li *ngFor="let subItem of item.list" [innerHTML]="trim(subItem.title, true)"></li>
+                </ul>
+            </ng-container>
+        </ul>
+    </div>
+    <div *ngIf="section.type === SectionType.LIST_WITH_PARAGRAPH" class="list-with-paragraph">
+        <div class="paragraph" [innerHTML]="trim(section.listWithParagraph?.title, true)"></div>
+        <div class="list">
+            <ul>
+                <ng-container *ngFor="let item of section.listWithParagraph?.list">
+                    <li [innerHTML]="trim(item.title, true)"></li>
+                </ng-container>
+            </ul>
+        </div>
+    </div>
+    <div *ngIf="section.type === SectionType.NAME_VALUE_LIST" class="key-value-list">
+        <table class="w-100">
+            <tr *ngFor="let item of section.keyValueList">
+                <td class="key"><span class="bullet">&bull;</span><span [innerHTML]="trim(item.title, true)"></span></td>
+                <td class="separator">:</td>
+                <td class="value" [innerHTML]="trim(item.value, true)"></td>
+            </tr>
+        </table>
+    </div>
+    <div *ngIf="section.type === SectionType.COLUMNS" class="column">
+        <div class="d-flex">
+            <div class="w-50">
+                <div *ngFor="let line of section.columns?.[0]?.lines; let i = index" [innerHTML]="trim(line, !i)"></div>
+            </div>
+            <div class="w-50 divider">
+                <div *ngFor="let line of section.columns?.[1]?.lines; let i = index" [innerHTML]="trim(line, !i)"></div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="section.type === SectionType.SIGNATURE" class="signature">
+        <div class="d-flex">
+            <table class="w-100 text-center" [class.mt-4]="!section.signature?.sign">
+                <tr class="values">
+                    <td class="w-50 pb-2">
+                        <img height="50" *ngIf="section.signature?.sign" [src]="section.signature?.sign" alt="signature">
+                        <span *ngIf="!section.signature?.sign" [innerHTML]="trim(section.signature?.name)"></span>
+                    </td>
+                    <td class="w-50 pb-2">{{section.signature?.date | date:'dd/MM/yyyy'}}</td>
+                </tr>
+                <tr class="dots">
+                    <td class="w-50 pb-1">........................................................</td>
+                    <td class="w-50 pb-1">........................................................</td>
+                </tr>
+                <tr class="keys">
+                    <td class="w-50">Signature</td>
+                    <td class="w-50">Date</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+</ng-container>

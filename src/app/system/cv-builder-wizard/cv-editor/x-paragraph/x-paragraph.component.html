@@ -1,0 +1,9 @@
+<div [hidden]="editParagraph" class="paragraph" style="{{minHeight ? 'min-height: ' + minHeight : ''}}" (click)="showParaInput()" [innerHTML]="paragraph"></div>
+
+<app-x-editor
+    [hidden]="!editParagraph"
+    [multiLine]="multiLine"
+    [(html)]="paragraph"
+    (htmlChange)="setParagraph()"
+    (blur)="editParagraph = false"
+></app-x-editor>

@@ -1,0 +1,95 @@
+/* You can add global styles to this file, and also import other style files */
+@import "bootstrap";
+@import "bootstrap-icons";
+@import "src/variables";
+
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 10px 10px #aaa;
+    border: solid 3px transparent;
+    border-radius: 5px;
+}
+::-webkit-scrollbar-thumb {
+    /*background-color: #343a40;*/
+    box-shadow: inset 0 0 10px 10px $app-primary-color;
+    border: solid 3px transparent;
+    border-radius: 5px;
+}
+
+/* Ellipsis */
+.ellipsis {
+    text-overflow: ellipsis;
+}
+.ellipsis-1 {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.ellipsis-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.ellipsis-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.ellipsis-4 {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.ellipsis-5 {
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+@media print {
+    html, body {
+        margin: 0;
+        padding: 0;
+        display: inline-block;
+    }
+}
+
+@page {
+    size: A4;
+    margin: 0;
+}
+
+.debug {
+  border: 1px dashed red;
+}
+
+.btn-floating {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    color: #FFF;
+    border-radius: 50%;
+    text-align: center;
+    box-shadow: 2px 2px 3px #000;
+    border: none;
+    font-weight: bold;
+    z-index: 10;
+}

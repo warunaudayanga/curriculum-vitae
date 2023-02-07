@@ -1,0 +1,29 @@
+ul {
+    list-style-type: none;
+}
+li {
+    position: relative;
+    &:before{
+        display: inline-block;
+        //noinspection CssNoGenericFontName
+        font-family: "bootstrap-icons" !important;
+        font-style: normal;
+        font-weight: normal !important;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1;
+        vertical-align: -0.125em;
+        -webkit-font-smoothing: antialiased;
+        content: "\f287";
+        font-size: 8px;
+        position: absolute;
+        top: 15px;
+        left: -22px;
+    }
+}
+.list-item > app-x-paragraph {
+    width: calc(100% - 110px);
+}
+.main-controls {
+    width: 110px;
+}

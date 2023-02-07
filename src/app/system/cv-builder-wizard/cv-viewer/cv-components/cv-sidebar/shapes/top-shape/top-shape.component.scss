@@ -1,0 +1,10 @@
+@import "../../../../../../../../variables";
+
+.top-shape {
+    position: absolute;
+    bottom: 0;
+}
+
+svg path {
+    fill: $app-primary-color;
+}

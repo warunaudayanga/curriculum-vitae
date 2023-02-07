@@ -1,0 +1,49 @@
+@import "../../../../../variables";
+
+:host {
+    display: block;
+    height: 100%;
+}
+
+::ng-deep app-cv-sidebar-editor .key-value-list {
+    font-size: $sidebar-list-font-size !important;
+    font-weight: 400;
+    .bullet {
+        display: none;
+    }
+    .key {
+        padding-left: 0 !important;
+    }
+}
+
+
+
+.editor {
+    gap: 20px;
+    width: calc(100% - 20px);
+}
+.sidebar {
+    display: inline-block;
+    min-width: $sidebar-width;
+    max-width: $sidebar-width;
+    height: 100%;
+    background-color: $app-secondary-color;
+    box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+    .sections {
+        height: 100%;
+        width: 100%;
+        overflow-y: auto;
+    }
+}
+.controls {
+    display: block;
+    min-width: calc(100% - #{$sidebar-width});
+    max-width: calc(100% - #{$sidebar-width});
+    height: 100%;
+    position: relative;
+    app-cv-section-list-editor {
+        width: 100%;
+        height: 100%;
+    }
+
+}

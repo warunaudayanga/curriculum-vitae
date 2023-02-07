@@ -1,0 +1,28 @@
+:host {
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: relative;
+    z-index: 100;
+}
+
+::ng-deep .tune-up .page {
+    //margin: 0 !important;
+}
+
+.viewer {
+    padding: 25px 0;
+    height: 100%;
+    width: 100%;
+    overflow-y: auto;
+}
+app-cv-viewer {
+
+}
+.controls {
+    position: relative;
+}
+.btn-tune {
+    bottom: 110px;
+    right: 45px;
+}

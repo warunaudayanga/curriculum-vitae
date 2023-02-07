@@ -1,0 +1,101 @@
+<div class="d-flex h-100">
+    <div class="column-1">
+        <app-cv-heading
+            [editable]="true"
+            [title]="this.header.title"
+            [fontSize]="this.header.fontSize"
+            [includeImage]="this.header.includeImage"
+            [image]="this.header.image"
+            [imageWidth]="this.header.imageWidth"
+            [imageHeight]="this.header.imageHeight"
+            (imageSelect)="setImage($event)"
+        ></app-cv-heading>
+    </div>
+    <div class="column-2 p-3 controls form-control">
+        <div class="editor">
+            <div class="d-flex mb-3 gap-3">
+                <div class="col">
+                    <label class="form-label">Title</label>
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <input type="text" class="form-control form-control-sm" placeholder="Enter your name..."
+                                   [(ngModel)]="this.header.title" (ngModelChange)="setTitle()">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-size-group">
+                    <label class="form-label">Font size</label>
+                    <div class="input-group input-group-sm">
+                        <button class="btn btn-outline-secondary" type="button"
+                                (click)="click('fontSize', true)"
+                                (mousedown)="mousedown('fontSize', true)"
+                                (mouseup)="mouseUp()">
+                            <i class="bi bi-dash"></i>
+                        </button>
+                        <input type="text" class="form-control" [(ngModel)]="this.header.fontSize"
+                               (ngModelChange)="setFontSize()" readonly>
+                        <button class="btn btn-outline-secondary" type="button"
+                                (click)="click('fontSize')"
+                                (mousedown)="mousedown('fontSize')"
+                                (mouseup)="mouseUp()">
+                            <i class="bi bi-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" id="hasImage" [(ngModel)]="this.header.includeImage"
+                       (ngModelChange)="setIncludeImage()">
+                <label class="form-check-label" for="hasImage">
+                    Include image
+                </label>
+            </div>
+
+            <div class="d-flex mb-3 justify-content-between">
+                <div class="col-size-group">
+                    <label class="form-label">Width</label>
+                    <div>
+                        <div class="input-group input-group-sm">
+                            <button class="btn btn-outline-secondary" type="button"
+                                    (click)="click('imageWidth', true)"
+                                    (mousedown)="mousedown('imageWidth', true)"
+                                    (mouseup)="mouseUp()">
+                                <i class="bi bi-dash"></i>
+                            </button>
+                            <input type="text" class="form-control" [(ngModel)]="this.header.imageWidth"
+                                   (ngModelChange)="setImageWidth()" readonly>
+                            <button class="btn btn-outline-secondary" type="button"
+                                    (click)="click('imageWidth')"
+                                    (mousedown)="mousedown('imageWidth')"
+                                    (mouseup)="mouseUp()">
+                                <i class="bi bi-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-size-group">
+                    <label class="form-label">Height</label>
+                    <div>
+                        <div class="input-group input-group-sm">
+                            <button class="btn btn-outline-secondary" type="button"
+                                    (click)="click('imageHeight', true)"
+                                    (mousedown)="mousedown('imageHeight', true)"
+                                    (mouseup)="mouseUp()">
+                                <i class="bi bi-dash"></i>
+                            </button>
+                            <input type="text" class="form-control" [(ngModel)]="this.header.imageHeight"
+                                   (ngModelChange)="setImageHeight()" readonly>
+                            <button class="btn btn-outline-secondary" type="button"
+                                    (click)="click('imageHeight')"
+                                    (mousedown)="mousedown('imageHeight')"
+                                    (mouseup)="mouseUp()">
+                                <i class="bi bi-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

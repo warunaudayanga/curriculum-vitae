@@ -1,0 +1,110 @@
+@import "../../../../../../variables";
+
+:host {
+    display: block;
+    min-height: 38px;
+    position: relative;
+}
+.tag-input {
+    position: relative;
+    min-height: 38px;
+    .chips {
+        min-height: 38px;
+        max-height: 102px;
+        overflow-y: auto;
+        top: 0;
+        left: 0;
+        padding: 3px 15px 3px 6px;
+        display: flex;
+        flex-wrap: wrap;
+        .chip {
+            z-index: 1;
+        }
+        button {
+            border: none;
+            background-color: transparent;
+            padding: 0;
+            margin-left: 5px;
+        }
+        .label {
+            min-height: 32px;
+            margin-left: 5px;
+        }
+    }
+    div.form-control {
+        height: 38px;
+        padding: 0;
+    }
+    input {
+        width: calc(100% - 13px);
+    }
+}
+
+.chip, .tag {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    border: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    margin: 4px;
+    transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-flex;
+    padding: 2px 10px;
+    align-items: center;
+    cursor: default;
+    font-size: smaller;
+    font-weight: 500;
+}
+.chip {
+    border-radius: 16px;
+    background-color: #e0e0e0;
+    color: #000000de;
+    &.active {
+        background-color: $app-secondary-color;
+    }
+}
+
+@keyframes blink {
+    from, to {
+        color: transparent;
+    }
+    50% {
+        color: black;
+    }
+}
+
+@-moz-keyframes blink {
+    from, to {
+        color: transparent;
+    }
+    50% {
+        color: black;
+    }
+}
+
+@-webkit-keyframes blink {
+    from, to {
+        color: transparent;
+    }
+    50% {
+        color: black;
+    }
+}
+
+@-ms-keyframes blink {
+    from, to {
+        color: transparent;
+    }
+    50% {
+        color: black;
+    }
+}
+
+@-o-keyframes blink {
+    from, to {
+        color: transparent;
+    }
+    50% {
+        color: black;
+    }
+}

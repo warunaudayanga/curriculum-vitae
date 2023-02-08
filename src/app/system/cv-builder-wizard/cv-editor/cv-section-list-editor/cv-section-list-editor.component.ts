@@ -58,7 +58,9 @@ export class CvSectionListEditorComponent implements OnInit {
         }
         this.sectionsChange.emit(this.sections);
         setTimeout(() => {
-            const lastItem = this.elementRef.nativeElement.querySelector("app-x-item:last-of-type") as HTMLDivElement;
+            const lastItem = this.elementRef.nativeElement.querySelector(
+                "app-x-section:last-of-type",
+            ) as HTMLDivElement;
             lastItem.scrollIntoView({ behavior: "smooth" });
         });
     }

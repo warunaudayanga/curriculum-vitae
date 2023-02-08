@@ -38,9 +38,7 @@
     <div #page *ngIf="page3" class="page" size="A4">
         <div class="d-flex w-100 h-100">
             <div class="column-1">
-                <div class="heading mb-5">
-                    <app-top-shape></app-top-shape>
-                </div>
+                <app-cv-heading></app-cv-heading>
                 <app-sidebar [sidebar]="page3.sidebar" (forward)="onPage3SidebarForward($event)"></app-sidebar>
             </div>
             <app-main-details class="column-2 flex-fill" *ngIf="page3.sections" [sections]="page3.sections" (forward)="onPage3MainForward($event)"></app-main-details>
@@ -51,9 +49,7 @@
     <div #page *ngIf="page4" class="page" size="A4">
         <div class="d-flex w-100 h-100">
             <div class="column-1">
-                <div class="heading mb-5">
-                    <app-top-shape></app-top-shape>
-                </div>
+                <app-cv-heading></app-cv-heading>
                 <app-sidebar [sidebar]="page4.sidebar" (forward)="onPage4SidebarForward($event)"></app-sidebar>
             </div>
             <app-main-details class="column-2 flex-fill" *ngIf="page4.sections" [sections]="page4.sections" (forward)="onPage4MainForward($event)"></app-main-details>

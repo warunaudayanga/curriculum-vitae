@@ -42,6 +42,7 @@ import { CvSidebarEditorComponent } from "./system/cv-builder-wizard/cv-editor/c
 import { SidebarState } from "./core/state/sidebar";
 import { CvTuneUpComponent } from "./system/cv-builder-wizard/cv-editor/cv-tune-up/cv-tune-up.component";
 import { CvTuneUpPopupComponent } from "./system/cv-builder-wizard/cv-editor/cv-tune-up-popup/cv-tune-up-popup.component";
+import { CvStartComponent } from "./system/cv-builder-wizard/cv-start/cv-start.component";
 
 @NgModule({
     declarations: [
@@ -74,6 +75,7 @@ import { CvTuneUpPopupComponent } from "./system/cv-builder-wizard/cv-editor/cv-
         CvSidebarEditorComponent,
         CvTuneUpComponent,
         CvTuneUpPopupComponent,
+        CvStartComponent,
     ],
     imports: [
         NgxsStoragePluginModule.forRoot({

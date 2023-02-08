@@ -9,19 +9,17 @@ import { Router } from "@angular/router";
 export class StepperComponent implements AfterViewInit {
     @ViewChildren("step") stepsButton?: QueryList<ElementRef<HTMLDivElement>>;
 
-    @Input() steps: any[] = [1, 2, 3, 4, 5, 6];
+    @Input() steps: any[] = [1, 2, 3, 4, 5, 6, 7];
 
     finished: boolean = false;
 
-    activeIndex: number = -1;
+    activeIndex: number = 0;
 
     constructor(private router: Router) {}
 
     ngAfterViewInit(): void {
         this.steps = this.stepsButton?.toArray() ?? [];
-        setTimeout(() => {
-            this.activate(0);
-        }, 1000);
+        this.activate(0);
     }
 
     activate(index: number): void {

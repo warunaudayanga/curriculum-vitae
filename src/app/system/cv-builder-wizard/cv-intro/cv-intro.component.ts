@@ -179,39 +179,37 @@ export class CvIntroComponent implements AfterViewInit {
 
     ngAfterViewInit(): void {
         const margin = 15;
+        fitTo(this.cv.nativeElement, this.elementRef.nativeElement, margin, true);
         setTimeout(() => {
-            fitTo(this.cv.nativeElement, this.elementRef.nativeElement, margin, true);
-            setTimeout(() => {
-                const bounds = this.cv.nativeElement.getBoundingClientRect();
+            const bounds = this.cv.nativeElement.getBoundingClientRect();
 
-                const position = {
-                    headingLabel: {
-                        top: margin + bounds.height * (7 / 100),
-                        left: bounds.left - this.headingLabel.nativeElement.clientWidth - margin / 2,
-                    },
-                    contactsLabel: {
-                        top: margin + bounds.height * (23 / 100),
-                        left: bounds.left - this.contactsLabel.nativeElement.clientWidth - margin / 2,
-                    },
-                    sidebarContentLabel: {
-                        top: margin + bounds.height * (40 / 100),
-                        left: bounds.left - this.sidebarContentLabel.nativeElement.clientWidth - margin / 2,
-                    },
-                    mainContentLabel: {
-                        top: margin + bounds.height * (40 / 100),
-                        left: bounds.left + bounds.width - margin,
-                    },
-                };
+            const position = {
+                headingLabel: {
+                    top: margin + bounds.height * (7 / 100),
+                    left: bounds.left - this.headingLabel.nativeElement.clientWidth - margin / 2,
+                },
+                contactsLabel: {
+                    top: margin + bounds.height * (23 / 100),
+                    left: bounds.left - this.contactsLabel.nativeElement.clientWidth - margin / 2,
+                },
+                sidebarContentLabel: {
+                    top: margin + bounds.height * (40 / 100),
+                    left: bounds.left - this.sidebarContentLabel.nativeElement.clientWidth - margin / 2,
+                },
+                mainContentLabel: {
+                    top: margin + bounds.height * (40 / 100),
+                    left: bounds.left + bounds.width - margin,
+                },
+            };
 
-                this.headingLabel.nativeElement.style.top = `${position.headingLabel.top}px`;
-                this.headingLabel.nativeElement.style.left = `${position.headingLabel.left}px`;
-                this.contactsLabel.nativeElement.style.top = `${position.contactsLabel.top}px`;
-                this.contactsLabel.nativeElement.style.left = `${position.contactsLabel.left}px`;
-                this.sidebarContentLabel.nativeElement.style.top = `${position.sidebarContentLabel.top}px`;
-                this.sidebarContentLabel.nativeElement.style.left = `${position.sidebarContentLabel.left}px`;
-                this.mainContentLabel.nativeElement.style.top = `${position.mainContentLabel.top}px`;
-                this.mainContentLabel.nativeElement.style.left = `${position.mainContentLabel.left}px`;
-            }, 1000);
-        }, 1000);
+            this.headingLabel.nativeElement.style.top = `${position.headingLabel.top}px`;
+            this.headingLabel.nativeElement.style.left = `${position.headingLabel.left}px`;
+            this.contactsLabel.nativeElement.style.top = `${position.contactsLabel.top}px`;
+            this.contactsLabel.nativeElement.style.left = `${position.contactsLabel.left}px`;
+            this.sidebarContentLabel.nativeElement.style.top = `${position.sidebarContentLabel.top}px`;
+            this.sidebarContentLabel.nativeElement.style.left = `${position.sidebarContentLabel.left}px`;
+            this.mainContentLabel.nativeElement.style.top = `${position.mainContentLabel.top}px`;
+            this.mainContentLabel.nativeElement.style.left = `${position.mainContentLabel.left}px`;
+        });
     }
 }

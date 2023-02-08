@@ -6,6 +6,7 @@ import { CVPrinterComponent } from "./system/cv-printer/cv-printer.component";
 const routes: Routes = [
     { path: "", component: CVBuilderWizardComponent },
     { path: "generator", component: CVPrinterComponent },
+    { path: ":index", component: CVBuilderWizardComponent },
 ];
 
 @NgModule({

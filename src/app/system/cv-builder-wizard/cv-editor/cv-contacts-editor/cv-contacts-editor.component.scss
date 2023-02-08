@@ -31,7 +31,7 @@
 }
 
 .column-2 {
-    width: $sidebar-width;
+    width: calc(#{$sidebar-width} + 50px);
     height: 100%;
     margin: 15px auto 15px 15px;
     padding: 5px !important;

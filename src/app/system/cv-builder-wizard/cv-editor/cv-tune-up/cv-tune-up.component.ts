@@ -1,5 +1,4 @@
-import { Component, ElementRef, ViewChild } from "@angular/core";
-import { CvViewerComponent } from "../../cv-viewer/cv-viewer.component";
+import { Component } from "@angular/core";
 import { CVData } from "../../../../core/interfaces/section.interfaces";
 import { Store } from "@ngxs/store";
 import { HeaderStateModel } from "../../../../core/state/header";
@@ -13,11 +12,9 @@ import { SidebarStateModel } from "../../../../core/state/sidebar";
     styleUrls: ["./cv-tune-up.component.scss"],
 })
 export class CvTuneUpComponent {
-    @ViewChild(CvViewerComponent, { read: ElementRef }) cv!: ElementRef<HTMLDivElement>;
-
     cvData?: CVData;
 
-    constructor(private elementRef: ElementRef<HTMLDivElement>, private store: Store) {
+    constructor(private store: Store) {
         const header = this.store.selectSnapshot(state => state.header) as HeaderStateModel;
         const contacts = this.store.selectSnapshot(state => state.contacts) as ContactsStateModel;
         const sections = this.store.selectSnapshot(state => state.sections) as SectionsStateModel;

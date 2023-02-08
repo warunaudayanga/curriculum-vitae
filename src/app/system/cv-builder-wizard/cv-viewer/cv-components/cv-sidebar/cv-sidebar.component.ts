@@ -28,7 +28,7 @@ export class CVSidebarComponent implements OnInit, AfterViewInit {
 
     ngAfterViewInit(): void {
         setTimeout(() => {
-            if (this.elementRef.nativeElement.offsetHeight < this.elementRef.nativeElement.scrollHeight - 1130) {
+            if (this.elementRef.nativeElement.offsetHeight - 100 < this.elementRef.nativeElement.scrollHeight - 1130) {
                 this.generatedSections.pop();
             }
             this.acceptedSectionIndexes = this.generatedSections.map((section, i) => i);
@@ -42,7 +42,7 @@ export class CVSidebarComponent implements OnInit, AfterViewInit {
     }
 
     checkHeight(section: Section): false {
-        if (this.elementRef.nativeElement.offsetHeight >= this.elementRef.nativeElement.scrollHeight - 1130) {
+        if (this.elementRef.nativeElement.offsetHeight - 20 >= this.elementRef.nativeElement.scrollHeight - 1130) {
             this.generatedSections.push(section);
         }
         return false;

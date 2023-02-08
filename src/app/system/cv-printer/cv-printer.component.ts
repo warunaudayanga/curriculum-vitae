@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { CVData } from "../../core/interfaces/section.interfaces";
 import { Store } from "@ngxs/store";
+import { Router } from "@angular/router";
 
 // noinspection JSPotentiallyInvalidConstructorUsage
 @Component({
@@ -11,7 +12,7 @@ import { Store } from "@ngxs/store";
 export class CVPrinterComponent {
     cvData?: CVData;
 
-    constructor(private store: Store) {
+    constructor(private store: Store, private router: Router) {
         this.cvData = {
             header: this.store.selectSnapshot(state => state.header),
             contacts: this.store.selectSnapshot(state => state.contacts),
@@ -22,5 +23,9 @@ export class CVPrinterComponent {
 
     print(): void {
         window.print();
+    }
+
+    async back(): Promise<void> {
+        await this.router.navigate(["/6"], { skipLocationChange: true });
     }
 }

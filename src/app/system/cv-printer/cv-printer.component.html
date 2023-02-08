@@ -1,4 +1,4 @@
 <app-cv-viewer *ngIf="cvData" [cvData]="cvData"></app-cv-viewer>
 
-<button class="btn btn-primary fw-bold btn-floating btn-back" routerLink="/"><i class="bi bi-reply-fill"></i></button>
+<button class="btn btn-primary fw-bold btn-floating btn-back" (click)="back()"><i class="bi bi-reply-fill"></i></button>
 <button class="btn btn-warning fw-bold btn-floating btn-print" (click)="print()"><i class="bi bi-printer-fill"></i></button>

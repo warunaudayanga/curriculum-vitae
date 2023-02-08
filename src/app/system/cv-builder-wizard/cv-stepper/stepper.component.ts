@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, Input, QueryList, ViewChildren } from "@angular/core";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
     selector: "app-stepper",
@@ -17,11 +17,19 @@ export class StepperComponent implements AfterViewInit {
 
     initialized: boolean = false;
 
-    constructor(private router: Router) {}
+    constructor(private router: Router, private activatedRoute: ActivatedRoute) {
+        this.activatedRoute.params.subscribe(params => {
+            if ((params as any).index) {
+                setTimeout(() => {
+                    this.activate(Number((params as any).index));
+                    this.finished = false;
+                });
+            }
+        });
+    }
 
     ngAfterViewInit(): void {
         this.steps = this.stepsButton?.toArray() ?? [];
-        this.activate(0);
         setTimeout(() => {
             this.initialized = true;
         });

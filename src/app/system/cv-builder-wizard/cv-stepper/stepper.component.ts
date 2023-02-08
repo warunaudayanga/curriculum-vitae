@@ -21,7 +21,7 @@ export class StepperComponent implements AfterViewInit {
         this.steps = this.stepsButton?.toArray() ?? [];
         setTimeout(() => {
             this.activate(0);
-        });
+        }, 1000);
     }
 
     activate(index: number): void {

@@ -15,11 +15,16 @@ export class StepperComponent implements AfterViewInit {
 
     activeIndex: number = 0;
 
+    initialized: boolean = false;
+
     constructor(private router: Router) {}
 
     ngAfterViewInit(): void {
         this.steps = this.stepsButton?.toArray() ?? [];
         this.activate(0);
+        setTimeout(() => {
+            this.initialized = true;
+        });
     }
 
     activate(index: number): void {

@@ -1,4 +1,5 @@
 <div class="stepper h-100 pt-3"
+     [hidden]="!initialized"
      [class.pb-3]="activeIndex !== 0"
      [class.smaller]="!(activeIndex === 0 || finished)"
      [class.finished]="finished"

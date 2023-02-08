@@ -9,7 +9,7 @@ import { Header } from "./header.actions";
         title: "",
         fontSize: 25,
         includeImage: true,
-        image: "assets/images/avatar.jpeg",
+        image: "",
         imageWidth: 120,
         imageHeight: 150,
     },

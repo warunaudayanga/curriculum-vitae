@@ -16,9 +16,12 @@ export class CVContactsComponent implements AfterViewInit {
 
     @Input() iconSize: number = 16;
 
+    @Input() editable: boolean = false;
+
     constructor(private elementRef: ElementRef) {}
 
     ngAfterViewInit(): void {
-        if (!this.email && !this.phoneNumbers && !this.address) this.elementRef.nativeElement.style.padding = "0px";
+        if (!this.editable && !this.email && !this.phoneNumbers?.length && !this.address)
+            this.elementRef.nativeElement.style.paddingTop = "0px";
     }
 }

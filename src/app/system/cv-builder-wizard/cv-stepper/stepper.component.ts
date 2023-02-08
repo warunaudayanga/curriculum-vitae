@@ -45,7 +45,7 @@ export class StepperComponent implements AfterViewInit {
         this.activeIndex++;
         this.finished = true;
         setTimeout(async () => {
-            await this.router.navigate(["/generator"]);
+            await this.router.navigate(["/generator"], { skipLocationChange: true });
         }, 700);
     }
 }

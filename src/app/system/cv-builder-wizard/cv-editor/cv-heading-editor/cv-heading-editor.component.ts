@@ -7,7 +7,7 @@ import PatchConfig = Config.PatchConfigs;
 import { Globals } from "../../../configs/globals";
 import { Limits } from "../../../../core/interfaces/system.interfaces";
 
-type Changeable = "contactsFontSize" | "imageHeight" | "imageWidth";
+type Changeable = "headerFontSize" | "imageHeight" | "imageWidth";
 
 @Component({
     selector: "app-cv-heading-editor",
@@ -32,9 +32,9 @@ export class CVHeadingEditorComponent {
         this.configs.imageWidth ||= Globals.DEFAULTS.CONFIGS.IMAGE_WIDTH;
         this.configs.imageHeight ||= Globals.DEFAULTS.CONFIGS.IMAGE_HEIGHT;
         this.limits = {
-            contactsFontSize: {
-                min: Globals.DEFAULTS.CONFIGS.CONTACTS_FONT_SIZE_MIN,
-                max: Globals.DEFAULTS.CONFIGS.CONTACTS_FONT_SIZE_MAX,
+            headerFontSize: {
+                min: Globals.DEFAULTS.CONFIGS.HEADER_FONT_SIZE_MIN,
+                max: Globals.DEFAULTS.CONFIGS.HEADER_FONT_SIZE_MAX,
             },
             imageWidth: {
                 min: Globals.DEFAULTS.CONFIGS.IMAGE_WIDTH_MIN,

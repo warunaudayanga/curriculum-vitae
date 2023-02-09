@@ -3,23 +3,23 @@
         <div class="d-flex w-100 h-100">
             <div class="column-1">
                 <app-cv-heading
-                    [title]="this.cvData.header?.title ?? DEFAULTS.HEADER.TITLE"
-                    [fontSize]="this.cvData.configs?.headerFontSize ?? DEFAULTS.CONFIGS.HEADER_FONT_SIZE"
-                    [includeImage]="this.cvData.header?.includeImage ?? DEFAULTS.HEADER.INCLUDE_IMAGE"
-                    [image]="this.cvData.header?.image ?? DEFAULTS.HEADER.IMAGE"
-                    [imageWidth]="this.cvData.configs?.imageWidth ?? DEFAULTS.CONFIGS.IMAGE_WIDTH"
-                    [imageHeight]="this.cvData.configs?.imageHeight ?? DEFAULTS.CONFIGS.IMAGE_HEIGHT"
+                    [title]="cvData.header?.title ?? DEFAULTS.HEADER.TITLE"
+                    [fontSize]="cvData.configs?.headerFontSize ?? DEFAULTS.CONFIGS.HEADER_FONT_SIZE"
+                    [includeImage]="cvData.header?.includeImage ?? DEFAULTS.HEADER.INCLUDE_IMAGE"
+                    [image]="cvData.header?.image ?? DEFAULTS.HEADER.IMAGE"
+                    [imageWidth]="cvData.configs?.imageWidth ?? DEFAULTS.CONFIGS.IMAGE_WIDTH"
+                    [imageHeight]="cvData.configs?.imageHeight ?? DEFAULTS.CONFIGS.IMAGE_HEIGHT"
                 ></app-cv-heading>
                 <app-cv-contacts
                     style="{{
                         'padding-top: ' + (cvData.configs?.contactsListSpace ?? DEFAULTS.CONFIGS.CONTACTS_LIST_SPACE) + 'px;' +
                         'padding-inline: ' + (cvData.configs?.sidebarPadding ?? DEFAULTS.CONFIGS.SIDEBAR_PADDING) + 'px'
                     }}"
-                    [email]="this.cvData.contacts?.email ?? DEFAULTS.CONTACTS.EMAIL"
-                    [phoneNumbers]="this.cvData.contacts?.phoneNumbers ?? DEFAULTS.CONTACTS.PHONE_NUMBERS"
-                    [address]="this.cvData.contacts?.address ?? DEFAULTS.CONTACTS.ADDRESS"
-                    [fontSize]="this.cvData.configs?.contactsFontSize ?? DEFAULTS.CONFIGS.CONTACTS_FONT_SIZE"
-                    [iconSize]="this.cvData.configs?.contactsIconSize ?? DEFAULTS.CONFIGS.CONTACTS_ICON_SIZE"
+                    [email]="cvData.contacts?.email ?? DEFAULTS.CONTACTS.EMAIL"
+                    [phoneNumbers]="cvData.contacts?.phoneNumbers ?? DEFAULTS.CONTACTS.PHONE_NUMBERS"
+                    [address]="cvData.contacts?.address ?? DEFAULTS.CONTACTS.ADDRESS"
+                    [fontSize]="cvData.configs?.contactsFontSize ?? DEFAULTS.CONFIGS.CONTACTS_FONT_SIZE"
+                    [iconSize]="cvData.configs?.contactsIconSize ?? DEFAULTS.CONFIGS.CONTACTS_ICON_SIZE"
                     [space]="cvData.configs?.contactsSpace ?? DEFAULTS.CONFIGS.CONTACTS_SPACE"
                 ></app-cv-contacts>
                 <app-sidebar

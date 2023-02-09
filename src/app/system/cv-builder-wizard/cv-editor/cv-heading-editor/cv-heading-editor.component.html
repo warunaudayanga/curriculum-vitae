@@ -2,12 +2,12 @@
     <div class="column-1">
         <app-cv-heading
             [editable]="true"
-            [title]="this.header.title"
-            [fontSize]="this.configs.contactsFontSize"
-            [includeImage]="this.header.includeImage"
-            [image]="this.header.image"
-            [imageWidth]="this.configs.imageWidth"
-            [imageHeight]="this.configs.imageHeight"
+            [title]="header.title"
+            [fontSize]="configs.headerFontSize"
+            [includeImage]="header.includeImage"
+            [image]="header.image"
+            [imageWidth]="configs.imageWidth"
+            [imageHeight]="configs.imageHeight"
             (imageSelect)="setImage($event)"
         ></app-cv-heading>
     </div>
@@ -19,7 +19,7 @@
                     <div class="row align-items-center">
                         <div class="col">
                             <input type="text" class="form-control form-control-sm" placeholder="Enter your name..."
-                                   [(ngModel)]="this.header.title" (ngModelChange)="setTitle()">
+                                   [(ngModel)]="header.title" (ngModelChange)="setTitle()">
                         </div>
                     </div>
                 </div>
@@ -27,16 +27,16 @@
                     <label class="form-label">Font size</label>
                     <div class="input-group input-group-sm">
                         <button class="btn btn-outline-secondary" type="button"
-                                (click)="click('contactsFontSize', true)"
-                                (mousedown)="mousedown('contactsFontSize', true)"
+                                (click)="click('headerFontSize', true)"
+                                (mousedown)="mousedown('headerFontSize', true)"
                                 (mouseup)="mouseUp()">
                             <i class="bi bi-dash"></i>
                         </button>
-                        <input type="text" class="form-control" [(ngModel)]="this.configs.contactsFontSize"
+                        <input type="text" class="form-control" [(ngModel)]="configs.headerFontSize"
                                (ngModelChange)="setFontSize()" readonly>
                         <button class="btn btn-outline-secondary" type="button"
-                                (click)="click('contactsFontSize')"
-                                (mousedown)="mousedown('contactsFontSize')"
+                                (click)="click('headerFontSize')"
+                                (mousedown)="mousedown('headerFontSize')"
                                 (mouseup)="mouseUp()">
                             <i class="bi bi-plus"></i>
                         </button>
@@ -45,7 +45,7 @@
             </div>
 
             <div class="form-check mb-3">
-                <input class="form-check-input" type="checkbox" id="hasImage" [(ngModel)]="this.header.includeImage"
+                <input class="form-check-input" type="checkbox" id="hasImage" [(ngModel)]="header.includeImage"
                        (ngModelChange)="setIncludeImage()">
                 <label class="form-check-label" for="hasImage">
                     Include image
@@ -63,7 +63,7 @@
                                     (mouseup)="mouseUp()">
                                 <i class="bi bi-dash"></i>
                             </button>
-                            <input type="text" class="form-control" [(ngModel)]="this.configs.imageWidth"
+                            <input type="text" class="form-control" [(ngModel)]="configs.imageWidth"
                                    (ngModelChange)="setImageWidth()" readonly>
                             <button class="btn btn-outline-secondary" type="button"
                                     (click)="click('imageWidth')"
@@ -84,7 +84,7 @@
                                     (mouseup)="mouseUp()">
                                 <i class="bi bi-dash"></i>
                             </button>
-                            <input type="text" class="form-control" [(ngModel)]="this.configs.imageHeight"
+                            <input type="text" class="form-control" [(ngModel)]="configs.imageHeight"
                                    (ngModelChange)="setImageHeight()" readonly>
                             <button class="btn btn-outline-secondary" type="button"
                                     (click)="click('imageHeight')"

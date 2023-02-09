@@ -1,19 +1,19 @@
 <div class="d-flex h-100">
     <div class="column-1">
         <app-cv-heading
-            [title]="this.header.title"
-            [fontSize]="this.configs.headerFontSize"
-            [includeImage]="this.header.includeImage"
-            [image]="this.header.image"
-            [imageWidth]="this.configs.imageWidth"
-            [imageHeight]="this.configs.imageHeight"
+            [title]="header.title"
+            [fontSize]="configs.headerFontSize"
+            [includeImage]="header.includeImage"
+            [image]="header.image"
+            [imageWidth]="configs.imageWidth"
+            [imageHeight]="configs.imageHeight"
         ></app-cv-heading>
         <app-cv-contacts
-            [email]="this.contacts.email"
-            [phoneNumbers]="this.contacts.phoneNumbers"
-            [address]="this.contacts.address"
-            [fontSize]="this.configs.contactsFontSize"
-            [iconSize]="this.configs.contactsIconSize"
+            [email]="contacts.email"
+            [phoneNumbers]="contacts.phoneNumbers"
+            [address]="contacts.address"
+            [fontSize]="configs.contactsFontSize"
+            [iconSize]="configs.contactsIconSize"
             [editable]="true"
         ></app-cv-contacts>
     </div>
@@ -21,14 +21,14 @@
         <div class="editor">
             <label class="form-label">Email</label>
             <input type="text" class="form-control form-control-sm mb-3" placeholder="Enter your name..."
-                   [(ngModel)]="this.contacts.email" (ngModelChange)="setEmail()">
+                   [(ngModel)]="contacts.email" (ngModelChange)="setEmail()">
 
             <label class="form-label">Phone</label>
-            <ng-tag-input class="mb-3" [(ngModel)]="this.contacts.phoneNumbers" (ngModelChange)="setPhoneNumbers()"></ng-tag-input>
+            <ng-tag-input class="mb-3" [(ngModel)]="contacts.phoneNumbers" (ngModelChange)="setPhoneNumbers()"></ng-tag-input>
 
             <label class="form-label">Address</label>
             <textarea rows="3" class="form-control form-control-sm mb-3" placeholder="Enter your name..."
-                      [(ngModel)]="this.contacts.address" (ngModelChange)="setAddress()">
+                      [(ngModel)]="contacts.address" (ngModelChange)="setAddress()">
         </textarea>
 
             <div class="d-flex mb-3 gap-3">
@@ -42,7 +42,7 @@
                                     (mouseup)="mouseUp()">
                                 <i class="bi bi-dash"></i>
                             </button>
-                            <input type="text" class="form-control" [(ngModel)]="this.configs.contactsFontSize"
+                            <input type="text" class="form-control" [(ngModel)]="configs.contactsFontSize"
                                    (ngModelChange)="setFontSize()" readonly>
                             <button class="btn btn-outline-secondary" type="button"
                                     (click)="click('contactsFontSize')"
@@ -63,7 +63,7 @@
                                     (mouseup)="mouseUp()">
                                 <i class="bi bi-dash"></i>
                             </button>
-                            <input type="text" class="form-control" [(ngModel)]="this.configs.contactsIconSize"
+                            <input type="text" class="form-control" [(ngModel)]="configs.contactsIconSize"
                                    (ngModelChange)="setIconSize()" readonly>
                             <button class="btn btn-outline-secondary" type="button"
                                     (click)="click('contactsIconSize')"

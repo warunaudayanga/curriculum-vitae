@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 import { Store } from "@ngxs/store";
 import { CVData } from "../../../core/interfaces/system.interfaces";
 import { Header } from "../../../core/state/header";
-import SetHeaderInfo = Header.SetHeaderInfo;
+import SetHeaderInfo = Header.SetHeader;
 import { Contacts } from "../../../core/state/contacts";
 import SetContacts = Contacts.SetContacts;
 import { Config } from "../../../core/state/configs";

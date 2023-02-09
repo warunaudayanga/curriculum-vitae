@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { Store } from "@ngxs/store";
 import { Header, HeaderStateModel } from "../../../../core/state/header";
-import PatchHeaderInfo = Header.PatchHeaderInfo;
+import PatchHeaderInfo = Header.PatchHeader;
 import { Config, ConfigsStateModel } from "../../../../core/state/configs";
 import PatchConfig = Config.PatchConfigs;
 import { Globals } from "../../../configs/globals";

@@ -14,17 +14,17 @@ import { Header } from "./header.actions";
 @Injectable()
 export class HeaderState {
     @Selector()
-    static getHeaderDetails(state: HeaderStateModel): HeaderStateModel {
+    static getHeader(state: HeaderStateModel): HeaderStateModel {
         return state;
     }
 
-    @Action(Header.PatchHeaderInfo)
-    patchHeaderInfo({ patchState }: StateContext<HeaderStateModel>, action: Header.PatchHeaderInfo): void {
+    @Action(Header.PatchHeader)
+    patchHeader({ patchState }: StateContext<HeaderStateModel>, action: Header.PatchHeader): void {
         patchState(action.payload);
     }
 
-    @Action(Header.SetHeaderInfo)
-    setContacts({ setState }: StateContext<HeaderStateModel>, action: Header.SetHeaderInfo): void {
+    @Action(Header.SetHeader)
+    setHeader({ setState }: StateContext<HeaderStateModel>, action: Header.SetHeader): void {
         setState(action.payload);
     }
 }

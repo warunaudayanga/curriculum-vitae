@@ -5,63 +5,23 @@
     --app-bottom-shape: 0px;
 
     --app-primary-color: #1F4E79;
-    --app-accent-color: #2E75B6;
     --app-secondary-color: #BDD7EE;
+    --app-accent-color: #2E75B6;
     --app-text-color: #001E5B;
     --app-separator-color: #5999d4;
-
-    --title-font-size: 27px;
-
-    --image-width: 120px;
-    --image-height: 150px;
-    --image-border: 4px;
-
-    --contact-font-size: 15px;
-    --contact-icon-size: 16px;
+    --app-main-link-color: #0d6efd;
 
     --sidebar-width: 310px;
-    --sidebar-list-font-size: 15px;
-    --sidebar-padding: 25px;
-    --sidebar-margin: 20px;
-
-    --main-padding: 25px;
-    --main-link-color: #0d6efd;
-
-    --section-font-size: 14px;
-    --section-line-height: normal;
-    --section-margin: 20px;
-    --section-item-margin: 5px;
-
-    //--app-secondary-color: #fd8700;
 }
 
 $app-top-shape: var(--app-top-shape);
 $app-bottom-shape: var(--app-bottom-shape);
 
 $app-primary-color: var(--app-primary-color);
-$app-accent-color: var(--app-accent-color);
 $app-secondary-color: var(--app-secondary-color);
+$app-accent-color: var(--app-accent-color);
 $app-text-color: var(--app-text-color);
 $app-separator-color: var(--app-separator-color);
-
-$title-font-size: var(--title-font-size);
-
-$image-width: var(--image-width);
-$image-height: var(--image-height);
-$image-border: var(--image-border);
-
-$contact-font-size: var(--contact-font-size);
-$contact-icon-size: var(--contact-icon-size);
+$main-link-color: var(--app-main-link-color);
 
 $sidebar-width: var(--sidebar-width);
-$sidebar-list-font-size: var(--sidebar-list-font-size);
-$sidebar-padding: var(--sidebar-padding);
-$sidebar-margin: var(--sidebar-margin);
-
-$main-padding: var(--main-padding);
-$main-link-color: var(--main-link-color);
-
-$section-font-size: var(--section-font-size);
-$section-line-height: var(--section-line-height);
-$section-margin: var(--section-margin);
-$section-item-margin: var(--section-item-margin);

@@ -1,6 +1,8 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from "@angular/core";
-import { Section } from "../../../../../core/interfaces/section.interfaces";
+import { Section } from "../../../../../core/interfaces/system.interfaces";
 import { BottomShapeComponent } from "./shapes/bottom-shape/bottom-shape.component";
+import { ConfigsStateModel } from "../../../../../core/state/configs";
+import { Globals } from "../../../../configs/globals";
 
 @Component({
     selector: "app-sidebar",
@@ -10,7 +12,11 @@ import { BottomShapeComponent } from "./shapes/bottom-shape/bottom-shape.compone
 export class CVSidebarComponent implements OnInit, AfterViewInit {
     @ViewChild(BottomShapeComponent, { read: ElementRef }) bottomShape!: ElementRef<HTMLElement>;
 
+    @Input() firstPage?: boolean = false;
+
     @Input() sidebar?: Section[];
+
+    @Input() configs?: ConfigsStateModel;
 
     @Output() forward: EventEmitter<Section[]> = new EventEmitter<Section[]>();
 
@@ -20,6 +26,10 @@ export class CVSidebarComponent implements OnInit, AfterViewInit {
 
     generatedSections: Section[] = [];
 
+    SECTION_SPACE = Globals.DEFAULTS.CONFIGS.SECTION_SPACE;
+
+    SIDEBAR_PADDING = Globals.DEFAULTS.CONFIGS.SIDEBAR_PADDING;
+
     constructor(private elementRef: ElementRef<HTMLDivElement>) {}
 
     ngOnInit(): void {
@@ -28,7 +38,7 @@ export class CVSidebarComponent implements OnInit, AfterViewInit {
 
     ngAfterViewInit(): void {
         setTimeout(() => {
-            if (this.elementRef.nativeElement.offsetHeight - 100 < this.elementRef.nativeElement.scrollHeight - 1130) {
+            if (this.elementRef.nativeElement.offsetHeight - 20 < this.elementRef.nativeElement.scrollHeight - 1130) {
                 this.generatedSections.pop();
             }
             this.acceptedSectionIndexes = this.generatedSections.map((section, i) => i);

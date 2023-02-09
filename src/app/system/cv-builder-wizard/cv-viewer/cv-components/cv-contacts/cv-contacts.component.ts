@@ -18,6 +18,8 @@ export class CVContactsComponent implements AfterViewInit {
 
     @Input() editable: boolean = false;
 
+    @Input() space: number = 0;
+
     constructor(private elementRef: ElementRef) {}
 
     ngAfterViewInit(): void {

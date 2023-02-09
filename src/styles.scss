@@ -93,4 +93,27 @@ body {
     border: none;
     font-weight: bold;
     z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    i {
+        display: block;
+        width: 20px;
+        height: 20px;
+        &:before {
+            display: block !important;
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+        }
+    }
+}
+
+.btn-primary {
+    background-color: $app-primary-color;
+    border-color: $app-primary-color;
+    &:hover {
+        background-color: $app-accent-color;
+        border-color: $app-accent-color;
+    }
 }

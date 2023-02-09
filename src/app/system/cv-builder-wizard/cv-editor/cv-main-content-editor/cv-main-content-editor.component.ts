@@ -1,9 +1,10 @@
 import { Component } from "@angular/core";
-import { Section } from "../../../../core/interfaces/section.interfaces";
+import { Section } from "../../../../core/interfaces/system.interfaces";
 import { Store } from "@ngxs/store";
 import { Sections } from "../../../../core/state/sections";
 import { SectionType } from "../../../../core/enums/section-type.enum";
 import PatchSections = Sections.PatchSections;
+import { ConfigsStateModel } from "../../../../core/state/configs";
 
 @Component({
     selector: "app-cv-main-content-editor",
@@ -15,8 +16,11 @@ export class CVMainContentEditorComponent {
 
     preDefinedSections?: Section[];
 
+    configs: ConfigsStateModel;
+
     constructor(private store: Store) {
         this.sections = this.store.selectSnapshot(state => state.sections.sections);
+        this.configs = this.store.selectSnapshot(state => state.configs);
         this.preDefinedSections = [
             {
                 id: "dd2d449c-d4c6-4d8f-985b-bad1785bd85d",

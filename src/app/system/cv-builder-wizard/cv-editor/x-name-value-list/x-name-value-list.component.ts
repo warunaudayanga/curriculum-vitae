@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from "@angular/core";
-import { SectionKeyValueListItem } from "../../../../core/interfaces/section.interfaces";
+import { SectionKeyValueListItem } from "../../../../core/interfaces/system.interfaces";
 import { v4 as uuid } from "uuid";
 
 @Component({

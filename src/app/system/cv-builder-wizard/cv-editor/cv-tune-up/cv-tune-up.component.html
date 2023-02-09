@@ -1,6 +1,6 @@
 <div class="viewer">
-    <app-cv-viewer [cvData]="cvData"></app-cv-viewer>
+    <app-cv-viewer *ngIf="!reloading" [cvData]="cvData"></app-cv-viewer>
 </div>
 
-<app-cv-tune-up-popup #popup></app-cv-tune-up-popup>
+<app-cv-tune-up-popup #popup (reload)="reload($event)"></app-cv-tune-up-popup>
 <button class="btn btn-lg btn-primary btn-floating btn-tune" (click)="popup.open()"><i class="bi bi-gear-fill"></i></button>

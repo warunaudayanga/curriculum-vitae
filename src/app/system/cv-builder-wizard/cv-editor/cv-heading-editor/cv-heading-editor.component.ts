@@ -1,98 +1,99 @@
-import { AfterViewInit, Component } from "@angular/core";
+import { Component } from "@angular/core";
 import { Store } from "@ngxs/store";
 import { Header, HeaderStateModel } from "../../../../core/state/header";
-import SetHeaderInfo = Header.PatchHeaderInfo;
-import { getRootVar } from "../../../../core/utils/utils";
+import PatchHeaderInfo = Header.PatchHeaderInfo;
+import { Config, ConfigsStateModel } from "../../../../core/state/configs";
+import PatchConfig = Config.PatchConfigs;
+import { Globals } from "../../../configs/globals";
+import { Limits } from "../../../../core/interfaces/system.interfaces";
 
-type Changeable = "fontSize" | "imageHeight" | "imageWidth";
+type Changeable = "contactsFontSize" | "imageHeight" | "imageWidth";
 
 @Component({
     selector: "app-cv-heading-editor",
     templateUrl: "./cv-heading-editor.component.html",
     styleUrls: ["./cv-heading-editor.component.scss"],
 })
-export class CVHeadingEditorComponent implements AfterViewInit {
+export class CVHeadingEditorComponent {
     header: HeaderStateModel;
+
+    configs: ConfigsStateModel;
 
     waitTimer?: NodeJS.Timer;
 
     repeatTimer?: NodeJS.Timer;
 
-    limits?: {
-        [key in Changeable]: {
-            min: number;
-            max: number;
-        };
-    };
+    limits: Limits<Changeable>;
 
     constructor(private store: Store) {
         this.header = this.store.selectSnapshot(state => state.header);
-    }
-
-    ngAfterViewInit(): void {
+        this.configs = this.store.selectSnapshot(state => state.configs);
+        this.configs.contactsFontSize ||= Globals.DEFAULTS.CONFIGS.CONTACTS_FONT_SIZE;
+        this.configs.imageWidth ||= Globals.DEFAULTS.CONFIGS.IMAGE_WIDTH;
+        this.configs.imageHeight ||= Globals.DEFAULTS.CONFIGS.IMAGE_HEIGHT;
         this.limits = {
-            fontSize: {
-                min: 20,
-                max: 50,
+            contactsFontSize: {
+                min: Globals.DEFAULTS.CONFIGS.CONTACTS_FONT_SIZE_MIN,
+                max: Globals.DEFAULTS.CONFIGS.CONTACTS_FONT_SIZE_MAX,
             },
             imageWidth: {
-                min: 120,
-                max: getRootVar("--sidebar-width", true) - 100,
+                min: Globals.DEFAULTS.CONFIGS.IMAGE_WIDTH_MIN,
+                max: Globals.DEFAULTS.CONFIGS.IMAGE_WIDTH_MAX,
             },
             imageHeight: {
-                min: 150,
-                max: (getRootVar("--sidebar-width", true) - 100) * 1.5,
+                min: Globals.DEFAULTS.CONFIGS.IMAGE_HEIGHT_MIN,
+                max: Globals.DEFAULTS.CONFIGS.IMAGE_HEIGHT_MAX,
             },
         };
     }
 
     setTitle(): void {
-        this.store.dispatch(new SetHeaderInfo({ title: this.header.title }));
+        this.store.dispatch(new PatchHeaderInfo({ title: this.header.title }));
     }
 
     setFontSize(): void {
-        this.store.dispatch(new SetHeaderInfo({ fontSize: this.header.fontSize }));
+        this.store.dispatch(new PatchConfig({ contactsFontSize: this.configs.contactsFontSize }));
     }
 
     setIncludeImage(): void {
-        this.store.dispatch(new SetHeaderInfo({ includeImage: this.header.includeImage }));
+        this.store.dispatch(new PatchHeaderInfo({ includeImage: this.header.includeImage }));
     }
 
     setImage(image: string): void {
         this.header.image = image;
-        this.store.dispatch(new SetHeaderInfo({ image: this.header.image }));
+        this.store.dispatch(new PatchHeaderInfo({ image: this.header.image }));
     }
 
     setImageWidth(): void {
-        this.store.dispatch(new SetHeaderInfo({ imageWidth: this.header.imageWidth }));
+        this.store.dispatch(new PatchConfig({ imageWidth: this.configs.imageWidth }));
     }
 
     setImageHeight(): void {
-        this.store.dispatch(new SetHeaderInfo({ imageHeight: this.header.imageHeight }));
+        this.store.dispatch(new PatchConfig({ imageHeight: this.configs.imageHeight }));
     }
 
     click(changeable: Changeable, decrease?: boolean): void {
         clearInterval(this.waitTimer);
         clearInterval(this.repeatTimer);
-        if (decrease && this.header[changeable] <= this.limits![changeable].min) {
+        if (decrease && this.configs[changeable] <= this.limits![changeable].min) {
             return;
-        } else if (!decrease && this.header[changeable] >= this.limits![changeable].max) {
+        } else if (!decrease && this.configs[changeable] >= this.limits![changeable].max) {
             return;
         }
-        this.header[changeable] += decrease ? -1 : +1;
-        this.store.dispatch(new SetHeaderInfo({ [changeable]: this.header[changeable] }));
+        this.configs[changeable] += decrease ? -1 : +1;
+        this.store.dispatch(new PatchConfig({ [changeable]: this.configs[changeable] }));
     }
 
     mousedown(changeable: Changeable, decrease?: boolean): void {
         this.waitTimer = setTimeout(() => {
             this.repeatTimer = setInterval(() => {
-                if (decrease && this.header[changeable] <= this.limits![changeable].min) {
+                if (decrease && this.configs[changeable] <= this.limits![changeable].min) {
                     return;
-                } else if (!decrease && this.header[changeable] >= this.limits![changeable].max) {
+                } else if (!decrease && this.configs[changeable] >= this.limits![changeable].max) {
                     return;
                 }
-                this.header[changeable] += decrease ? -1 : +1;
-                this.store.dispatch(new SetHeaderInfo({ [changeable]: this.header[changeable] }));
+                this.configs[changeable] += decrease ? -1 : +1;
+                this.store.dispatch(new PatchConfig({ [changeable]: this.configs[changeable] }));
             }, 50);
         }, 200);
     }

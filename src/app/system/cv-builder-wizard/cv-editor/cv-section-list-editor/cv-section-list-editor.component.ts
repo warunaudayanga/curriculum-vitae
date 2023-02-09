@@ -1,6 +1,6 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { SectionType } from "../../../../core/enums/section-type.enum";
-import { PreDefinedSection, Section } from "../../../../core/interfaces/section.interfaces";
+import { PreDefinedSection, Section } from "../../../../core/interfaces/system.interfaces";
 import { v4 as uuid } from "uuid";
 
 @Component({

@@ -1,38 +1,85 @@
 <ng-container *ngIf="section">
-    <div class="title">{{trimTitle(section.title) | uppercase}}</div>
-    <div class="hr"></div>
-    <div *ngIf="section.type === SectionType.PARAGRAPH" class="paragraph" [innerHTML]="trim(section.paragraph, true)"></div>
-    <div *ngIf="section.type === SectionType.LIST" class="list">
+    <div class="title"
+         style="{{'font-size: ' + (configs?.sectionTitleFontSize ?? CONFIGS.SECTION_TITLE_FONT_SIZE) + 'px'}}">
+        {{trimTitle(section.title) | uppercase}}
+    </div>
+    <div class="hr"
+         style="{{'bottom: ' + (CONFIGS.SECTION_SEPARATOR_SPACE_MAX - (configs?.sectionSeparatorSpace ?? CONFIGS.SECTION_SEPARATOR_SPACE)) + 'px;'}}"></div>
+    <div *ngIf="section.type === SectionType.PARAGRAPH" class="paragraph"
+         style="{{
+            'font-size: ' + (configs?.sectionTextFontSize ?? CONFIGS.SECTION_TEXT_FONT_SIZE) + 'px; ' +
+            'line-height: ' + (configs?.sectionTextLineHeight ?? CONFIGS.SECTION_TEXT_LINE_HEIGHT) + 'px;' +
+            'padding-top: ' + (configs?.sectionItemSpace ?? CONFIGS.SECTION_ITEM_SPACE) + 'px;'
+         }}"
+         [innerHTML]="trim(section.paragraph, true)"></div>
+    <div *ngIf="section.type === SectionType.LIST" class="list"
+         style="{{
+            'font-size: ' + (configs?.sectionTextFontSize ?? CONFIGS.SECTION_TEXT_FONT_SIZE) + 'px; ' +
+            'line-height: ' + (configs?.sectionTextLineHeight ?? CONFIGS.SECTION_TEXT_LINE_HEIGHT) + 'px;' +
+            'padding-top: ' + (configs?.sectionItemSpace ?? CONFIGS.SECTION_ITEM_SPACE) + 'px;'
+         }}">
         <ul>
             <ng-container *ngFor="let item of section.list">
-                <li [innerHTML]="trim(item.title, true)"></li>
-                <ul *ngIf="item.list">
-                    <li *ngFor="let subItem of item.list" [innerHTML]="trim(subItem.title, true)"></li>
+                <li [innerHTML]="trim(item.title, true)"
+                    style="{{'padding-top: ' + (configs?.sectionListItemSpace ?? CONFIGS.SECTION_LIST_ITEM_SPACE) + 'px;'}}"></li>
+                <ul *ngIf="item.list"
+                    style="{{'padding-top: ' + (configs?.sectionListItemSpace ?? CONFIGS.SECTION_LIST_ITEM_SPACE) + 'px;'}}">
+                    <li *ngFor="let subItem of item.list" [innerHTML]="trim(subItem.title, true)"
+                        style="{{'padding-top: ' + (configs?.sectionListItemSpace ?? CONFIGS.SECTION_LIST_ITEM_SPACE) + 'px;'}}"></li>
                 </ul>
             </ng-container>
         </ul>
     </div>
-    <div *ngIf="section.type === SectionType.LIST_WITH_PARAGRAPH" class="list-with-paragraph">
+    <div *ngIf="section.type === SectionType.LIST_WITH_PARAGRAPH" class="list-with-paragraph"
+         style="{{
+            'font-size: ' + (configs?.sectionTextFontSize ?? CONFIGS.SECTION_TEXT_FONT_SIZE) + 'px; ' +
+            'line-height: ' + (configs?.sectionTextLineHeight ?? CONFIGS.SECTION_TEXT_LINE_HEIGHT) + 'px;' +
+            'padding-top: ' + (configs?.sectionItemSpace ?? CONFIGS.SECTION_ITEM_SPACE) + 'px;'
+         }}">
         <div class="paragraph" [innerHTML]="trim(section.listWithParagraph?.title, true)"></div>
         <div class="list">
-            <ul>
+            <ul style="{{'padding-top: ' + (configs?.sectionListItemSpace ?? CONFIGS.SECTION_LIST_ITEM_SPACE) + 'px;'}}">
                 <ng-container *ngFor="let item of section.listWithParagraph?.list">
-                    <li [innerHTML]="trim(item.title, true)"></li>
+                    <li [innerHTML]="trim(item.title, true)"
+                        style="{{'padding-top: ' + (configs?.sectionListItemSpace ?? CONFIGS.SECTION_LIST_ITEM_SPACE) + 'px;'}}"></li>
                 </ng-container>
             </ul>
         </div>
     </div>
-    <div *ngIf="section.type === SectionType.NAME_VALUE_LIST" class="key-value-list">
+    <div *ngIf="section.type === SectionType.NAME_VALUE_LIST" class="key-value-list"
+         style="{{
+            'font-size: ' + (configs?.sectionTextFontSize ?? CONFIGS.SECTION_TEXT_FONT_SIZE) + 'px;' +
+            'line-height: ' + (configs?.sectionTextLineHeight ?? CONFIGS.SECTION_TEXT_LINE_HEIGHT) + 'px;' +
+            'padding-top: ' + (configs?.sectionItemSpace ?? CONFIGS.SECTION_ITEM_SPACE) + 'px;'
+         }}">
         <table class="w-100">
             <tr *ngFor="let item of section.keyValueList">
-                <td class="key"><span class="bullet">&bull;</span><span [innerHTML]="trim(item.title, true)"></span></td>
-                <td class="separator">:</td>
-                <td class="value" [innerHTML]="trim(item.value, true)"></td>
+                <td class="key"
+                    style="{{'padding-top: ' + (configs?.sectionListItemSpace ?? CONFIGS.SECTION_LIST_ITEM_SPACE) + 'px;'}}">
+                    <span class="bullet"
+                          style="{{
+                          'font-size: ' + (configs?.sectionTextFontSize ?? CONFIGS.SECTION_TEXT_FONT_SIZE) + 'px;' +
+                          'line-height: ' + (configs?.sectionTextLineHeight ?? CONFIGS.SECTION_TEXT_LINE_HEIGHT) + 'px;'
+                          }}">&bull;</span><span
+                    [innerHTML]="trim(item.title, true)"></span>
+                </td>
+                <td class="separator"
+                    style="{{'padding-top: ' + (configs?.sectionListItemSpace ?? CONFIGS.SECTION_LIST_ITEM_SPACE) + 'px;'}}">
+                    :
+                </td>
+                <td class="value" [innerHTML]="trim(item.value, true)"
+                    style="{{'padding-top: ' + (configs?.sectionListItemSpace ?? CONFIGS.SECTION_LIST_ITEM_SPACE) + 'px;'}}"></td>
             </tr>
         </table>
     </div>
-    <div *ngIf="section.type === SectionType.COLUMNS" class="column">
-        <div class="d-flex">
+    <div *ngIf="section.type === SectionType.COLUMNS" class="column"
+         style="{{
+            'font-size: ' + (configs?.sectionTextFontSize ?? CONFIGS.SECTION_TEXT_FONT_SIZE) + 'px; ' +
+            'line-height: ' + (configs?.sectionTextLineHeight ?? CONFIGS.SECTION_TEXT_LINE_HEIGHT) + 'px;' +
+            'padding-top: ' + (configs?.sectionItemSpace ?? CONFIGS.SECTION_ITEM_SPACE) + 'px;'
+         }}">
+        <div class="d-flex"
+             style="{{'padding-top: ' + (configs?.sectionListItemSpace ?? CONFIGS.SECTION_LIST_ITEM_SPACE) + 'px;'}}">
             <div class="w-50">
                 <div *ngFor="let line of section.columns?.[0]?.lines; let i = index" [innerHTML]="trim(line, !i)"></div>
             </div>
@@ -41,19 +88,25 @@
             </div>
         </div>
     </div>
-    <div *ngIf="section.type === SectionType.SIGNATURE" class="signature">
+    <div *ngIf="section.type === SectionType.SIGNATURE" class="signature"
+         style="{{
+            'font-size: ' + (configs?.sectionTextFontSize ?? CONFIGS.SECTION_TEXT_FONT_SIZE) + 'px; ' +
+            'line-height: ' + (configs?.sectionTextLineHeight ?? CONFIGS.SECTION_TEXT_LINE_HEIGHT) + 'px;' +
+            'padding-top: ' + (configs?.sectionItemSpace ?? CONFIGS.SECTION_ITEM_SPACE) + 'px;'
+         }}">
         <div class="d-flex">
             <table class="w-100 text-center" [class.mt-4]="!section.signature?.sign">
                 <tr class="values">
                     <td class="w-50 pb-2">
-                        <img height="50" *ngIf="section.signature?.sign" [src]="section.signature?.sign" alt="signature">
+                        <img height="50" *ngIf="section.signature?.sign" [src]="section.signature?.sign"
+                             alt="signature">
                         <span *ngIf="!section.signature?.sign" [innerHTML]="trim(section.signature?.name)"></span>
                     </td>
                     <td class="w-50 pb-2">{{section.signature?.date | date:'dd/MM/yyyy'}}</td>
                 </tr>
                 <tr class="dots">
-                    <td class="w-50 pb-1">........................................................</td>
-                    <td class="w-50 pb-1">........................................................</td>
+                    <td class="w-50 pb-1 break-all">........................................................</td>
+                    <td class="w-50 pb-1 break-all">........................................................</td>
                 </tr>
                 <tr class="keys">
                     <td class="w-50">Signature</td>

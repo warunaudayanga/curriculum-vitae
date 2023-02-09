@@ -1,5 +1,7 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output } from "@angular/core";
-import { Section } from "../../../../../core/interfaces/section.interfaces";
+import { Section } from "../../../../../core/interfaces/system.interfaces";
+import { ConfigsStateModel } from "../../../../../core/state/configs";
+import { Globals } from "../../../../configs/globals";
 
 @Component({
     selector: "app-main-details",
@@ -9,13 +11,15 @@ import { Section } from "../../../../../core/interfaces/section.interfaces";
 export class CVMainDetailsComponent implements OnInit, AfterViewInit {
     @Input() sections?: Section[];
 
-    @Input() test?: string;
+    @Input() configs?: ConfigsStateModel;
 
     @Output() forward: EventEmitter<Section[]> = new EventEmitter<Section[]>();
 
     acceptedSectionIndexes?: number[];
 
     generatedSections: Section[] = [];
+
+    SECTION_SPACE = Globals.DEFAULTS.CONFIGS.SECTION_SPACE;
 
     constructor(private elementRef: ElementRef<HTMLDivElement>) {}
 

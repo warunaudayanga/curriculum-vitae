@@ -1,1 +1,46 @@
-<p>cv-tune-up-popup works!</p>
+<div class="d-flex flex-column gap-3 p-2 h-100 overflow-auto">
+    <div class="fw-bold">THEME SETTINGS</div>
+
+    <label class="theme d-block" for="theme{{i}}" *ngFor="let THEME of THEMES; let i = index" (click)="selectTheme(THEME)">
+        <div class="control">
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="theme" id="theme{{i}}" [checked]="THEME.NAME === theme.name">
+                <label class="form-check-label" for="theme{{i}}">{{THEME.NAME}}</label>
+            </div>
+        </div>
+        <div class="colors d-flex">
+            <div class="color-box" style="{{'background-color: ' + THEME.PRIMARY_COLOR}}"></div>
+            <div class="color-box" style="{{'background-color: ' + THEME.SECONDARY_COLOR}}"></div>
+            <div class="color-box" style="{{'background-color: ' + THEME.ACCENT_COLOR}}"></div>
+            <div class="color-box" style="{{'background-color: ' + THEME.TEXT_COLOR}}"></div>
+            <div class="color-box" style="{{'background-color: ' + THEME.SEPARATOR_COLOR}}"></div>
+            <div class="color-box" style="{{'background-color: ' + THEME.MAIN_LINK_COLOR}}"></div>
+            <div class="color-box" style="background-color: white"></div>
+        </div>
+    </label>
+
+    <hr>
+
+    <div class="fw-bold">SPACE SETTINGS</div>
+    <div class="d-flex gap-3 align-items-center justify-content-between" *ngFor="let key of getLimitKeys()">
+        <label>{{getConfigName(key)}}</label>
+        <div class="changer">
+            <div class="input-group input-group-sm">
+                <button class="btn btn-outline-secondary" type="button"
+                        (click)="click(key, true)"
+                        (mousedown)="mousedown(key, true)"
+                        (mouseup)="mouseUp()">
+                    <i class="bi bi-dash"></i>
+                </button>
+                <input type="text" class="form-control text-center" [(ngModel)]="this.configs[key]" readonly>
+                <button class="btn btn-outline-secondary" type="button"
+                        (click)="click(key)"
+                        (mousedown)="mousedown(key)"
+                        (mouseup)="mouseUp()">
+                    <i class="bi bi-plus"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+

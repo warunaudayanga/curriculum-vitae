@@ -7,11 +7,8 @@ import { Header } from "./header.actions";
     name: "header",
     defaults: {
         title: "",
-        fontSize: 25,
         includeImage: true,
         image: "",
-        imageWidth: 120,
-        imageHeight: 150,
     },
 })
 @Injectable()
@@ -24,5 +21,10 @@ export class HeaderState {
     @Action(Header.PatchHeaderInfo)
     patchHeaderInfo({ patchState }: StateContext<HeaderStateModel>, action: Header.PatchHeaderInfo): void {
         patchState(action.payload);
+    }
+
+    @Action(Header.SetHeaderInfo)
+    setContacts({ setState }: StateContext<HeaderStateModel>, action: Header.SetHeaderInfo): void {
+        setState(action.payload);
     }
 }

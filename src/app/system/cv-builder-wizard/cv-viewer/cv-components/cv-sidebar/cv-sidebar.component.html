@@ -1,5 +1,14 @@
 <ng-container *ngFor="let section of sidebar; let i = index">
-    <app-section *ngIf="checkAccepted(i)" class="section" [section]="section"></app-section>
+    <app-section
+        style="{{
+                   (!firstPage || i !== 0 ? 'margin-top: ' + (configs?.sectionSpace ?? SECTION_SPACE) + 'px;' : '') +
+                   'padding-inline: ' + (configs?.sidebarPadding ?? SIDEBAR_PADDING) + 'px'
+               }}"
+        *ngIf="checkAccepted(i)"
+        class="section"
+        [section]="section"
+        [configs]="configs"
+    ></app-section>
     <ng-container *ngIf="checkHeight(section)"></ng-container>
 </ng-container>
 <div class="footer">

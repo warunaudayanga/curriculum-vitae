@@ -24,7 +24,7 @@ import { CVMainContentEditorComponent } from "./system/cv-builder-wizard/cv-edit
 import { CVContactsEditorComponent } from "./system/cv-builder-wizard/cv-editor/cv-contacts-editor/cv-contacts-editor.component";
 import { CVHeadingComponent } from "./system/cv-builder-wizard/cv-viewer/cv-components/cv-heading/cv-heading.component";
 import { CVContactsComponent } from "./system/cv-builder-wizard/cv-viewer/cv-components/cv-contacts/cv-contacts.component";
-import { ContactsState } from "./core/state/contacts/contacts.state";
+import { ContactsState } from "./core/state/contacts";
 import { TagInputComponent } from "./system/cv-builder-wizard/cv-viewer/cv-components/tag-input/tag-input.component";
 import { XSectionComponent } from "./system/cv-builder-wizard/cv-editor/x-section/x-section.component";
 import { XParagraphComponent } from "./system/cv-builder-wizard/cv-editor/x-paragraph/x-paragraph.component";
@@ -43,6 +43,8 @@ import { SidebarState } from "./core/state/sidebar";
 import { CvTuneUpComponent } from "./system/cv-builder-wizard/cv-editor/cv-tune-up/cv-tune-up.component";
 import { CvTuneUpPopupComponent } from "./system/cv-builder-wizard/cv-editor/cv-tune-up-popup/cv-tune-up-popup.component";
 import { CvStartComponent } from "./system/cv-builder-wizard/cv-start/cv-start.component";
+import { ConfigsState } from "./core/state/configs";
+import { ThemeState } from "./core/state/theme";
 
 @NgModule({
     declarations: [
@@ -82,7 +84,7 @@ import { CvStartComponent } from "./system/cv-builder-wizard/cv-start/cv-start.c
             // deserialize: (state) => JSON.parse(atob(state)),
             // serialize: (state) => btoa(JSON.stringify(state)),
         }),
-        NgxsModule.forRoot([HeaderState, ContactsState, SectionsState, SidebarState]),
+        NgxsModule.forRoot([HeaderState, ContactsState, SectionsState, SidebarState, ConfigsState, ThemeState]),
         NgxsReduxDevtoolsPluginModule.forRoot(),
         // NgxsLoggerPluginModule.forRoot(),
         NgxsResetPluginModule.forRoot(),

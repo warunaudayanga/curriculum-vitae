@@ -1,19 +1,12 @@
 @import "../../../../../../variables";
 
 ::ng-deep app-sidebar .key-value-list {
-    font-size: $sidebar-list-font-size !important;
-    font-weight: 400;
     .bullet {
         display: none;
     }
     .key {
         padding-left: 0 !important;
     }
-}
-
-.section {
-    padding: 0 $sidebar-padding;
-    margin-top: $sidebar-margin;
 }
 
 .footer {

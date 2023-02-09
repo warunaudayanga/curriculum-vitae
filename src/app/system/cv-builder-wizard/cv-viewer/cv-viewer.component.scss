@@ -25,8 +25,6 @@
         }
         app-cv-contacts {
             flex: 0 1 auto;
-            padding: $sidebar-margin $sidebar-padding 0;
-            font-size: $contact-font-size;
             line-height: 15px;
             color: $app-text-color;
             font-weight: bold;
@@ -38,7 +36,6 @@
     }
 
     .column-2 {
-        padding: $main-padding;
         min-width: calc(100% - #{$sidebar-width});
         max-width: calc(100% - #{$sidebar-width});
     }

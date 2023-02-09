@@ -3,9 +3,3 @@
 :host {
     display: block;
 }
-
-app-section {
-    &:not(:first-of-type) {
-        margin-top: $section-margin;
-    }
-}

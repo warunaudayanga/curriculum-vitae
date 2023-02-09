@@ -1,4 +1,4 @@
-import { Section } from "../../interfaces/section.interfaces";
+import { Section } from "../../interfaces/system.interfaces";
 
 export interface SectionsStateModel {
     sections: Section[];

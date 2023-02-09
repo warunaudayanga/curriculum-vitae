@@ -20,4 +20,9 @@ export class SectionsState {
     patchSections({ patchState }: StateContext<SectionsStateModel>, action: Sections.PatchSections): void {
         patchState(action.payload);
     }
+
+    @Action(Sections.SetSections)
+    setSections({ setState }: StateContext<SectionsStateModel>, action: Sections.SetSections): void {
+        setState(action.payload);
+    }
 }

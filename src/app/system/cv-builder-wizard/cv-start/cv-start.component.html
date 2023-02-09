@@ -2,3 +2,6 @@
     <div class="text-center fw-bold" style="font-size: 35px">This  text will replace some bullshit about</div>
     <div class="text-center fw-bold mb-5" style="font-size: 35px"> this process that I didn't thought of yet!</div>
 </div>
+
+<input #input type="file" accept="application/json" class="d-none" (change)="onFileSelected($event)">
+<button class="btn btn-lg btn-secondary btn-floating btn-import" (click)="input.click()"><i class="bi bi-box-arrow-in-down"></i></button>

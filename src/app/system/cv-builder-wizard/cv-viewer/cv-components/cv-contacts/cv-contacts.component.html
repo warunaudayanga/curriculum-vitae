@@ -6,19 +6,20 @@
         <td class="ps-2" style="{{'font-size: ' + fontSize + 'px; line-height:' + fontSize + 'px'}}">{{email}}</td>
     </tr>
     <tr class="phone" *ngIf="phoneNumbers?.length">
-        <td style="{{'width: ' + (iconSize + 12) + 'px'}}">
+        <td style="{{'width: ' + (iconSize + 12) + 'px; padding-top: ' + space + 'px'}}">
             <i class="bi bi-telephone-fill" style="{{'font-size: ' + iconSize + 'px'}}"></i>
         </td>
-        <td class="ps-2">
+        <td class="ps-2" style="{{'padding-top: ' + space + 'px'}}">
             <div class="d-inline-block number"
                  style="{{'font-size: ' + fontSize + 'px; line-height:' + fontSize + 'px'}}"
                  *ngFor="let phone of phoneNumbers; let i = index">{{phone}}{{i !== (phoneNumbers?.length ?? 0) - 1 ? ',' : ''}} </div>
         </td>
     </tr>
     <tr class="address" *ngIf="address">
-        <td style="{{'width: ' + (iconSize + 12) + 'px'}}">
+        <td style="{{'width: ' + (iconSize + 12) + 'px; padding-top: ' + space + 'px'}}">
             <i class="bi bi-geo-alt-fill" style="{{'font-size: ' + iconSize + 'px'}}"></i>
         </td>
-        <td class="ps-2" style="{{'font-size: ' + fontSize + 'px; line-height:' + fontSize + 'px'}}">{{address}}</td>
+        <td class="ps-2"
+            style="{{'font-size: ' + fontSize + 'px; line-height:' + fontSize + 'px; padding-top: ' + space + 'px'}}">{{address}}</td>
     </tr>
 </table>

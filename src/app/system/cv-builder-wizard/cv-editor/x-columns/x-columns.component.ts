@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, EventEmitter, Input, Output } from "@angular/core";
-import { Column } from "../../../../core/interfaces/section.interfaces";
+import { Column } from "../../../../core/interfaces/system.interfaces";
 
 @Component({
     selector: "app-x-columns",

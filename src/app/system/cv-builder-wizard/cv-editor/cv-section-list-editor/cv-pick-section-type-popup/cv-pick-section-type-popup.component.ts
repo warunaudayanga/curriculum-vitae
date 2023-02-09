@@ -1,5 +1,5 @@
 import { Component, ElementRef, EventEmitter, HostListener, Input, Output } from "@angular/core";
-import { PreDefinedSection } from "../../../../../core/interfaces/section.interfaces";
+import { PreDefinedSection } from "../../../../../core/interfaces/system.interfaces";
 
 @Component({
     selector: "app-cv-pick-section-type-popup",

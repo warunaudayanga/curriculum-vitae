@@ -20,4 +20,9 @@ export class SidebarState {
     patchSidebar({ patchState }: StateContext<SidebarStateModel>, action: Sidebar.PatchSidebar): void {
         patchState(action.payload);
     }
+
+    @Action(Sidebar.SetSidebar)
+    setSidebar({ setState }: StateContext<SidebarStateModel>, action: Sidebar.SetSidebar): void {
+        setState(action.payload);
+    }
 }

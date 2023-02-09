@@ -1,5 +1,6 @@
 import { Component, ElementRef, Input, QueryList, ViewChildren } from "@angular/core";
-import { CVData, CVPage, Section } from "../../../core/interfaces/section.interfaces";
+import { CVData, CVPage, Section } from "../../../core/interfaces/system.interfaces";
+import { Globals } from "../../configs/globals";
 
 @Component({
     selector: "app-cv-viewer",
@@ -17,12 +18,15 @@ export class CvViewerComponent {
 
     page4?: CVPage;
 
+    DEFAULTS = Globals.DEFAULTS;
+
     onPage1MainForward(sections: Section[]): void {
         if (this.page2) {
             this.page2.sections = sections;
         } else {
             this.page2 = {
                 sections,
+                configs: this.cvData!.configs,
             };
         }
     }
@@ -33,6 +37,7 @@ export class CvViewerComponent {
         } else {
             this.page3 = {
                 sections,
+                configs: this.cvData!.configs,
             };
         }
     }
@@ -43,6 +48,7 @@ export class CvViewerComponent {
         } else {
             this.page4 = {
                 sections,
+                configs: this.cvData!.configs,
             };
         }
     }
@@ -58,6 +64,7 @@ export class CvViewerComponent {
         } else {
             this.page2 = {
                 sidebar,
+                configs: this.cvData!.configs,
             };
         }
     }
@@ -68,6 +75,7 @@ export class CvViewerComponent {
         } else {
             this.page3 = {
                 sidebar,
+                configs: this.cvData!.configs,
             };
         }
     }
@@ -78,6 +86,7 @@ export class CvViewerComponent {
         } else {
             this.page4 = {
                 sidebar,
+                configs: this.cvData!.configs,
             };
         }
     }

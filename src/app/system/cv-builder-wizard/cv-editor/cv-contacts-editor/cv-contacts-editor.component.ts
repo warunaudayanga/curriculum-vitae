@@ -1,48 +1,47 @@
-import { AfterViewInit, Component } from "@angular/core";
-import { Header, HeaderStateModel } from "../../../../core/state/header";
+import { Component } from "@angular/core";
+import { HeaderStateModel } from "../../../../core/state/header";
 import { Store } from "@ngxs/store";
-import SetHeaderInfo = Header.PatchHeaderInfo;
-import { ContactsStateModel } from "../../../../core/state/contacts/contacts.model";
-import { Contacts } from "../../../../core/state/contacts/contacts.actions";
+import { ContactsStateModel, Contacts } from "../../../../core/state/contacts";
 import PatchContacts = Contacts.PatchContacts;
+import { Config, ConfigsStateModel } from "../../../../core/state/configs";
+import PatchConfig = Config.PatchConfigs;
+import { Globals } from "../../../configs/globals";
+import { Limits } from "../../../../core/interfaces/system.interfaces";
 
-type Counter = "fontSize" | "iconSize";
+type Changeable = "contactsFontSize" | "contactsIconSize";
 
 @Component({
     selector: "app-cv-contacts-editor",
     templateUrl: "./cv-contacts-editor.component.html",
     styleUrls: ["./cv-contacts-editor.component.scss"],
 })
-export class CVContactsEditorComponent implements AfterViewInit {
+export class CVContactsEditorComponent {
     header: HeaderStateModel;
 
     contacts: ContactsStateModel;
+
+    configs: ConfigsStateModel;
 
     waitTimer?: NodeJS.Timer;
 
     repeatTimer?: NodeJS.Timer;
 
-    limits?: {
-        [key in Counter]: {
-            min: number;
-            max: number;
-        };
-    };
+    limits: Limits<Changeable>;
 
     constructor(private store: Store) {
         this.header = this.store.selectSnapshot(state => state.header);
         this.contacts = this.store.selectSnapshot(state => state.contacts);
-    }
-
-    ngAfterViewInit(): void {
+        this.configs = this.store.selectSnapshot(state => state.configs);
+        this.configs.contactsFontSize ||= Globals.DEFAULTS.CONFIGS.CONTACTS_FONT_SIZE;
+        this.configs.contactsIconSize ||= Globals.DEFAULTS.CONFIGS.CONTACTS_ICON_SIZE;
         this.limits = {
-            fontSize: {
-                min: 13,
-                max: 20,
+            contactsFontSize: {
+                min: Globals.DEFAULTS.CONFIGS.CONTACTS_FONT_SIZE_MIN,
+                max: Globals.DEFAULTS.CONFIGS.CONTACTS_FONT_SIZE_MAX,
             },
-            iconSize: {
-                min: 14,
-                max: 25,
+            contactsIconSize: {
+                min: Globals.DEFAULTS.CONFIGS.CONTACTS_ICON_SIZE_MIN,
+                max: Globals.DEFAULTS.CONFIGS.CONTACTS_ICON_SIZE_MAX,
             },
         };
     }
@@ -60,35 +59,35 @@ export class CVContactsEditorComponent implements AfterViewInit {
     }
 
     setFontSize(): void {
-        this.store.dispatch(new PatchContacts({ fontSize: this.contacts.fontSize }));
+        this.store.dispatch(new PatchConfig({ contactsFontSize: this.configs.contactsFontSize }));
     }
 
     setIconSize(): void {
-        this.store.dispatch(new PatchContacts({ iconSize: this.contacts.iconSize }));
+        this.store.dispatch(new PatchConfig({ contactsIconSize: this.configs.contactsIconSize }));
     }
 
-    click(counter: Counter, decrease?: boolean): void {
+    click(counter: Changeable, decrease?: boolean): void {
         clearInterval(this.waitTimer);
         clearInterval(this.repeatTimer);
-        if (decrease && this.contacts[counter] <= this.limits![counter].min) {
+        if (decrease && this.configs[counter] <= this.limits![counter].min) {
             return;
-        } else if (!decrease && this.contacts[counter] >= this.limits![counter].max) {
+        } else if (!decrease && this.configs[counter] >= this.limits![counter].max) {
             return;
         }
-        this.contacts[counter] += decrease ? -1 : +1;
-        this.store.dispatch(new SetHeaderInfo({ [counter]: this.contacts[counter] }));
+        this.configs[counter] += decrease ? -1 : +1;
+        this.store.dispatch(new PatchConfig({ [counter]: this.configs[counter] }));
     }
 
-    mousedown(counter: Counter, decrease?: boolean): void {
+    mousedown(counter: Changeable, decrease?: boolean): void {
         this.waitTimer = setTimeout(() => {
             this.repeatTimer = setInterval(() => {
-                if (decrease && this.contacts[counter] <= this.limits![counter].min) {
+                if (decrease && this.configs[counter] <= this.limits![counter].min) {
                     return;
-                } else if (!decrease && this.contacts[counter] >= this.limits![counter].max) {
+                } else if (!decrease && this.configs[counter] >= this.limits![counter].max) {
                     return;
                 }
-                this.contacts[counter] += decrease ? -1 : +1;
-                this.store.dispatch(new SetHeaderInfo({ [counter]: this.contacts[counter] }));
+                this.configs[counter] += decrease ? -1 : +1;
+                this.store.dispatch(new PatchConfig({ [counter]: this.configs[counter] }));
             }, 50);
         }, 200);
     }

@@ -12,3 +12,24 @@
     z-index: 110;
     height: calc(100% - 152px);
 }
+
+.changer {
+    width: 125px;
+}
+
+.theme {
+    cursor: pointer;
+    .form-check-label {
+        cursor: pointer;
+    }
+    .colors {
+        margin-left: 21px;
+        .color-box {
+            width: 20px;
+            height: 20px;
+            border: 1px solid black;
+            border-radius: 2px;
+            margin: 0 5px;
+        }
+    }
+}

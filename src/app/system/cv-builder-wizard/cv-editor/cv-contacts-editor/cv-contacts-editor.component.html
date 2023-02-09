@@ -2,18 +2,18 @@
     <div class="column-1">
         <app-cv-heading
             [title]="this.header.title"
-            [fontSize]="this.header.fontSize"
+            [fontSize]="this.configs.headerFontSize"
             [includeImage]="this.header.includeImage"
             [image]="this.header.image"
-            [imageWidth]="this.header.imageWidth"
-            [imageHeight]="this.header.imageHeight"
+            [imageWidth]="this.configs.imageWidth"
+            [imageHeight]="this.configs.imageHeight"
         ></app-cv-heading>
         <app-cv-contacts
             [email]="this.contacts.email"
             [phoneNumbers]="this.contacts.phoneNumbers"
             [address]="this.contacts.address"
-            [fontSize]="this.contacts.fontSize"
-            [iconSize]="this.contacts.iconSize"
+            [fontSize]="this.configs.contactsFontSize"
+            [iconSize]="this.configs.contactsIconSize"
             [editable]="true"
         ></app-cv-contacts>
     </div>
@@ -37,16 +37,16 @@
                     <div>
                         <div class="input-group input-group-sm">
                             <button class="btn btn-outline-secondary" type="button"
-                                    (click)="click('fontSize', true)"
-                                    (mousedown)="mousedown('fontSize', true)"
+                                    (click)="click('contactsFontSize', true)"
+                                    (mousedown)="mousedown('contactsFontSize', true)"
                                     (mouseup)="mouseUp()">
                                 <i class="bi bi-dash"></i>
                             </button>
-                            <input type="text" class="form-control" [(ngModel)]="this.contacts.fontSize"
+                            <input type="text" class="form-control" [(ngModel)]="this.configs.contactsFontSize"
                                    (ngModelChange)="setFontSize()" readonly>
                             <button class="btn btn-outline-secondary" type="button"
-                                    (click)="click('fontSize')"
-                                    (mousedown)="mousedown('fontSize')"
+                                    (click)="click('contactsFontSize')"
+                                    (mousedown)="mousedown('contactsFontSize')"
                                     (mouseup)="mouseUp()">
                                 <i class="bi bi-plus"></i>
                             </button>
@@ -58,16 +58,16 @@
                     <div>
                         <div class="input-group input-group-sm">
                             <button class="btn btn-outline-secondary" type="button"
-                                    (click)="click('iconSize', true)"
-                                    (mousedown)="mousedown('iconSize', true)"
+                                    (click)="click('contactsIconSize', true)"
+                                    (mousedown)="mousedown('contactsIconSize', true)"
                                     (mouseup)="mouseUp()">
                                 <i class="bi bi-dash"></i>
                             </button>
-                            <input type="text" class="form-control" [(ngModel)]="this.contacts.iconSize"
+                            <input type="text" class="form-control" [(ngModel)]="this.configs.contactsIconSize"
                                    (ngModelChange)="setIconSize()" readonly>
                             <button class="btn btn-outline-secondary" type="button"
-                                    (click)="click('iconSize')"
-                                    (mousedown)="mousedown('iconSize')"
+                                    (click)="click('contactsIconSize')"
+                                    (mousedown)="mousedown('contactsIconSize')"
                                     (mouseup)="mouseUp()">
                                 <i class="bi bi-plus"></i>
                             </button>

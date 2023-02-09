@@ -1,4 +1,12 @@
 <ng-container *ngFor="let section of sections; let i = index">
-    <app-section *ngIf="checkAccepted(i)" class="section" [section]="section"></app-section>
+    <app-section
+        style="{{
+            i !== 0 ? 'margin-top: ' + (configs?.sectionSpace ?? SECTION_SPACE) + 'px' : ''
+        }}"
+        *ngIf="checkAccepted(i)"
+        class="section"
+        [section]="section"
+        [configs]="configs"
+    ></app-section>
     <ng-container *ngIf="checkHeight(section)"></ng-container>
 </ng-container>

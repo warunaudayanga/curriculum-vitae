@@ -6,4 +6,10 @@ export namespace Header {
 
         constructor(public payload: Partial<HeaderStateModel>) {}
     }
+
+    export class SetHeaderInfo {
+        static readonly type = "[Set Header Info]";
+
+        constructor(public payload: HeaderStateModel) {}
+    }
 }

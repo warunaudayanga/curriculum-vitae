@@ -1,7 +1,9 @@
 import { Component, Input } from "@angular/core";
 import { SectionType } from "../../../../../core/enums/section-type.enum";
-import { Section } from "../../../../../core/interfaces/section.interfaces";
+import { Section } from "../../../../../core/interfaces/system.interfaces";
 import { trim } from "../../../../../core/utils/utils";
+import { ConfigsStateModel } from "../../../../../core/state/configs";
+import { Globals } from "../../../../configs/globals";
 
 @Component({
     selector: "app-section",
@@ -11,7 +13,13 @@ import { trim } from "../../../../../core/utils/utils";
 export class CVSectionComponent {
     @Input() section?: Section;
 
+    @Input() configs?: ConfigsStateModel;
+
+    CONFIGS = Globals.DEFAULTS.CONFIGS;
+
     SectionType = SectionType;
+
+    constructor() {}
 
     trimTitle(html?: string): string {
         return trim(html || "<title>");

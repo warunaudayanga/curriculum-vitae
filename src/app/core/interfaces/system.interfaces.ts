@@ -1,4 +1,7 @@
 import { SectionType } from "../enums/section-type.enum";
+import { ConfigsStateModel } from "../state/configs";
+import { HeaderStateModel } from "../state/header";
+import { ContactsStateModel } from "../state/contacts";
 
 export interface SectionListItem {
     id: string | number;
@@ -44,28 +47,30 @@ export interface PreDefinedSection {
     name: string;
 }
 
-export interface Header {
-    title: string;
-    fontSize: number;
-    includeImage: boolean;
-    image: string;
-    imageWidth: number;
-    imageHeight: number;
-}
+export type Limits<Changeable extends string> = {
+    [key in Changeable]: {
+        min: number;
+        max: number;
+    };
+};
 
-export interface Contacts {
-    email?: string;
-    phoneNumbers?: string[];
-    address?: string;
-    fontSize: number;
-    iconSize: number;
+export interface THEME {
+    NAME: string;
+    PRIMARY_COLOR: string;
+    ACCENT_COLOR: string;
+    MAIN_LINK_COLOR: string;
+    SEPARATOR_COLOR: string;
+    SECONDARY_COLOR: string;
+    TEXT_COLOR: string;
 }
 
 export interface CVData {
-    header: Header;
-    contacts: Contacts;
+    header?: HeaderStateModel;
+    contacts?: ContactsStateModel;
+    configs?: ConfigsStateModel;
     sections?: Section[];
     sidebar?: Section[];
+    importValidation?: "4274";
 }
 
 export interface CVPage extends Omit<CVData, "header" | "contacts"> {}

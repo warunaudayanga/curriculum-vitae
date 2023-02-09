@@ -3,11 +3,11 @@
         <app-cv-heading
             [editable]="true"
             [title]="this.header.title"
-            [fontSize]="this.header.fontSize"
+            [fontSize]="this.configs.contactsFontSize"
             [includeImage]="this.header.includeImage"
             [image]="this.header.image"
-            [imageWidth]="this.header.imageWidth"
-            [imageHeight]="this.header.imageHeight"
+            [imageWidth]="this.configs.imageWidth"
+            [imageHeight]="this.configs.imageHeight"
             (imageSelect)="setImage($event)"
         ></app-cv-heading>
     </div>
@@ -27,16 +27,16 @@
                     <label class="form-label">Font size</label>
                     <div class="input-group input-group-sm">
                         <button class="btn btn-outline-secondary" type="button"
-                                (click)="click('fontSize', true)"
-                                (mousedown)="mousedown('fontSize', true)"
+                                (click)="click('contactsFontSize', true)"
+                                (mousedown)="mousedown('contactsFontSize', true)"
                                 (mouseup)="mouseUp()">
                             <i class="bi bi-dash"></i>
                         </button>
-                        <input type="text" class="form-control" [(ngModel)]="this.header.fontSize"
+                        <input type="text" class="form-control" [(ngModel)]="this.configs.contactsFontSize"
                                (ngModelChange)="setFontSize()" readonly>
                         <button class="btn btn-outline-secondary" type="button"
-                                (click)="click('fontSize')"
-                                (mousedown)="mousedown('fontSize')"
+                                (click)="click('contactsFontSize')"
+                                (mousedown)="mousedown('contactsFontSize')"
                                 (mouseup)="mouseUp()">
                             <i class="bi bi-plus"></i>
                         </button>
@@ -63,7 +63,7 @@
                                     (mouseup)="mouseUp()">
                                 <i class="bi bi-dash"></i>
                             </button>
-                            <input type="text" class="form-control" [(ngModel)]="this.header.imageWidth"
+                            <input type="text" class="form-control" [(ngModel)]="this.configs.imageWidth"
                                    (ngModelChange)="setImageWidth()" readonly>
                             <button class="btn btn-outline-secondary" type="button"
                                     (click)="click('imageWidth')"
@@ -84,7 +84,7 @@
                                     (mouseup)="mouseUp()">
                                 <i class="bi bi-dash"></i>
                             </button>
-                            <input type="text" class="form-control" [(ngModel)]="this.header.imageHeight"
+                            <input type="text" class="form-control" [(ngModel)]="this.configs.imageHeight"
                                    (ngModelChange)="setImageHeight()" readonly>
                             <button class="btn btn-outline-secondary" type="button"
                                     (click)="click('imageHeight')"

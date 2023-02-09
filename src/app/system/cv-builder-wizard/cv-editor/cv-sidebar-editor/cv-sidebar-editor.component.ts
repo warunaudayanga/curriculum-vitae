@@ -1,9 +1,10 @@
 import { Component } from "@angular/core";
-import { Section } from "../../../../core/interfaces/section.interfaces";
+import { Section } from "../../../../core/interfaces/system.interfaces";
 import { Store } from "@ngxs/store";
 import { Sidebar } from "../../../../core/state/sidebar";
 import PatchSidebar = Sidebar.PatchSidebar;
 import { SectionType } from "../../../../core/enums/section-type.enum";
+import { ConfigsStateModel } from "../../../../core/state/configs";
 
 @Component({
     selector: "app-cv-sidebar-editor",
@@ -15,8 +16,11 @@ export class CvSidebarEditorComponent {
 
     preDefinedSections?: Section[];
 
+    configs: ConfigsStateModel;
+
     constructor(private store: Store) {
         this.sections = this.store.selectSnapshot(state => state.sidebar.sections);
+        this.configs = this.store.selectSnapshot(state => state.configs);
         this.preDefinedSections = [
             {
                 id: "fb3918fb-05ff-47e3-b20e-d0e186581d44",

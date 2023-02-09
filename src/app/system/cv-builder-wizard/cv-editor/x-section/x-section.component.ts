@@ -1,6 +1,6 @@
 import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from "@angular/core";
 import { SectionType } from "../../../../core/enums/section-type.enum";
-import { Section } from "../../../../core/interfaces/section.interfaces";
+import { Section } from "../../../../core/interfaces/system.interfaces";
 
 @Component({
     selector: "app-x-section",

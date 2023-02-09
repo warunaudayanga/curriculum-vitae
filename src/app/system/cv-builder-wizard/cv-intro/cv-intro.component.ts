@@ -1,8 +1,9 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from "@angular/core";
-import { CVData, Section } from "../../../core/interfaces/section.interfaces";
+import { CVData, Section } from "../../../core/interfaces/system.interfaces";
 import { CvViewerComponent } from "../cv-viewer/cv-viewer.component";
 import { fitTo } from "../../../core/utils/utils";
 import { SectionType } from "../../../core/enums/section-type.enum";
+import { Globals } from "../../configs/globals";
 
 @Component({
     selector: "app-cv-intro",
@@ -155,21 +156,73 @@ export class CvIntroComponent implements AfterViewInit {
         },
     ];
 
+    // noinspection DuplicatedCode
     cvData: CVData = {
         header: {
             title: "Your Name",
-            fontSize: 25,
             includeImage: true,
             image: "assets/images/avatar.jpeg",
-            imageWidth: 120,
-            imageHeight: 150,
         },
         contacts: {
             email: "example@mail.com",
             phoneNumbers: ["+94 77 477 4777", "+94 77 488 4888"],
             address: "No. 1/1, 2nd Lane, Kottawa, Matara.",
-            fontSize: 14,
-            iconSize: 15,
+        },
+        configs: {
+            mainContentPadding: Globals.DEFAULTS.CONFIGS.MAIN_CONTENT_PADDING,
+            mainContentPaddingMin: Globals.DEFAULTS.CONFIGS.MAIN_CONTENT_PADDING_MIN,
+            mainContentPaddingMax: Globals.DEFAULTS.CONFIGS.MAIN_CONTENT_PADDING_MAX,
+            sidebarPadding: Globals.DEFAULTS.CONFIGS.SIDEBAR_PADDING,
+            sidebarPaddingMin: Globals.DEFAULTS.CONFIGS.SIDEBAR_PADDING_MIN,
+            sidebarPaddingMax: Globals.DEFAULTS.CONFIGS.SIDEBAR_PADDING_MAX,
+            sidebarSpace: Globals.DEFAULTS.CONFIGS.SIDEBAR_SPACE,
+            sidebarSpaceMin: Globals.DEFAULTS.CONFIGS.SIDEBAR_SPACE_MIN,
+            sidebarSpaceMax: Globals.DEFAULTS.CONFIGS.SIDEBAR_SPACE_MAX,
+            headerFontSize: Globals.DEFAULTS.CONFIGS.HEADER_FONT_SIZE,
+            headerFontSizeMin: Globals.DEFAULTS.CONFIGS.HEADER_FONT_SIZE_MIN,
+            headerFontSizeMax: Globals.DEFAULTS.CONFIGS.HEADER_FONT_SIZE_MAX,
+            imageWidth: Globals.DEFAULTS.CONFIGS.IMAGE_WIDTH,
+            imageWidthMin: Globals.DEFAULTS.CONFIGS.IMAGE_WIDTH_MIN,
+            imageWidthMax: Globals.DEFAULTS.CONFIGS.IMAGE_WIDTH_MAX,
+            imageHeight: Globals.DEFAULTS.CONFIGS.IMAGE_HEIGHT,
+            imageHeightMin: Globals.DEFAULTS.CONFIGS.IMAGE_HEIGHT_MIN,
+            imageHeightMax: Globals.DEFAULTS.CONFIGS.IMAGE_HEIGHT_MAX,
+            contactsFontSize: Globals.DEFAULTS.CONFIGS.CONTACTS_FONT_SIZE,
+            contactsFontSizeMin: Globals.DEFAULTS.CONFIGS.CONTACTS_FONT_SIZE_MIN,
+            contactsFontSizeMax: Globals.DEFAULTS.CONFIGS.CONTACTS_FONT_SIZE_MAX,
+            contactsIconSize: Globals.DEFAULTS.CONFIGS.CONTACTS_ICON_SIZE,
+            contactsIconSizeMin: Globals.DEFAULTS.CONFIGS.CONTACTS_ICON_SIZE_MIN,
+            contactsIconSizeMax: Globals.DEFAULTS.CONFIGS.CONTACTS_ICON_SIZE_MAX,
+            contactsSpace: Globals.DEFAULTS.CONFIGS.CONTACTS_SPACE,
+            contactsSpaceMin: Globals.DEFAULTS.CONFIGS.CONTACTS_SPACE_MIN,
+            contactsSpaceMax: Globals.DEFAULTS.CONFIGS.CONTACTS_SPACE_MAX,
+            contactsListSpace: Globals.DEFAULTS.CONFIGS.CONTACTS_LIST_SPACE,
+            contactsListSpaceMin: Globals.DEFAULTS.CONFIGS.CONTACTS_LIST_SPACE_MIN,
+            contactsListSpaceMax: Globals.DEFAULTS.CONFIGS.CONTACTS_LIST_SPACE_MAX,
+            sectionTitleFontSize: Globals.DEFAULTS.CONFIGS.SECTION_TITLE_FONT_SIZE,
+            sectionTitleFontSizeMin: Globals.DEFAULTS.CONFIGS.SECTION_TITLE_FONT_SIZE_MIN,
+            sectionTitleFontSizeMax: Globals.DEFAULTS.CONFIGS.SECTION_TITLE_FONT_SIZE_MAX,
+            sectionTextFontSize: Globals.DEFAULTS.CONFIGS.SECTION_TEXT_FONT_SIZE,
+            sectionTextFontSizeMin: Globals.DEFAULTS.CONFIGS.SECTION_TEXT_FONT_SIZE_MIN,
+            sectionTextFontSizeMax: Globals.DEFAULTS.CONFIGS.SECTION_TEXT_FONT_SIZE_MAX,
+            sectionSubTextFontSize: Globals.DEFAULTS.CONFIGS.SECTION_SUB_TEXT_FONT_SIZE,
+            sectionSubTextFontSizeMin: Globals.DEFAULTS.CONFIGS.SECTION_SUB_TEXT_FONT_SIZE_MIN,
+            sectionSubTextFontSizeMax: Globals.DEFAULTS.CONFIGS.SECTION_SUB_TEXT_FONT_SIZE_MAX,
+            sectionTextLineHeight: Globals.DEFAULTS.CONFIGS.SECTION_TEXT_LINE_HEIGHT,
+            sectionTextLineHeightMin: Globals.DEFAULTS.CONFIGS.SECTION_TEXT_LINE_HEIGHT_MIN,
+            sectionTextLineHeightMax: Globals.DEFAULTS.CONFIGS.SECTION_TEXT_LINE_HEIGHT_MAX,
+            sectionSpace: Globals.DEFAULTS.CONFIGS.SECTION_SPACE,
+            sectionSpaceMin: Globals.DEFAULTS.CONFIGS.SECTION_SPACE_MIN,
+            sectionSpaceMax: Globals.DEFAULTS.CONFIGS.SECTION_SPACE_MAX,
+            sectionItemSpace: Globals.DEFAULTS.CONFIGS.SECTION_ITEM_SPACE,
+            sectionItemSpaceMin: Globals.DEFAULTS.CONFIGS.SECTION_ITEM_SPACE_MIN,
+            sectionItemSpaceMax: Globals.DEFAULTS.CONFIGS.SECTION_ITEM_SPACE_MAX,
+            sectionSeparatorSpace: Globals.DEFAULTS.CONFIGS.SECTION_SEPARATOR_SPACE,
+            sectionSeparatorSpaceMin: Globals.DEFAULTS.CONFIGS.SECTION_SEPARATOR_SPACE_MIN,
+            sectionSeparatorSpaceMax: Globals.DEFAULTS.CONFIGS.SECTION_SEPARATOR_SPACE_MAX,
+            sectionListItemSpace: Globals.DEFAULTS.CONFIGS.SECTION_LIST_ITEM_SPACE,
+            sectionListItemSpaceMin: Globals.DEFAULTS.CONFIGS.SECTION_LIST_ITEM_SPACE_MIN,
+            sectionListItemSpaceMax: Globals.DEFAULTS.CONFIGS.SECTION_LIST_ITEM_SPACE_MAX,
         },
         sections: this.sections,
         sidebar: this.sidebar,

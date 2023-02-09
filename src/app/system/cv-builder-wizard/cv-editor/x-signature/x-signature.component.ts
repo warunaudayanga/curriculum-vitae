@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, ViewChild } from "@angular/core";
-import { Signature } from "../../../../core/interfaces/section.interfaces";
+import { Signature } from "../../../../core/interfaces/system.interfaces";
 
 @Component({
     selector: "app-x-signature",

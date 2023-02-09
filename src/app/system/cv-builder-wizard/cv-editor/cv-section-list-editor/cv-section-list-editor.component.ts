@@ -24,7 +24,7 @@ export class CvSectionListEditorComponent implements OnInit {
     ngOnInit(): void {
         if (this.sidebar) {
             this.sectionTypes = Object.values(SectionType).filter(type => {
-                return [SectionType.COLUMNS, SectionType.SIGNATURE].includes(type);
+                return ![SectionType.COLUMNS, SectionType.SIGNATURE].includes(type);
             });
         }
     }

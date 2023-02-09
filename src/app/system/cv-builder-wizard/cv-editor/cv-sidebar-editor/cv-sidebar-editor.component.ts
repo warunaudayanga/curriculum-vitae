@@ -40,7 +40,7 @@ export class CvSidebarEditorComponent {
                 title: "JOB OBJECTIVE & CAREER GOALS",
                 type: SectionType.PARAGRAPH,
                 paragraph:
-                    "I would like to devote my carrier in the Telecommunication Industry. While " +
+                    "I would like to devote my carrier in the Industry. While " +
                     "enhancing technical skills through experiences and develop interpersonal " +
                     "skills through solving problems in to improve communication skills through " +
                     "the team work experiences. This would be a great opportunity to give my " +
@@ -48,21 +48,16 @@ export class CvSidebarEditorComponent {
                     "goals through the hard work and experience gathered.",
             },
             {
-                id: "cb1f4950-11a4-4d45-b791-ff3b602a68f2",
-                title: "OTHER SKILLS",
-                type: SectionType.LIST,
-                list: [{ id: "31e36f14-a5fb-44ab-986e-e4c7848dc342", title: "" }],
+                id: "f873ab91-a316-4f99-be6d-42f5a678d7e2",
+                title: "ABOUT",
+                type: SectionType.PARAGRAPH,
+                paragraph: "",
             },
             {
-                id: "25283866-d262-4aeb-817e-add6d54cac40",
-                title: "PROGRAMING AND IT SKILLS",
-                type: SectionType.LIST_WITH_PARAGRAPH,
-                listWithParagraph: {
-                    title:
-                        "Studied about several programing languages, technologies, frameworks and " +
-                        "well improved through projects for the &lt;institute name&gt;",
-                    list: [{ id: "c91011c5-6e2b-449d-8509-be24dd09975f", title: "" }],
-                },
+                id: "cb1f4950-11a4-4d45-b791-ff3b602a68f2",
+                title: "SKILLS",
+                type: SectionType.LIST,
+                list: [{ id: "31e36f14-a5fb-44ab-986e-e4c7848dc342", title: "" }],
             },
         ];
     }

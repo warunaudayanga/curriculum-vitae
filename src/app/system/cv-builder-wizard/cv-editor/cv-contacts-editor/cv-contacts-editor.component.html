@@ -9,12 +9,17 @@
             [imageHeight]="configs.imageHeight"
         ></app-cv-heading>
         <app-cv-contacts
+            style="{{
+                        'padding-top: ' + configs.contactsListSpace + 'px;' +
+                        'padding-inline: ' + configs.sidebarPadding + 'px'
+                    }}"
             [email]="contacts.email"
             [phoneNumbers]="contacts.phoneNumbers"
             [address]="contacts.address"
             [fontSize]="configs.contactsFontSize"
             [iconSize]="configs.contactsIconSize"
             [editable]="true"
+            [space]="configs.contactsSpace"
         ></app-cv-contacts>
     </div>
     <div class="column-2 p-3 controls form-control p-3">

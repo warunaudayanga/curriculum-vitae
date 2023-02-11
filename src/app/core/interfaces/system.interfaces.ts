@@ -2,6 +2,7 @@ import { SectionType } from "../enums/section-type.enum";
 import { ConfigsStateModel } from "../state/configs";
 import { HeaderStateModel } from "../state/header";
 import { ContactsStateModel } from "../state/contacts";
+import { ThemeStateModel } from "../state/theme";
 
 export interface SectionListItem {
     id: string | number;
@@ -58,16 +59,18 @@ export interface THEME {
     NAME: string;
     PRIMARY_COLOR: string;
     ACCENT_COLOR: string;
-    MAIN_LINK_COLOR: string;
     SEPARATOR_COLOR: string;
     SECONDARY_COLOR: string;
     TEXT_COLOR: string;
+    MAIN_LINK_COLOR: string;
+    BACKGROUND_COLOR: string;
 }
 
 export interface CVData {
     header?: HeaderStateModel;
     contacts?: ContactsStateModel;
     configs?: ConfigsStateModel;
+    theme?: ThemeStateModel;
     sections?: Section[];
     sidebar?: Section[];
     importValidation?: "4274";

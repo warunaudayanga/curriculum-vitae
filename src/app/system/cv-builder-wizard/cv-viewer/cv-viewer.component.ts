@@ -27,6 +27,7 @@ export class CvViewerComponent {
             this.page2 = {
                 sections,
                 configs: this.cvData!.configs,
+                theme: this.cvData!.theme,
             };
         }
     }
@@ -38,6 +39,7 @@ export class CvViewerComponent {
             this.page3 = {
                 sections,
                 configs: this.cvData!.configs,
+                theme: this.cvData!.theme,
             };
         }
     }
@@ -49,6 +51,7 @@ export class CvViewerComponent {
             this.page4 = {
                 sections,
                 configs: this.cvData!.configs,
+                theme: this.cvData!.theme,
             };
         }
     }
@@ -65,6 +68,7 @@ export class CvViewerComponent {
             this.page2 = {
                 sidebar,
                 configs: this.cvData!.configs,
+                theme: this.cvData!.theme,
             };
         }
     }
@@ -76,6 +80,7 @@ export class CvViewerComponent {
             this.page3 = {
                 sidebar,
                 configs: this.cvData!.configs,
+                theme: this.cvData!.theme,
             };
         }
     }
@@ -87,6 +92,7 @@ export class CvViewerComponent {
             this.page4 = {
                 sidebar,
                 configs: this.cvData!.configs,
+                theme: this.cvData!.theme,
             };
         }
     }

@@ -29,6 +29,7 @@ export class XThemeSelectorComponent {
         root.style.setProperty("--app-text-color", theme.TEXT_COLOR);
         root.style.setProperty("--app-separator-color", theme.SEPARATOR_COLOR);
         root.style.setProperty("--app-main-link-color", theme.MAIN_LINK_COLOR);
+        root.style.setProperty("--app-background-color", theme.BACKGROUND_COLOR);
         this.store.dispatch(
             new PatchTheme({
                 name: theme.NAME,
@@ -38,6 +39,7 @@ export class XThemeSelectorComponent {
                 textColor: theme.TEXT_COLOR,
                 separatorColor: theme.SEPARATOR_COLOR,
                 mainLinkColor: theme.MAIN_LINK_COLOR,
+                backgroundColor: theme.BACKGROUND_COLOR,
             }),
         );
     }

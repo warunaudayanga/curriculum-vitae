@@ -6,7 +6,7 @@ import { SectionType } from "../../../../core/enums/section-type.enum";
 import { Globals } from "../../../configs/globals";
 
 @Component({
-    selector: "app-cv-intro",
+    selector: "app-cv-theme-editor",
     templateUrl: "./cv-theme-editor.component.html",
     styleUrls: ["./cv-theme-editor.component.scss"],
 })
@@ -161,6 +161,16 @@ export class CVThemeEditorComponent implements AfterViewInit {
             email: "example@mail.com",
             phoneNumbers: ["+94 77 477 4777", "+94 77 488 4888"],
             address: "No. 1/1, 2nd Lane, Kottawa, Matara.",
+        },
+        theme: {
+            name: Globals.DEFAULTS.THEME.NAME,
+            primaryColor: Globals.DEFAULTS.THEME.PRIMARY_COLOR,
+            secondaryColor: Globals.DEFAULTS.THEME.SECONDARY_COLOR,
+            accentColor: Globals.DEFAULTS.THEME.ACCENT_COLOR,
+            textColor: Globals.DEFAULTS.THEME.TEXT_COLOR,
+            separatorColor: Globals.DEFAULTS.THEME.SEPARATOR_COLOR,
+            mainLinkColor: Globals.DEFAULTS.THEME.MAIN_LINK_COLOR,
+            backgroundColor: Globals.DEFAULTS.THEME.BACKGROUND_COLOR,
         },
         configs: {
             mainContentPadding: Globals.DEFAULTS.CONFIGS.MAIN_CONTENT_PADDING,

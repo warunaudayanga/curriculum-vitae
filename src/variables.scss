@@ -10,6 +10,7 @@
     --app-text-color: #001E5B;
     --app-separator-color: #5999d4;
     --app-main-link-color: #0d6efd;
+    --app-background-color: #ffffff;
 
     --sidebar-width: 310px;
 }
@@ -23,5 +24,6 @@ $app-accent-color: var(--app-accent-color);
 $app-text-color: var(--app-text-color);
 $app-separator-color: var(--app-separator-color);
 $main-link-color: var(--app-main-link-color);
+$app-background-color: var(--app-background-color);
 
 $sidebar-width: var(--sidebar-width);

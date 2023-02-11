@@ -6,4 +6,5 @@ export interface ThemeStateModel {
     textColor: string;
     separatorColor: string;
     mainLinkColor: string;
+    backgroundColor: string;
 }

@@ -18,6 +18,7 @@ export class AppComponent {
             root.style.setProperty("--app-text-color", theme.textColor);
             root.style.setProperty("--app-separator-color", theme.separatorColor);
             root.style.setProperty("--app-main-link-color", theme.mainLinkColor);
+            root.style.setProperty("--app-background-color", theme.backgroundColor);
         }
     }
 }

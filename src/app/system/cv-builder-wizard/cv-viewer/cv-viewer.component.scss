@@ -36,6 +36,7 @@
     }
 
     .column-2 {
+        background-color: $app-background-color;
         min-width: calc(100% - #{$sidebar-width});
         max-width: calc(100% - #{$sidebar-width});
     }

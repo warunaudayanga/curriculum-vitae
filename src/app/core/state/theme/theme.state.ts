@@ -14,6 +14,7 @@ import { Globals } from "../../../system/configs/globals";
         textColor: Globals.THEMES[0].TEXT_COLOR,
         separatorColor: Globals.THEMES[0].SEPARATOR_COLOR,
         mainLinkColor: Globals.THEMES[0].MAIN_LINK_COLOR,
+        backgroundColor: Globals.THEMES[0].BACKGROUND_COLOR,
     },
 })
 @Injectable()

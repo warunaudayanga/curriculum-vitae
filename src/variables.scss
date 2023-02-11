@@ -5,6 +5,7 @@
     --app-bottom-shape: 0px;
 
     --app-primary-color: #1F4E79;
+    --app-primary-color-hover: #1F4E79;
     --app-secondary-color: #BDD7EE;
     --app-accent-color: #2E75B6;
     --app-text-color: #001E5B;
@@ -19,6 +20,7 @@ $app-top-shape: var(--app-top-shape);
 $app-bottom-shape: var(--app-bottom-shape);
 
 $app-primary-color: var(--app-primary-color);
+$app-primary-color-hover: var(--app-primary-color-hover);
 $app-secondary-color: var(--app-secondary-color);
 $app-accent-color: var(--app-accent-color);
 $app-text-color: var(--app-text-color);

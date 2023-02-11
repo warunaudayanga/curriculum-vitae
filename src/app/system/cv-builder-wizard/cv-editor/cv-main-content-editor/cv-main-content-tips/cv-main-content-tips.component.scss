@@ -67,3 +67,7 @@ app-x-section:before {
         background-position: -380px -1px;
     }
 }
+
+.btn {
+    pointer-events: none;
+}

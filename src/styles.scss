@@ -3,6 +3,7 @@
 @import "bootstrap-icons";
 @import "bootstrap-icons";
 @import "src/variables";
+@import "src/functions";
 
 @import '~bootstrap/dist/css/bootstrap.min.css';
 
@@ -113,9 +114,9 @@ body {
 .btn-primary {
     background-color: $app-primary-color;
     border-color: $app-primary-color;
-    &:hover {
-        background-color: $app-accent-color;
-        border-color: $app-accent-color;
+    &:hover, &:active, &:focus, &.active, &.focus {
+        border-color:  $app-primary-color-hover !important;
+        background-color: $app-primary-color-hover !important;
     }
 }
 

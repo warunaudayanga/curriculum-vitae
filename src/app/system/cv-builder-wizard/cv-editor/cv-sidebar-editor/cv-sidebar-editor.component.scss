@@ -4,7 +4,6 @@
     display: block;
     height: 100%;
 }
-
 ::ng-deep app-cv-sidebar-editor .key-value-list {
     .bullet {
         display: none;
@@ -13,9 +12,6 @@
         padding-left: 0 !important;
     }
 }
-
-
-
 .editor {
     gap: 20px;
     width: calc(100% - 20px);
@@ -30,7 +26,7 @@
     .sections {
         height: 100%;
         width: 100%;
-        padding-bottom: 50px;
+        padding-bottom: 110px;
         overflow-y: auto;
     }
 }
@@ -45,4 +41,8 @@
         height: 100%;
     }
 
+}
+.btn-tips {
+    bottom: 110px;
+    left: 45px;
 }

@@ -1,0 +1,42 @@
+@function opacity($color, $opacity) {
+    @return rgba($color, $opacity);
+}
+
+@function hexToHsl($hex) {
+    $hex: unquote($hex);
+    $red:   red(#{$hex});
+    $green: green(#{$hex});
+    $blue:  blue(#{$hex});
+
+    $max: max($red, $green, $blue);
+    $min: min($red, $green, $blue);
+    $delta: $max - $min;
+    $lightness: ($max + $min) / 2;
+
+    $saturation: 0;
+    $hue: 0;
+
+    @if ($max != $min) {
+        $saturation: $delta / (1 - abs(2 * $lightness - 1));
+
+        @if ($red == $max) {
+            $hue: 60 * (($green - $blue) / $delta);
+        } @else if ($green == $max) {
+            $hue: 60 * (($blue - $red) / $delta + 2);
+        } @else if ($blue == $max) {
+            $hue: 60 * (($red - $green) / $delta + 4);
+        }
+    }
+
+    @return hsl($hue, $saturation * 100%, $lightness * 100%);
+}
+
+@function hslLighten($hsl, $lightness) {
+    $h: hue($hsl);
+    $s: saturation($hsl);
+    $l: lightness($hsl);
+
+    $l: $l + $lightness;
+
+    @return hsl($h, $s, $l);
+}

@@ -22,7 +22,7 @@ export interface Column {
 
 export interface ListWithParagraph {
     title: string;
-    list: Omit<SectionListItem, "list">[];
+    list?: SectionListItem[];
 }
 
 export interface Signature {

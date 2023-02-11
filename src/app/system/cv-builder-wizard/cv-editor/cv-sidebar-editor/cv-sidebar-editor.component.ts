@@ -1,22 +1,25 @@
-import { Component } from "@angular/core";
+import { AfterViewInit, Component } from "@angular/core";
 import { Section } from "../../../../core/interfaces/system.interfaces";
 import { Store } from "@ngxs/store";
 import { Sidebar } from "../../../../core/state/sidebar";
 import PatchSidebar = Sidebar.PatchSidebar;
 import { SectionType } from "../../../../core/enums/section-type.enum";
 import { ConfigsStateModel } from "../../../../core/state/configs";
+import { Modal } from "bootstrap";
 
 @Component({
     selector: "app-cv-sidebar-editor",
     templateUrl: "./cv-sidebar-editor.component.html",
     styleUrls: ["./cv-sidebar-editor.component.scss"],
 })
-export class CVSidebarEditorComponent {
+export class CVSidebarEditorComponent implements AfterViewInit {
     sections: Section[] = [];
 
     preDefinedSections?: Section[];
 
     configs: ConfigsStateModel;
+
+    tipModel?: Modal;
 
     constructor(private store: Store) {
         this.sections = this.store.selectSnapshot(state => state.sidebar.sections);
@@ -56,7 +59,15 @@ export class CVSidebarEditorComponent {
         ];
     }
 
+    ngAfterViewInit(): void {
+        this.tipModel = new Modal("#mainContentTipModel");
+    }
+
     onSectionsChange(): void {
         this.store.dispatch(new PatchSidebar({ sections: this.sections }));
+    }
+
+    showTips(): void {
+        this.tipModel?.show();
     }
 }

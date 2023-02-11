@@ -53,6 +53,7 @@ import { CVPrintTipsComponent } from "./system/cv-printer/cv-print-tips/cv-print
 import { CVPrintWarningComponent } from "./system/cv-printer/cv-print-warning/cv-print-warning.component";
 import { ImageCropperModule } from "ngx-image-cropper";
 import { CvImageCropperComponent } from "./system/cv-builder-wizard/cv-editor/cv-image-cropper/cv-image-cropper.component";
+import { SettingsState } from "./core/state/settings";
 
 @NgModule({
     declarations: [
@@ -99,7 +100,15 @@ import { CvImageCropperComponent } from "./system/cv-builder-wizard/cv-editor/cv
             // deserialize: (state) => JSON.parse(atob(state)),
             // serialize: (state) => btoa(JSON.stringify(state)),
         }),
-        NgxsModule.forRoot([HeaderState, ContactsState, SectionsState, SidebarState, ConfigsState, ThemeState]),
+        NgxsModule.forRoot([
+            SettingsState,
+            HeaderState,
+            ContactsState,
+            SectionsState,
+            SidebarState,
+            ConfigsState,
+            ThemeState,
+        ]),
         NgxsReduxDevtoolsPluginModule.forRoot(),
         // NgxsLoggerPluginModule.forRoot(),
         NgxsResetPluginModule.forRoot(),

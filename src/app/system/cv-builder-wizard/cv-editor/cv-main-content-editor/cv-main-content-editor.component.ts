@@ -6,8 +6,9 @@ import { SectionType } from "../../../../core/enums/section-type.enum";
 import PatchSections = Sections.PatchSections;
 import { ConfigsStateModel } from "../../../../core/state/configs";
 import { Modal } from "bootstrap";
-
-let tipsShown: boolean = false;
+import { Settings, SettingsStateModel } from "../../../../core/state/settings";
+import PatchSettings = Settings.PatchSettings;
+import { ThemeStateModel } from "../../../../core/state/theme";
 
 @Component({
     selector: "app-cv-main-content-editor",
@@ -21,9 +22,17 @@ export class CVMainContentEditorComponent implements AfterViewInit {
 
     configs: ConfigsStateModel;
 
+    theme?: ThemeStateModel;
+
+    settings?: SettingsStateModel;
+
+    tipModel?: Modal;
+
     constructor(private store: Store) {
         this.sections = this.store.selectSnapshot(state => state.sections.sections);
         this.configs = this.store.selectSnapshot(state => state.configs);
+        this.theme = this.store.selectSnapshot(state => state.theme);
+        this.settings = this.store.selectSnapshot(state => state.settings);
         this.preDefinedSections = [
             {
                 id: "dd2d449c-d4c6-4d8f-985b-bad1785bd85d",
@@ -81,14 +90,18 @@ export class CVMainContentEditorComponent implements AfterViewInit {
     }
 
     ngAfterViewInit(): void {
-        if (!tipsShown) {
-            const tipModel = new Modal("#mainContentTipModel");
-            tipModel.show();
-            tipsShown = true;
+        this.tipModel = new Modal("#mainContentTipModel");
+        if (!this.settings?.mainTipShown) {
+            this.tipModel?.show();
+            this.store.dispatch(new PatchSettings({ mainTipShown: true }));
         }
     }
 
     onSectionsChange(): void {
         this.store.dispatch(new PatchSections({ sections: this.sections }));
+    }
+
+    showTips(): void {
+        this.tipModel?.show();
     }
 }

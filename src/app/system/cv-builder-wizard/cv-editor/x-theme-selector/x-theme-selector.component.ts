@@ -4,6 +4,7 @@ import { Theme, ThemeStateModel } from "../../../../core/state/theme";
 import { THEME } from "../../../../core/interfaces/system.interfaces";
 import { Store } from "@ngxs/store";
 import PatchTheme = Theme.PatchTheme;
+import { hexToHsl, hslLighten, hslString } from "../../../../core/utils/color.utils";
 
 @Component({
     selector: "app-cv-theme-selector",
@@ -24,6 +25,7 @@ export class XThemeSelectorComponent {
     select(theme: THEME): void {
         const root = this.elementRef.nativeElement.closest(":root") as HTMLElement;
         root.style.setProperty("--app-primary-color", theme.PRIMARY_COLOR);
+        root.style.setProperty("--app-primary-color-hover", hslString(hslLighten(hexToHsl(theme.PRIMARY_COLOR), 10)));
         root.style.setProperty("--app-secondary-color", theme.SECONDARY_COLOR);
         root.style.setProperty("--app-accent-color", theme.ACCENT_COLOR);
         root.style.setProperty("--app-text-color", theme.TEXT_COLOR);

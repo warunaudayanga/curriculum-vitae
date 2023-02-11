@@ -37,11 +37,16 @@
             'padding-top: ' + (configs?.sectionItemSpace ?? CONFIGS.SECTION_ITEM_SPACE) + 'px;'
          }}">
         <div class="paragraph" [innerHTML]="trim(section.listWithParagraph?.title, true)"></div>
-        <div class="list">
+        <div class="list" *ngIf="section.listWithParagraph?.list">
             <ul style="{{'padding-top: ' + (configs?.sectionListItemSpace ?? CONFIGS.SECTION_LIST_ITEM_SPACE) + 'px;'}}">
                 <ng-container *ngFor="let item of section.listWithParagraph?.list">
                     <li [innerHTML]="trim(item.title, true)"
                         style="{{'padding-top: ' + (configs?.sectionListItemSpace ?? CONFIGS.SECTION_LIST_ITEM_SPACE) + 'px;'}}"></li>
+                    <ul *ngIf="item.list"
+                        style="{{'padding-top: ' + (configs?.sectionListItemSpace ?? CONFIGS.SECTION_LIST_ITEM_SPACE) + 'px;'}}">
+                        <li *ngFor="let subItem of item.list" [innerHTML]="trim(subItem.title, true)"
+                            style="{{'padding-top: ' + (configs?.sectionListItemSpace ?? CONFIGS.SECTION_LIST_ITEM_SPACE) + 'px;'}}"></li>
+                    </ul>
                 </ng-container>
             </ul>
         </div>

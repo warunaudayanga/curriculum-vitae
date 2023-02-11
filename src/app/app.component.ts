@@ -1,6 +1,7 @@
 import { Component, ElementRef } from "@angular/core";
 import { ThemeStateModel } from "./core/state/theme";
 import { Store } from "@ngxs/store";
+import { hexToHsl, hslLighten, hslString } from "./core/utils/color.utils";
 
 @Component({
     selector: "app-root",
@@ -13,6 +14,10 @@ export class AppComponent {
         if (theme) {
             const root = this.elementRef.nativeElement.closest(":root") as HTMLElement;
             root.style.setProperty("--app-primary-color", theme.primaryColor);
+            root.style.setProperty(
+                "--app-primary-color-hover",
+                hslString(hslLighten(hexToHsl(theme.primaryColor), 10)),
+            );
             root.style.setProperty("--app-secondary-color", theme.secondaryColor);
             root.style.setProperty("--app-accent-color", theme.accentColor);
             root.style.setProperty("--app-text-color", theme.textColor);

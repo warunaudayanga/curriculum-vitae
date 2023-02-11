@@ -3,8 +3,8 @@ import { CVData } from "../../core/interfaces/system.interfaces";
 import { Store } from "@ngxs/store";
 import { Router } from "@angular/router";
 import { Modal } from "bootstrap";
-
-let tipsShown: boolean = false;
+import { Settings, SettingsStateModel } from "../../core/state/settings";
+import PatchSettings = Settings.PatchSettings;
 
 @Component({
     selector: "app-cv-printer",
@@ -13,6 +13,8 @@ let tipsShown: boolean = false;
 })
 export class CVPrinterComponent implements AfterViewInit {
     cvData?: CVData;
+
+    settings?: SettingsStateModel;
 
     warningModel?: Modal;
 
@@ -24,14 +26,15 @@ export class CVPrinterComponent implements AfterViewInit {
             sections: this.store.selectSnapshot(state => state.sections.sections),
             sidebar: this.store.selectSnapshot(state => state.sidebar.sections),
         };
+        this.settings = this.store.selectSnapshot(state => state.settings);
     }
 
     ngAfterViewInit(): void {
         this.warningModel = new Modal("#printWarningModel");
-        if (!tipsShown) {
+        if (!this.settings?.printTipShown) {
             const tipModel = new Modal("#printTipModel");
             tipModel.show();
-            tipsShown = true;
+            this.store.dispatch(new PatchSettings({ printTipShown: true }));
         }
     }
 

@@ -2,8 +2,8 @@ import { AfterViewInit, Component } from "@angular/core";
 import { CVData } from "../../../../core/interfaces/system.interfaces";
 import { Store } from "@ngxs/store";
 import { Modal } from "bootstrap";
-
-let tipsShown: boolean = false;
+import { Settings, SettingsStateModel } from "../../../../core/state/settings";
+import PatchSettings = Settings.PatchSettings;
 
 @Component({
     selector: "app-cv-tune-up",
@@ -12,6 +12,8 @@ let tipsShown: boolean = false;
 })
 export class CVTuneUpComponent implements AfterViewInit {
     cvData?: CVData;
+
+    settings?: SettingsStateModel;
 
     reloading: boolean = false;
 
@@ -23,13 +25,14 @@ export class CVTuneUpComponent implements AfterViewInit {
             sections: this.store.selectSnapshot(state => state.sections.sections),
             sidebar: this.store.selectSnapshot(state => state.sidebar.sections),
         };
+        this.settings = this.store.selectSnapshot(state => state.settings);
     }
 
     ngAfterViewInit(): void {
-        if (!tipsShown) {
+        if (!this.settings?.tuneUpTipShown) {
             const tipModel = new Modal("#tuneUpTipModel");
             tipModel.show();
-            tipsShown = true;
+            this.store.dispatch(new PatchSettings({ tuneUpTipShown: true }));
         }
     }
 

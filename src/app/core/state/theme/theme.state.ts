@@ -20,7 +20,7 @@ import { Globals } from "../../../system/configs/globals";
 @Injectable()
 export class ThemeState {
     @Selector()
-    static getThemeDetails(state: ThemeStateModel): ThemeStateModel {
+    static getTheme(state: ThemeStateModel): ThemeStateModel {
         return state;
     }
 
@@ -30,7 +30,7 @@ export class ThemeState {
     }
 
     @Action(Theme.SetTheme)
-    setContacts({ setState }: StateContext<ThemeStateModel>, action: Theme.SetTheme): void {
+    setTheme({ setState }: StateContext<ThemeStateModel>, action: Theme.SetTheme): void {
         setState(action.payload);
     }
 }

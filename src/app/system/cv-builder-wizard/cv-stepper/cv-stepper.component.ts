@@ -13,7 +13,7 @@ export class CVStepperComponent implements AfterViewInit {
 
     finished: boolean = false;
 
-    activeIndex: number = 3;
+    activeIndex: number = 0;
 
     initialized: boolean = false;
 

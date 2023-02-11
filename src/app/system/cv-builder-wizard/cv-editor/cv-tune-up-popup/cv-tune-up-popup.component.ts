@@ -4,9 +4,7 @@ import { Store } from "@ngxs/store";
 import PatchConfigs = Config.PatchConfigs;
 import { toCamelCase, toTitleCase } from "../../../../core/utils/string.utils";
 import { Globals } from "../../../configs/globals";
-import { Limits, THEME } from "../../../../core/interfaces/system.interfaces";
-import { Theme, ThemeStateModel } from "../../../../core/state/theme";
-import PatchTheme = Theme.PatchTheme;
+import { Limits } from "../../../../core/interfaces/system.interfaces";
 
 type Changeable = keyof Omit<ConfigsStateModel, `${keyof ConfigsStateModel}Min` | `${keyof ConfigsStateModel}Max`>;
 
@@ -26,8 +24,6 @@ export class CvTuneUpPopupComponent {
 
     configs: ConfigsStateModel;
 
-    theme: ThemeStateModel;
-
     waitTimer?: NodeJS.Timer;
 
     repeatTimer?: NodeJS.Timer;
@@ -38,14 +34,11 @@ export class CvTuneUpPopupComponent {
 
     limits: Limits<Changeable>;
 
-    THEMES = Globals.THEMES;
-
     constructor(private elementRef: ElementRef<HTMLElement>, private store: Store) {
         this.configs = this.store.selectSnapshot(state => state.configs);
-        this.theme = this.store.selectSnapshot(state => state.theme);
         Object.keys(Globals.DEFAULTS.CONFIGS).forEach(key => {
             if (!(key.endsWith("Min") || key.endsWith("Max"))) {
-                (this.configs as any)[toCamelCase(key)] ||= (Globals.DEFAULTS.CONFIGS as any)[key];
+                (this.configs as any)[toCamelCase(key)] ??= (Globals.DEFAULTS.CONFIGS as any)[key];
             }
         });
         this.limits = {
@@ -153,10 +146,6 @@ export class CvTuneUpPopupComponent {
         this.onDismiss.emit();
     }
 
-    array(length: number): any[] {
-        return Array(length);
-    }
-
     click(counter: Changeable, decrease?: boolean): void {
         clearInterval(this.waitTimer);
         clearInterval(this.repeatTimer);
@@ -199,26 +188,5 @@ export class CvTuneUpPopupComponent {
                 this.reload.emit(false);
             });
         }, 2000);
-    }
-
-    selectTheme(theme: THEME): void {
-        const root = this.elementRef.nativeElement.closest(":root") as HTMLElement;
-        root.style.setProperty("--app-primary-color", theme.PRIMARY_COLOR);
-        root.style.setProperty("--app-secondary-color", theme.SECONDARY_COLOR);
-        root.style.setProperty("--app-accent-color", theme.ACCENT_COLOR);
-        root.style.setProperty("--app-text-color", theme.TEXT_COLOR);
-        root.style.setProperty("--app-separator-color", theme.SEPARATOR_COLOR);
-        root.style.setProperty("--app-main-link-color", theme.MAIN_LINK_COLOR);
-        this.store.dispatch(
-            new PatchTheme({
-                name: theme.NAME,
-                primaryColor: theme.PRIMARY_COLOR,
-                secondaryColor: theme.SECONDARY_COLOR,
-                accentColor: theme.ACCENT_COLOR,
-                textColor: theme.TEXT_COLOR,
-                separatorColor: theme.SEPARATOR_COLOR,
-                mainLinkColor: theme.MAIN_LINK_COLOR,
-            }),
-        );
     }
 }

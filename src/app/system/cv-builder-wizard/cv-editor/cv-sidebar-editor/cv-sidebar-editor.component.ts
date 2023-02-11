@@ -39,13 +39,7 @@ export class CvSidebarEditorComponent {
                 id: "ebc8675f-101f-434c-906d-6f3dc44e4c97",
                 title: "JOB OBJECTIVE & CAREER GOALS",
                 type: SectionType.PARAGRAPH,
-                paragraph:
-                    "I would like to devote my carrier in the Industry. While " +
-                    "enhancing technical skills through experiences and develop interpersonal " +
-                    "skills through solving problems in to improve communication skills through " +
-                    "the team work experiences. This would be a great opportunity to give my " +
-                    "valuable contribution to where I am working. While achieving my personal " +
-                    "goals through the hard work and experience gathered.",
+                paragraph: "",
             },
             {
                 id: "f873ab91-a316-4f99-be6d-42f5a678d7e2",

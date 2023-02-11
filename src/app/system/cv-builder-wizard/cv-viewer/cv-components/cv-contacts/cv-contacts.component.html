@@ -1,25 +1,61 @@
-<table class="w-100">
-    <tr class="email" *ngIf="email">
+<table class="w-100" *ngIf="contacts">
+    <tr class="email" *ngIf="contacts.email">
         <td style="{{'width: ' + (iconSize + 12) + 'px'}}">
             <i class="bi bi-envelope-at-fill" style="{{'font-size: ' + iconSize + 'px'}}"></i>
         </td>
-        <td class="ps-2" style="{{'font-size: ' + fontSize + 'px; line-height:' + fontSize + 'px'}}">{{email}}</td>
+        <td class="ps-2" style="{{'font-size: ' + fontSize + 'px; line-height:' + fontSize + 'px'}}">
+            <a href="mailto:{{contacts.email}}">{{contacts.email}}</a>
+        </td>
     </tr>
-    <tr class="phone" *ngIf="phoneNumbers?.length">
+    <tr class="phone" *ngIf="contacts.phoneNumbers?.length">
         <td style="{{'width: ' + (iconSize + 12) + 'px; padding-top: ' + space + 'px'}}">
             <i class="bi bi-telephone-fill" style="{{'font-size: ' + iconSize + 'px'}}"></i>
         </td>
         <td class="ps-2" style="{{'padding-top: ' + space + 'px'}}">
             <div class="d-inline-block number"
                  style="{{'font-size: ' + fontSize + 'px; line-height:' + fontSize + 'px'}}"
-                 *ngFor="let phone of phoneNumbers; let i = index">{{phone}}{{i !== (phoneNumbers?.length ?? 0) - 1 ? ',' : ''}} </div>
+                 *ngFor="let phone of contacts.phoneNumbers; let i = index">
+                <a href="tel:{{phone}}">{{phone}}</a>{{i !== (contacts.phoneNumbers?.length ?? 0) - 1 ? ',' : ''}}
+            </div>
         </td>
     </tr>
-    <tr class="address" *ngIf="address">
+    <tr class="address" *ngIf="contacts.address">
         <td style="{{'width: ' + (iconSize + 12) + 'px; padding-top: ' + space + 'px'}}">
             <i class="bi bi-geo-alt-fill" style="{{'font-size: ' + iconSize + 'px'}}"></i>
         </td>
         <td class="ps-2"
-            style="{{'font-size: ' + fontSize + 'px; line-height:' + fontSize + 'px; padding-top: ' + space + 'px'}}">{{address}}</td>
+            style="{{'font-size: ' + fontSize + 'px; line-height:' + fontSize + 'px; padding-top: ' + space + 'px'}}">{{contacts.address}}</td>
+    </tr>
+    <tr class="linked-in" *ngIf="contacts.linkedIn">
+        <td style="{{'width: ' + (iconSize + 12) + 'px'}}">
+            <i class="bi bi-linkedin" style="{{'font-size: ' + iconSize + 'px'}}"></i>
+        </td>
+        <td class="ps-2" style="{{'font-size: ' + fontSize + 'px; line-height:' + fontSize + 'px'}}">
+            <a target="_blank" href="{{contacts.linkedIn}}">{{getLinkedInId()}}</a>
+        </td>
+    </tr>
+    <tr class="git-hub" *ngIf="contacts.gitHub">
+        <td style="{{'width: ' + (iconSize + 12) + 'px'}}">
+            <i class="bi bi-github" style="{{'font-size: ' + iconSize + 'px'}}"></i>
+        </td>
+        <td class="ps-2" style="{{'font-size: ' + fontSize + 'px; line-height:' + fontSize + 'px'}}">
+            <a target="_blank" href="{{contacts.gitHub}}">{{getGitHubId()}}</a>
+        </td>
+    </tr>
+    <tr class="facebook" *ngIf="contacts.facebook">
+        <td style="{{'width: ' + (iconSize + 12) + 'px'}}">
+            <i class="bi bi-facebook" style="{{'font-size: ' + iconSize + 'px'}}"></i>
+        </td>
+        <td class="ps-2" style="{{'font-size: ' + fontSize + 'px; line-height:' + fontSize + 'px'}}">
+            <a target="_blank" href="{{contacts.facebook}}">{{getFacebookId()}}</a>
+        </td>
+    </tr>
+    <tr class="web-url" *ngIf="contacts.url">
+        <td style="{{'width: ' + (iconSize + 12) + 'px'}}">
+            <i class="bi bi-globe" style="{{'font-size: ' + iconSize + 'px'}}"></i>
+        </td>
+        <td class="ps-2" style="{{'font-size: ' + fontSize + 'px; line-height:' + fontSize + 'px'}}">
+            <a target="_blank" href="{{contacts.url}}">{{getUrlId()}}</a>
+        </td>
     </tr>
 </table>

@@ -10,26 +10,44 @@ export const getRootVar: GetRootVar = <T extends boolean>(name: string, parseInt
     return parseInt ? Number(value.replace(/\D+/, "")) : value;
 };
 
-export const scaleAmountNeededToFit = (el: HTMLElement, parent: HTMLElement, margin: number = 0): number => {
+export const scaleAmountNeededToFit = (
+    el: HTMLElement,
+    parent: HTMLElement,
+    margin: [number, number, number, number] = [0, 0, 0, 0],
+): number => {
     const parentSize = {
-        width: parent.clientWidth - margin * 2,
-        height: parent.clientHeight - margin * 2,
+        width: parent.clientWidth - margin[1] - margin[3],
+        height: parent.clientHeight - margin[0] - margin[2],
     };
     return Math.min(parentSize.width / el.clientWidth, parentSize.height / el.clientHeight);
 };
 
-export const fitTo = (element: HTMLElement, fitTo: HTMLElement, margin: number, center?: boolean): number => {
+export const fitTo = (
+    element: HTMLElement,
+    fitTo: HTMLElement,
+    align: "left" | "right" | "center",
+    margin: [number, number, number, number] = [0, 0, 0, 0],
+): number => {
     const scale = scaleAmountNeededToFit(element, fitTo, margin);
-    const translateX = center ? `calc(50% - ${(element.clientWidth * scale) / 2}px)` : margin + "px";
-    const translateY = margin + "px";
+    const translateX =
+        align === "center"
+            ? `calc(${fitTo.clientWidth / 2}px - ${(element.clientWidth * scale) / 2}px)`
+            : align === "right"
+                ? `calc(${fitTo.clientWidth}px - ${((element.clientWidth) * scale) + margin[1]}px)` // eslint-disable-line prettier/prettier
+                : margin[3] + "px"; // eslint-disable-line prettier/prettier
+    const translateY = margin[0] + "px";
     element.style.transformOrigin = "0 0";
     element.style.transform = `translate(${translateX}, ${translateY}) scale(${scale})`;
     return scale;
 };
 
-export const fitToParent = (element: HTMLElement, margin: number): void => {
+export const fitToParent = (
+    element: HTMLElement,
+    align: "left" | "right" | "center",
+    margin: [number, number, number, number] = [0, 0, 0, 0],
+): void => {
     if (element.parentElement) {
-        fitTo(element, element.parentElement, margin);
+        fitTo(element, element.parentElement, align, margin);
     }
 };
 

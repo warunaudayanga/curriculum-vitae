@@ -9,6 +9,10 @@ import { Contacts } from "./contacts.actions";
         email: undefined,
         phoneNumbers: undefined,
         address: undefined,
+        linkedIn: undefined,
+        gitHub: undefined,
+        facebook: undefined,
+        url: undefined,
     },
 })
 @Injectable()

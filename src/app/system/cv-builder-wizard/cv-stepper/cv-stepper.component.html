@@ -15,7 +15,7 @@
         <!--suppress JSUnusedGlobalSymbols -->
         <div #step class="step" (click)="activate(1)" [class.active]="activeIndex === 1">
             <span>2</span>
-            <div class="title">Intro</div>
+            <div class="title">Set Theme</div>
         </div>
         <div class="line-filled"></div>
         <!--suppress JSUnusedGlobalSymbols -->
@@ -51,7 +51,7 @@
     </div>
     <div class="content p-3 set-heading">
         <div *ngIf="activeIndex === 0" class="step-content">
-            <app-cv-start></app-cv-start>
+            <app-cv-start (onImport)="activate(1)"></app-cv-start>
         </div>
         <div *ngIf="activeIndex === 1" class="step-content">
             <app-cv-intro></app-cv-intro>
@@ -74,7 +74,7 @@
     </div>
     <div class="controls d-flex gap-3 justify-content-end" [class.justify-content-between]="activeIndex !== 0">
         <button *ngIf="activeIndex > 0 || finished" class="btn btn-primary btn-floating btn-prev" (click)="prev()"><i class="bi bi-caret-left-fill"></i></button>
-        <button *ngIf="activeIndex < 6" class="btn btn-primary btn-floating btn-next" (click)="next()"><i class="bi bi-caret-right-fill"></i></button>
+        <button *ngIf="activeIndex !== 0 && activeIndex < 6" class="btn btn-primary btn-floating btn-next" (click)="next()"><i class="bi bi-caret-right-fill"></i></button>
         <button  *ngIf="activeIndex === 6" class="btn btn-success btn-floating btn-next" (click)="finish()"><i class="bi bi-check-lg"></i></button>
     </div>
 </div>

@@ -1,15 +1,20 @@
-import { Component } from "@angular/core";
+import { AfterViewInit, Component } from "@angular/core";
 import { CVData } from "../../core/interfaces/system.interfaces";
 import { Store } from "@ngxs/store";
 import { Router } from "@angular/router";
+import { Modal } from "bootstrap";
+
+let tipsShown: boolean = false;
 
 @Component({
     selector: "app-cv-printer",
     templateUrl: "./cv-printer.component.html",
     styleUrls: ["./cv-printer.component.scss"],
 })
-export class CVPrinterComponent {
+export class CVPrinterComponent implements AfterViewInit {
     cvData?: CVData;
+
+    warningModel?: Modal;
 
     constructor(private store: Store, private router: Router) {
         this.cvData = {
@@ -21,8 +26,24 @@ export class CVPrinterComponent {
         };
     }
 
+    ngAfterViewInit(): void {
+        this.warningModel = new Modal("#printWarningModel");
+        if (!tipsShown) {
+            const tipModel = new Modal("#printTipModel");
+            tipModel.show();
+            tipsShown = true;
+        }
+    }
+
+    printWarning(): void {
+        this.warningModel?.show();
+    }
+
     print(): void {
-        window.print();
+        this.warningModel?.hide();
+        setTimeout(() => {
+            window.print();
+        }, 500);
     }
 
     async back(): Promise<void> {

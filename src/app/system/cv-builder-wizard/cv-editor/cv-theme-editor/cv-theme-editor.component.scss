@@ -11,3 +11,11 @@
     font-weight: bold;
     font-size: 20px;
 }
+
+app-cv-viewer {
+    width: fit-content;
+}
+
+::ng-deep .set-theme app-x-theme:not(:first-child) {
+    margin-top: 30px !important;
+}

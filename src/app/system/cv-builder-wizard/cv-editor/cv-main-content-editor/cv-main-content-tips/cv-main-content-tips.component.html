@@ -1,0 +1,146 @@
+<div class="tip-title mb-2">Content Editor</div>
+
+<div>
+    This is a editor for add contents to your CV. Left side shows how your CV content looks like after generation.
+    Right side is the editor interface.
+</div>
+
+<div class="tip-title mt-4 mb-3">Add a Sections</div>
+
+<div class="tip">
+    <div class="tip-body mb-3">
+        <div class="mb-2">
+            A section is a part of your CV content. It can be a paragraph, a list, a name-value list, etc.
+            Below is an example of a paragraph section.
+        </div>
+        <app-section [section]="sampleParagraph"></app-section>
+    </div>
+    <div class="tip-body mb-3">
+        <div class="mb-3">You can add a section by clicking this button on the bottom right corner of the editor.</div>
+        <button class="btn btn-lg btn-primary btn-floating position-relative shadow-none"><i class="bi bi-plus-lg"></i></button>
+    </div>
+</div>
+
+<div class="tip-title mt-4 mb-3">Sections</div>
+
+<div class="tip section">
+    <div class="position-relative">
+        <app-x-section [section]="sampleSection" class="mb-2"></app-x-section>
+    </div>
+    <div class="tip-body">
+        <div><span>&lt;Section Type&gt;</span> Type of the section</div>
+        <div><span>&lt;Tile&gt;</span> Title of the section (Click to edit)</div>
+        <div><span>&lt;Text&gt;</span> Text of the section (Click to edit)</div>
+        <div><i class="bi bi-chevron-compact-up"></i> Move section up</div>
+        <div><i class="bi bi-chevron-compact-down"></i> Move section down</div>
+        <div><i class="bi bi-x"></i> Remove section</div>
+        <div class="dashed d-inline-block">Dashed border indicates that it is a editable item.</div>
+    </div>
+</div>
+
+<div class="tip-title mt-4 mb-3">Editor</div>
+
+<div class="tip">
+    <div class="editor mb-2" style="background-image: url(assets/images/editor.png)"></div>
+    <div class="tip-body">
+        <div class="d-flex align-items-center mt-2">
+            <div class="editor-button editor-link" style="background-image: url(assets/images/editor-buttons.png)"></div>
+            <span> Make selected text a link</span>
+        </div>
+        <div class="d-flex align-items-center mt-2">
+            <div class="editor-button editor-un-link" style="background-image: url(assets/images/editor-buttons.png)"></div>
+            <span> Remove link from selected text</span>
+        </div>
+        <div class="d-flex align-items-center mt-2">
+            <div class="editor-button editor-clear" style="background-image: url(assets/images/editor-buttons.png)"></div>
+            <span> Clear formatting of selected text</span>
+        </div>
+    </div>
+</div>
+
+<div class="tip-title mt-4 mb-2">Paragraph Section Type</div>
+<div class="tip">
+    <div>
+        This is a section with a paragraph. For example, <br>
+    </div>
+    <div class="tip-body">
+        <app-section [section]="sampleParagraph"></app-section>
+    </div>
+</div>
+
+<div class="tip-title mt-4 mb-2">List Section Type</div>
+<div class="tip">
+    <div>
+        This is a section with a bullet list. Also possible to ad sub-lists to a list item. For example, <br>
+    </div>
+    <div class="tip-body">
+        <app-section [section]="sampleList"></app-section>
+    </div>
+</div>
+<div class="tip">
+    <div class="tip-body">
+        List items can be added or removed by clicking the buttons below the list. <br>
+        <div class="d-flex mt-2 mb-3">
+            <button class="btn btn-sm btn-success">
+                <i class="bi bi-plus"></i>
+            </button>
+            <div class="ms-3">Add new item to a list (below the clicked item)</div>
+        </div>
+        <div class="d-flex mb-3">
+            <button class="btn btn-sm btn-danger">
+                <i class="bi bi-x"></i>
+            </button>
+            <div class="ms-3">Remove item from a list</div>
+        </div>
+        <div class="d-flex mb-3">
+            <button class="btn btn-sm btn-primary">
+                <i class="bi bi-list-ul"></i>
+            </button>
+            <div class="ms-3">Add a sub list to a list item</div>
+        </div>
+    </div>
+</div>
+
+<div class="tip-title mt-4 mb-2">List WIth Paragraph Section Type</div>
+<div class="tip">
+    <div>
+        This is a section with both a paragraph and a list. In this section you cannot add sub-lists to a list item.
+        This is useful when you want to show a list of items with a paragraph. For example, <br>
+    </div>
+    <div class="tip-body">
+        <app-section [section]="sampleListWithParagraph"></app-section>
+    </div>
+</div>
+
+<div class="tip-title mt-4 mb-2">Name - Value List Section Type</div>
+<div class="tip">
+    This is two column table like section. It is useful for showing a list of name-value pairs. For example, <br>
+    <div class="tip-body">
+        <app-section [section]="sampleKeyValueList"></app-section>
+    </div>
+</div>
+
+<div class="tip-title mt-4 mb-2">Columns Section Type</div>
+<div class="tip">
+    This is a two column section witt a separator between two columns. And also you can add multiple
+    lines in the text editor. It is useful for showing a referee list. For example, <br>
+    <div class="tip-body">
+        <app-section [section]="sampleColumns"></app-section>
+    </div>
+</div>
+
+<div class="tip-title mt-4 mb-2">Signature Section Type</div>
+<div class="tip">
+    <div>
+        This is a section with ability to add a image of a signature. You can set a name and date for show in this section.
+        If you add a image the name will replace with the image. Also keep in mind that image has to be transparent to show it properly.
+    </div>
+    <div class="tip-body">
+        <app-section [section]="sampleSignature"></app-section>
+    </div>
+</div>
+
+<div class="tip-title mt-4 mb-3">Predefined Sections</div>
+<div class="tip">
+    These sections are some predefined sections with already added values. After adding them, you can edith them to fit your needs.
+</div>

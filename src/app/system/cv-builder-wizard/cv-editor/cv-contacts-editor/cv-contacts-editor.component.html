@@ -13,9 +13,7 @@
                         'padding-top: ' + configs.contactsListSpace + 'px;' +
                         'padding-inline: ' + configs.sidebarPadding + 'px'
                     }}"
-            [email]="contacts.email"
-            [phoneNumbers]="contacts.phoneNumbers"
-            [address]="contacts.address"
+            [contacts]="contacts"
             [fontSize]="configs.contactsFontSize"
             [iconSize]="configs.contactsIconSize"
             [editable]="true"
@@ -29,12 +27,29 @@
                    [(ngModel)]="contacts.email" (ngModelChange)="setEmail()">
 
             <label class="form-label">Phone</label>
-            <ng-tag-input class="mb-3" [(ngModel)]="contacts.phoneNumbers" (ngModelChange)="setPhoneNumbers()"></ng-tag-input>
+            <ng-tag-input class="mb-3" [(ngModel)]="contacts.phoneNumbers"
+                          (ngModelChange)="setPhoneNumbers()"></ng-tag-input>
 
             <label class="form-label">Address</label>
             <textarea rows="3" class="form-control form-control-sm mb-3" placeholder="Enter your name..."
                       [(ngModel)]="contacts.address" (ngModelChange)="setAddress()">
-        </textarea>
+            </textarea>
+
+            <label class="form-label">LinkedIn URL</label>
+            <input type="text" class="form-control form-control-sm mb-3" placeholder="Enter your name..."
+                   [(ngModel)]="contacts.linkedIn" (ngModelChange)="setLinkedIn()">
+
+            <label class="form-label">GitHub URL</label>
+            <input type="text" class="form-control form-control-sm mb-3" placeholder="Enter your name..."
+                   [(ngModel)]="contacts.gitHub" (ngModelChange)="setGitHub()">
+
+            <label class="form-label">Facebook URL</label>
+            <input type="text" class="form-control form-control-sm mb-3" placeholder="Enter your name..."
+                   [(ngModel)]="contacts.facebook" (ngModelChange)="setFacebook()">
+
+            <label class="form-label">URL</label>
+            <input type="text" class="form-control form-control-sm mb-3" placeholder="Enter your name..."
+                   [(ngModel)]="contacts.url" (ngModelChange)="setUrl()">
 
             <div class="d-flex mb-3 gap-3">
                 <div class="col-size-group">

@@ -34,11 +34,11 @@ export class CVContactsEditorComponent {
         this.header = this.store.selectSnapshot(state => state.header);
         this.contacts = this.store.selectSnapshot(state => state.contacts);
         this.configs = this.store.selectSnapshot(state => state.configs);
-        this.configs.contactsFontSize ||= Globals.DEFAULTS.CONFIGS.CONTACTS_FONT_SIZE;
-        this.configs.contactsIconSize ||= Globals.DEFAULTS.CONFIGS.CONTACTS_ICON_SIZE;
-        this.configs.contactsListSpace ||= Globals.DEFAULTS.CONFIGS.CONTACTS_LIST_SPACE;
-        this.configs.sidebarPadding ||= Globals.DEFAULTS.CONFIGS.SIDEBAR_PADDING;
-        this.configs.contactsSpace ||= Globals.DEFAULTS.CONFIGS.CONTACTS_SPACE;
+        this.configs.contactsFontSize ??= Globals.DEFAULTS.CONFIGS.CONTACTS_FONT_SIZE;
+        this.configs.contactsIconSize ??= Globals.DEFAULTS.CONFIGS.CONTACTS_ICON_SIZE;
+        this.configs.contactsListSpace ??= Globals.DEFAULTS.CONFIGS.CONTACTS_LIST_SPACE;
+        this.configs.sidebarPadding ??= Globals.DEFAULTS.CONFIGS.SIDEBAR_PADDING;
+        this.configs.contactsSpace ??= Globals.DEFAULTS.CONFIGS.CONTACTS_SPACE;
         this.limits = {
             contactsFontSize: {
                 min: Globals.DEFAULTS.CONFIGS.CONTACTS_FONT_SIZE_MIN,
@@ -61,6 +61,22 @@ export class CVContactsEditorComponent {
 
     setPhoneNumbers(): void {
         this.store.dispatch(new PatchContacts({ phoneNumbers: this.contacts.phoneNumbers }));
+    }
+
+    setLinkedIn(): void {
+        this.store.dispatch(new PatchContacts({ linkedIn: this.contacts.linkedIn }));
+    }
+
+    setGitHub(): void {
+        this.store.dispatch(new PatchContacts({ gitHub: this.contacts.gitHub }));
+    }
+
+    setFacebook(): void {
+        this.store.dispatch(new PatchContacts({ facebook: this.contacts.facebook }));
+    }
+
+    setUrl(): void {
+        this.store.dispatch(new PatchContacts({ url: this.contacts.url }));
     }
 
     setFontSize(): void {

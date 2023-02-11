@@ -1,17 +1,20 @@
-import { Component } from "@angular/core";
+import { AfterViewInit, Component } from "@angular/core";
 import { Section } from "../../../../core/interfaces/system.interfaces";
 import { Store } from "@ngxs/store";
 import { Sections } from "../../../../core/state/sections";
 import { SectionType } from "../../../../core/enums/section-type.enum";
 import PatchSections = Sections.PatchSections;
 import { ConfigsStateModel } from "../../../../core/state/configs";
+import { Modal } from "bootstrap";
+
+let tipsShown: boolean = false;
 
 @Component({
     selector: "app-cv-main-content-editor",
     templateUrl: "./cv-main-content-editor.component.html",
     styleUrls: ["./cv-main-content-editor.component.scss"],
 })
-export class CVMainContentEditorComponent {
+export class CVMainContentEditorComponent implements AfterViewInit {
     sections: Section[] = [];
 
     preDefinedSections?: Section[];
@@ -75,6 +78,14 @@ export class CVMainContentEditorComponent {
                     "selected, I promise to perform my duties efficiently, loyalty and obediently to your entire satisfaction",
             },
         ];
+    }
+
+    ngAfterViewInit(): void {
+        if (!tipsShown) {
+            const tipModel = new Modal("#mainContentTipModel");
+            tipModel.show();
+            tipsShown = true;
+        }
     }
 
     onSectionsChange(): void {

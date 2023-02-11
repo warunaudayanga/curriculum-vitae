@@ -17,6 +17,10 @@ td {
         color: white;
     }
 }
+a {
+    text-decoration: none;
+    color: inherit;
+}
 .email i {
     background-color: #ff8a00;
 }
@@ -30,4 +34,16 @@ td {
 }
 .address i {
     background: #DB0404;
+}
+.linked-in i {
+    background: #0A66C2;
+}
+.git-hub i {
+    background: #171515;
+}
+.facebook i {
+    background: #0E8EF2;
+}
+.web-url i {
+    background: #000000;
 }

@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import "bootstrap";
 @import "bootstrap-icons";
+@import "bootstrap-icons";
 @import "src/variables";
 
 @import '~bootstrap/dist/css/bootstrap.min.css';
@@ -115,5 +116,16 @@ body {
     &:hover {
         background-color: $app-accent-color;
         border-color: $app-accent-color;
+    }
+}
+
+.tip-title {
+    font-weight: bold;
+    font-size: 25px;
+}
+.tip {
+    .tip-body {
+        margin-left: 15px;
+        margin-top: 15px;
     }
 }

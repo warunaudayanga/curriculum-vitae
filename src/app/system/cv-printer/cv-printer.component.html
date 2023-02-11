@@ -2,4 +2,21 @@
 
 <button class="btn btn-primary fw-bold btn-floating btn-back" (click)="back()"><i class="bi bi-reply-fill"></i></button>
 <button class="btn btn-secondary fw-bold btn-floating btn-export" (click)="export()"><i class="bi bi-box-arrow-up"></i></button>
-<button class="btn btn-warning fw-bold btn-floating btn-print" (click)="print()"><i class="bi bi-printer-fill"></i></button>
+<button class="btn btn-warning fw-bold btn-floating btn-print" (click)="printWarning()"><i class="bi bi-printer-fill"></i></button>
+
+<div class="modal fade" id="printWarningModel" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5">Print</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <app-app-cv-print-warning class="p-3"></app-app-cv-print-warning>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary px-4" data-bs-dismiss="modal" (click)="print()">PRINT</button>
+            </div>
+        </div>
+    </div>
+</div>

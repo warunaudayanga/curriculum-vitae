@@ -21,11 +21,15 @@ export class CVSectionComponent {
 
     constructor() {}
 
+    setTarget(html?: string): string {
+        return html?.replace(/<a /g, "<a target='_blank' ") ?? "";
+    }
+
     trimTitle(html?: string): string {
         return trim(html || "<title>");
     }
 
     trim(html?: string, placeholder?: boolean): string {
-        return trim(html || (placeholder ? "&lt;text&gt;" : ""));
+        return trim(this.setTarget(html) || (placeholder ? "&lt;text&gt;" : ""));
     }
 }

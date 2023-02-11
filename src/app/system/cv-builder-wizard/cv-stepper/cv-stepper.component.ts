@@ -3,17 +3,17 @@ import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
     selector: "app-stepper",
-    templateUrl: "./stepper.component.html",
-    styleUrls: ["./stepper.component.scss"],
+    templateUrl: "./cv-stepper.component.html",
+    styleUrls: ["./cv-stepper.component.scss"],
 })
-export class StepperComponent implements AfterViewInit {
+export class CVStepperComponent implements AfterViewInit {
     @ViewChildren("step") stepsButton?: QueryList<ElementRef<HTMLDivElement>>;
 
     @Input() steps: any[] = [1, 2, 3, 4, 5, 6, 7];
 
     finished: boolean = false;
 
-    activeIndex: number = 0;
+    activeIndex: number = 3;
 
     initialized: boolean = false;
 

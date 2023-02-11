@@ -1,25 +1,19 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from "@angular/core";
-import { CVData, Section } from "../../../core/interfaces/system.interfaces";
-import { CvViewerComponent } from "../cv-viewer/cv-viewer.component";
-import { fitTo } from "../../../core/utils/utils";
-import { SectionType } from "../../../core/enums/section-type.enum";
-import { Globals } from "../../configs/globals";
+import { CVData, Section } from "../../../../core/interfaces/system.interfaces";
+import { CvViewerComponent } from "../../cv-viewer/cv-viewer.component";
+import { fitTo } from "../../../../core/utils/utils";
+import { SectionType } from "../../../../core/enums/section-type.enum";
+import { Globals } from "../../../configs/globals";
 
 @Component({
     selector: "app-cv-intro",
-    templateUrl: "./cv-intro.component.html",
-    styleUrls: ["./cv-intro.component.scss"],
+    templateUrl: "./cv-theme-editor.component.html",
+    styleUrls: ["./cv-theme-editor.component.scss"],
 })
-export class CvIntroComponent implements AfterViewInit {
+export class CVThemeEditorComponent implements AfterViewInit {
     @ViewChild(CvViewerComponent, { read: ElementRef }) cv!: ElementRef<HTMLDivElement>;
 
-    @ViewChild("headingLabel") headingLabel!: ElementRef<HTMLDivElement>;
-
-    @ViewChild("contactsLabel") contactsLabel!: ElementRef<HTMLDivElement>;
-
-    @ViewChild("sidebarContentLabel") sidebarContentLabel!: ElementRef<HTMLDivElement>;
-
-    @ViewChild("mainContentLabel") mainContentLabel!: ElementRef<HTMLDivElement>;
+    @ViewChild("cvContainer") cvContainer!: ElementRef<HTMLDivElement>;
 
     sections: Section[] = [
         {
@@ -228,41 +222,7 @@ export class CvIntroComponent implements AfterViewInit {
         sidebar: this.sidebar,
     };
 
-    constructor(private elementRef: ElementRef<HTMLDivElement>) {}
-
     ngAfterViewInit(): void {
-        const margin = 15;
-        fitTo(this.cv.nativeElement, this.elementRef.nativeElement, margin, true);
-        setTimeout(() => {
-            const bounds = this.cv.nativeElement.getBoundingClientRect();
-
-            const position = {
-                headingLabel: {
-                    top: margin + bounds.height * (7 / 100),
-                    left: bounds.left - this.headingLabel.nativeElement.clientWidth - margin / 2,
-                },
-                contactsLabel: {
-                    top: margin + bounds.height * (23 / 100),
-                    left: bounds.left - this.contactsLabel.nativeElement.clientWidth - margin / 2,
-                },
-                sidebarContentLabel: {
-                    top: margin + bounds.height * (40 / 100),
-                    left: bounds.left - this.sidebarContentLabel.nativeElement.clientWidth - margin / 2,
-                },
-                mainContentLabel: {
-                    top: margin + bounds.height * (40 / 100),
-                    left: bounds.left + bounds.width - margin,
-                },
-            };
-
-            this.headingLabel.nativeElement.style.top = `${position.headingLabel.top}px`;
-            this.headingLabel.nativeElement.style.left = `${position.headingLabel.left}px`;
-            this.contactsLabel.nativeElement.style.top = `${position.contactsLabel.top}px`;
-            this.contactsLabel.nativeElement.style.left = `${position.contactsLabel.left}px`;
-            this.sidebarContentLabel.nativeElement.style.top = `${position.sidebarContentLabel.top}px`;
-            this.sidebarContentLabel.nativeElement.style.left = `${position.sidebarContentLabel.left}px`;
-            this.mainContentLabel.nativeElement.style.top = `${position.mainContentLabel.top}px`;
-            this.mainContentLabel.nativeElement.style.left = `${position.mainContentLabel.left}px`;
-        });
+        fitTo(this.cv.nativeElement, this.cvContainer.nativeElement, "right", [15, 25, 15, 15]);
     }
 }

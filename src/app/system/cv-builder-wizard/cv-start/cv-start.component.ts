@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, EventEmitter, Output } from "@angular/core";
 import { Store } from "@ngxs/store";
 import { CVData } from "../../../core/interfaces/system.interfaces";
 import { Header } from "../../../core/state/header";
@@ -18,6 +18,8 @@ import SetSections = Sections.SetSections;
     styleUrls: ["./cv-start.component.scss"],
 })
 export class CvStartComponent {
+    @Output() onImport: EventEmitter<void> = new EventEmitter<void>();
+
     constructor(private store: Store) {}
 
     async onFileSelected(e: Event): Promise<void> {
@@ -44,6 +46,7 @@ export class CvStartComponent {
                 if (cvData.configs) this.store.dispatch(new SetConfigs(cvData.configs));
                 if (cvData.sections) this.store.dispatch(new SetSections({ sections: cvData.sections }));
                 if (cvData.sidebar) this.store.dispatch(new SetSidebar({ sections: cvData.sidebar }));
+                this.onImport.emit();
             } catch (e) {
                 // eslint-disable-next-line no-alert
                 alert("This is not a valid CV JSON file.");
@@ -52,5 +55,9 @@ export class CvStartComponent {
             // eslint-disable-next-line no-alert
             alert("Please select a valid JSON file.");
         }
+    }
+
+    start(): void {
+        this.onImport.emit();
     }
 }

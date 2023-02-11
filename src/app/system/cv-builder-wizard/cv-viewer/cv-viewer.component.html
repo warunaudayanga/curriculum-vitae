@@ -15,9 +15,7 @@
                         'padding-top: ' + (cvData.configs?.contactsListSpace ?? DEFAULTS.CONFIGS.CONTACTS_LIST_SPACE) + 'px;' +
                         'padding-inline: ' + (cvData.configs?.sidebarPadding ?? DEFAULTS.CONFIGS.SIDEBAR_PADDING) + 'px'
                     }}"
-                    [email]="cvData.contacts?.email ?? DEFAULTS.CONTACTS.EMAIL"
-                    [phoneNumbers]="cvData.contacts?.phoneNumbers ?? DEFAULTS.CONTACTS.PHONE_NUMBERS"
-                    [address]="cvData.contacts?.address ?? DEFAULTS.CONTACTS.ADDRESS"
+                    [contacts]="cvData.contacts"
                     [fontSize]="cvData.configs?.contactsFontSize ?? DEFAULTS.CONFIGS.CONTACTS_FONT_SIZE"
                     [iconSize]="cvData.configs?.contactsIconSize ?? DEFAULTS.CONFIGS.CONTACTS_ICON_SIZE"
                     [space]="cvData.configs?.contactsSpace ?? DEFAULTS.CONFIGS.CONTACTS_SPACE"

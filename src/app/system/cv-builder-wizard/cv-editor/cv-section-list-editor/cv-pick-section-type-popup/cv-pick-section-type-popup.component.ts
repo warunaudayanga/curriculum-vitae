@@ -6,7 +6,7 @@ import { PreDefinedSection } from "../../../../../core/interfaces/system.interfa
     templateUrl: "./cv-pick-section-type-popup.component.html",
     styleUrls: ["./cv-pick-section-type-popup.component.scss"],
 })
-export class CvPickSectionTypePopupComponent {
+export class CVPickSectionTypePopupComponent {
     @Input() items!: any[];
 
     @Input() preDefined!: PreDefinedSection[];

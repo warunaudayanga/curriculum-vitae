@@ -10,7 +10,7 @@
         </div>
     </div>
     <div class="card-body">
-        <div [hidden]="editTitle" class="title" (click)="showTitleInput()">{{section.title}}</div>
+        <div [hidden]="editTitle" class="title" (click)="showTitleInput()">{{section.title | uppercase}}</div>
         <input #titleInput class="title-input form-control"
                [hidden]="!editTitle" [(ngModel)]="section.title"
                (blur)="editTitle = false" (ngModelChange)="onSectionChange()">

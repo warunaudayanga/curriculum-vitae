@@ -13,7 +13,7 @@ type Changeable = keyof Omit<ConfigsStateModel, `${keyof ConfigsStateModel}Min` 
     templateUrl: "./cv-tune-up-popup.component.html",
     styleUrls: ["./cv-tune-up-popup.component.scss"],
 })
-export class CvTuneUpPopupComponent {
+export class CVTuneUpPopupComponent {
     @Output() onDismiss: EventEmitter<void> = new EventEmitter<void>();
 
     @Output() reload: EventEmitter<boolean> = new EventEmitter<boolean>();

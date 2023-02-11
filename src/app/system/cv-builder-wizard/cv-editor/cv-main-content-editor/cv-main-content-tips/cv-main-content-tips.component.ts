@@ -7,7 +7,7 @@ import { SectionType } from "../../../../../core/enums/section-type.enum";
     templateUrl: "./cv-main-content-tips.component.html",
     styleUrls: ["./cv-main-content-tips.component.scss"],
 })
-export class CvMainContentTipsComponent {
+export class CVMainContentTipsComponent {
     sampleSection: Section = {
         id: "tips",
         title: "<Tile>",

@@ -2,6 +2,8 @@
 
 :host {
     height: calc(100% - 80px);
+    --cropper-overlay-color: black;
+    --cropper-overlay-after-color: #4D4D4D;
 }
 
 .column-1 {

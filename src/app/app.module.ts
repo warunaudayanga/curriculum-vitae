@@ -18,7 +18,7 @@ import { NgxsReduxDevtoolsPluginModule } from "@ngxs/devtools-plugin";
 import { NgxsResetPluginModule } from "ngxs-reset-plugin";
 import { NgxsStoragePluginModule } from "@ngxs/storage-plugin";
 import { HeaderState } from "./core/state/header";
-import { CvViewerComponent } from "./system/cv-builder-wizard/cv-viewer/cv-viewer.component";
+import { CVViewerComponent } from "./system/cv-builder-wizard/cv-viewer/cv-viewer.component";
 import { CVThemeEditorComponent } from "./system/cv-builder-wizard/cv-editor/cv-theme-editor/cv-theme-editor.component";
 import { CVMainContentEditorComponent } from "./system/cv-builder-wizard/cv-editor/cv-main-content-editor/cv-main-content-editor.component";
 import { CVContactsEditorComponent } from "./system/cv-builder-wizard/cv-editor/cv-contacts-editor/cv-contacts-editor.component";
@@ -32,25 +32,27 @@ import { XListComponent } from "./system/cv-builder-wizard/cv-editor/x-list/x-li
 import { AngularEditorModule } from "@kolkov/angular-editor";
 import { HttpClientModule } from "@angular/common/http";
 import { XEditorComponent } from "./system/cv-builder-wizard/cv-editor/x-editor/x-editor.component";
-import { CvPickSectionTypePopupComponent } from "./system/cv-builder-wizard/cv-editor/cv-section-list-editor/cv-pick-section-type-popup/cv-pick-section-type-popup.component";
+import { CVPickSectionTypePopupComponent } from "./system/cv-builder-wizard/cv-editor/cv-section-list-editor/cv-pick-section-type-popup/cv-pick-section-type-popup.component";
 import { SectionsState } from "./core/state/sections";
-import { CvSectionListEditorComponent } from "./system/cv-builder-wizard/cv-editor/cv-section-list-editor/cv-section-list-editor.component";
+import { CVSectionListEditorComponent } from "./system/cv-builder-wizard/cv-editor/cv-section-list-editor/cv-section-list-editor.component";
 import { XNameValueListComponent } from "./system/cv-builder-wizard/cv-editor/x-name-value-list/x-name-value-list.component";
 import { XColumnsComponent } from "./system/cv-builder-wizard/cv-editor/x-columns/x-columns.component";
 import { XSignatureComponent } from "./system/cv-builder-wizard/cv-editor/x-signature/x-signature.component";
-import { CvSidebarEditorComponent } from "./system/cv-builder-wizard/cv-editor/cv-sidebar-editor/cv-sidebar-editor.component";
+import { CVSidebarEditorComponent } from "./system/cv-builder-wizard/cv-editor/cv-sidebar-editor/cv-sidebar-editor.component";
 import { SidebarState } from "./core/state/sidebar";
-import { CvTuneUpComponent } from "./system/cv-builder-wizard/cv-editor/cv-tune-up/cv-tune-up.component";
-import { CvTuneUpPopupComponent } from "./system/cv-builder-wizard/cv-editor/cv-tune-up-popup/cv-tune-up-popup.component";
-import { CvStartComponent } from "./system/cv-builder-wizard/cv-start/cv-start.component";
+import { CVTuneUpComponent } from "./system/cv-builder-wizard/cv-editor/cv-tune-up/cv-tune-up.component";
+import { CVTuneUpPopupComponent } from "./system/cv-builder-wizard/cv-editor/cv-tune-up-popup/cv-tune-up-popup.component";
+import { CVStartComponent } from "./system/cv-builder-wizard/cv-start/cv-start.component";
 import { ConfigsState } from "./core/state/configs";
 import { ThemeState } from "./core/state/theme";
 import { XThemeComponent } from "./system/cv-builder-wizard/cv-editor/x-theme/x-theme.component";
 import { XThemeSelectorComponent } from "./system/cv-builder-wizard/cv-editor/x-theme-selector/x-theme-selector.component";
-import { CvMainContentTipsComponent } from "./system/cv-builder-wizard/cv-editor/cv-main-content-editor/cv-main-content-tips/cv-main-content-tips.component";
-import { CvTuneUpTipsComponent } from "./system/cv-builder-wizard/cv-editor/cv-tune-up/cv-tune-up-tips/cv-tune-up-tips.component";
-import { CvPrintTipsComponent } from "./system/cv-printer/cv-print-tips/cv-print-tips.component";
-import { CvPrintWarningComponent } from "./system/cv-printer/cv-print-warning/cv-print-warning.component";
+import { CVMainContentTipsComponent } from "./system/cv-builder-wizard/cv-editor/cv-main-content-editor/cv-main-content-tips/cv-main-content-tips.component";
+import { CVTuneUpTipsComponent } from "./system/cv-builder-wizard/cv-editor/cv-tune-up/cv-tune-up-tips/cv-tune-up-tips.component";
+import { CVPrintTipsComponent } from "./system/cv-printer/cv-print-tips/cv-print-tips.component";
+import { CVPrintWarningComponent } from "./system/cv-printer/cv-print-warning/cv-print-warning.component";
+import { ImageCropperModule } from "ngx-image-cropper";
+import { CvImageCropperComponent } from "./system/cv-builder-wizard/cv-editor/cv-image-cropper/cv-image-cropper.component";
 
 @NgModule({
     declarations: [
@@ -64,7 +66,7 @@ import { CvPrintWarningComponent } from "./system/cv-printer/cv-print-warning/cv
         CVBuilderWizardComponent,
         CVStepperComponent,
         CVHeadingEditorComponent,
-        CvViewerComponent,
+        CVViewerComponent,
         CVThemeEditorComponent,
         CVMainContentEditorComponent,
         CVContactsEditorComponent,
@@ -75,21 +77,22 @@ import { CvPrintWarningComponent } from "./system/cv-printer/cv-print-warning/cv
         XParagraphComponent,
         XListComponent,
         XEditorComponent,
-        CvPickSectionTypePopupComponent,
-        CvSectionListEditorComponent,
+        CVPickSectionTypePopupComponent,
+        CVSectionListEditorComponent,
         XNameValueListComponent,
         XColumnsComponent,
         XSignatureComponent,
-        CvSidebarEditorComponent,
-        CvTuneUpComponent,
-        CvTuneUpPopupComponent,
-        CvStartComponent,
+        CVSidebarEditorComponent,
+        CVTuneUpComponent,
+        CVTuneUpPopupComponent,
+        CVStartComponent,
         XThemeComponent,
         XThemeSelectorComponent,
-        CvMainContentTipsComponent,
-        CvTuneUpTipsComponent,
-        CvPrintTipsComponent,
-        CvPrintWarningComponent,
+        CVMainContentTipsComponent,
+        CVTuneUpTipsComponent,
+        CVPrintTipsComponent,
+        CVPrintWarningComponent,
+        CvImageCropperComponent,
     ],
     imports: [
         NgxsStoragePluginModule.forRoot({
@@ -105,6 +108,7 @@ import { CvPrintWarningComponent } from "./system/cv-printer/cv-print-warning/cv
         FormsModule,
         HttpClientModule,
         AngularEditorModule,
+        ImageCropperModule,
     ],
     providers: [],
     bootstrap: [AppComponent],

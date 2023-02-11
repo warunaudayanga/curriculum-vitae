@@ -1,7 +1,10 @@
 <div class="title" style="{{'font-size: ' + fontSize + 'px'}}">{{title | uppercase}}</div>
 <div *ngIf="includeImage && (image || editable)" class="image" [class.editable]="editable" (click)="editable ? file.click() : undefined"
      style="{{'background-image: url(' + (image || (editable ? 'assets/images/avatar.jpeg': '')) + '); width: ' + imageWidth + 'px; height: ' + imageHeight + 'px;'}}">
-    <i *ngIf="editable" class="bi bi-camera-fill"></i>
+    <i *ngIf="editable && !image" class="bi bi-camera-fill"></i>
     <input #file type="file" class="d-none" accept="image/*" (change)="setImage($event)">
+    <div *ngIf="image && editable" class="close btn btn-danger" (click)="removeImage($event)">
+        <i class="bi bi-x"></i>
+    </div>
 </div>
 <app-top-shape></app-top-shape>

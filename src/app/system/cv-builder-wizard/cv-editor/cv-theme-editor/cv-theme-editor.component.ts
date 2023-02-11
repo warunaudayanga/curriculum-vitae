@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from "@angular/core";
 import { CVData, Section } from "../../../../core/interfaces/system.interfaces";
-import { CvViewerComponent } from "../../cv-viewer/cv-viewer.component";
+import { CVViewerComponent } from "../../cv-viewer/cv-viewer.component";
 import { fitTo } from "../../../../core/utils/utils";
 import { SectionType } from "../../../../core/enums/section-type.enum";
 import { Globals } from "../../../configs/globals";
@@ -11,7 +11,7 @@ import { Globals } from "../../../configs/globals";
     styleUrls: ["./cv-theme-editor.component.scss"],
 })
 export class CVThemeEditorComponent implements AfterViewInit {
-    @ViewChild(CvViewerComponent, { read: ElementRef }) cv!: ElementRef<HTMLDivElement>;
+    @ViewChild(CVViewerComponent, { read: ElementRef }) cv!: ElementRef<HTMLDivElement>;
 
     @ViewChild("cvContainer") cvContainer!: ElementRef<HTMLDivElement>;
 

@@ -17,7 +17,7 @@ import SetSections = Sections.SetSections;
     templateUrl: "./cv-start.component.html",
     styleUrls: ["./cv-start.component.scss"],
 })
-export class CvStartComponent {
+export class CVStartComponent {
     @Output() onImport: EventEmitter<void> = new EventEmitter<void>();
 
     constructor(private store: Store) {}

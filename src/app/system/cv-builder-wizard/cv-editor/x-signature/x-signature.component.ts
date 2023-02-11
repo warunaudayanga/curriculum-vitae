@@ -59,6 +59,11 @@ export class XSignatureComponent implements AfterViewInit {
     async setSign(e: Event): Promise<void> {
         const sign = (e.target as HTMLInputElement).files?.[0];
         if (sign?.type.match(/image\/*/)) {
+            if (sign.size > 1000000) {
+                // eslint-disable-next-line no-alert
+                alert("The signature image is too large. Please upload an image less than 1MB.");
+                return;
+            }
             this.sign = await new Promise((resolve, reject) => {
                 const reader = new FileReader();
                 reader.onload = (event: any): void => {

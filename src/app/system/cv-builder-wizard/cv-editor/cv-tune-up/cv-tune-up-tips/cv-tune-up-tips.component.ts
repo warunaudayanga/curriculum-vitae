@@ -5,4 +5,4 @@ import { Component } from "@angular/core";
     templateUrl: "./cv-tune-up-tips.component.html",
     styleUrls: ["./cv-tune-up-tips.component.scss"],
 })
-export class CvTuneUpTipsComponent {}
+export class CVTuneUpTipsComponent {}

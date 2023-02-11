@@ -8,7 +8,7 @@ import { v4 as uuid } from "uuid";
     templateUrl: "./cv-section-list-editor.component.html",
     styleUrls: ["./cv-section-list-editor.component.scss"],
 })
-export class CvSectionListEditorComponent implements OnInit {
+export class CVSectionListEditorComponent implements OnInit {
     @Input() sections: Section[] = [];
 
     @Input() preDefined?: Section[];
@@ -41,6 +41,14 @@ export class CvSectionListEditorComponent implements OnInit {
             });
         } else {
             const section: Section = { id: uuid(), type: typeOrPreDefined, title: "" };
+            if (
+                typeOrPreDefined === SectionType.SIGNATURE &&
+                this.sections.find(s => s.type === SectionType.SIGNATURE)
+            ) {
+                // eslint-disable-next-line no-alert
+                alert("You can only have one signature section");
+                return;
+            }
             if (typeOrPreDefined === SectionType.LIST) {
                 section.list = [{ id: uuid(), title: "" }];
             }

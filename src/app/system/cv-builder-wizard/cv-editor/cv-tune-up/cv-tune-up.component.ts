@@ -10,7 +10,7 @@ let tipsShown: boolean = false;
     templateUrl: "./cv-tune-up.component.html",
     styleUrls: ["./cv-tune-up.component.scss"],
 })
-export class CvTuneUpComponent implements AfterViewInit {
+export class CVTuneUpComponent implements AfterViewInit {
     cvData?: CVData;
 
     reloading: boolean = false;

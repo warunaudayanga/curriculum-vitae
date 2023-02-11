@@ -20,7 +20,9 @@ export class CVHeadingComponent implements AfterViewInit {
 
     @Input() imageHeight: number = 150;
 
-    @Output() imageSelect: EventEmitter<string> = new EventEmitter<string>();
+    @Output() imageSelect: EventEmitter<File> = new EventEmitter<File>();
+
+    @Output() imageRemove: EventEmitter<void> = new EventEmitter<void>();
 
     constructor(private elementRef: ElementRef) {}
 
@@ -28,20 +30,26 @@ export class CVHeadingComponent implements AfterViewInit {
         if (!this.includeImage || !this.image) this.elementRef.nativeElement.classList.add("no-image");
     }
 
-    async setImage(e: Event): Promise<void> {
-        const imageFile = (e.target as HTMLInputElement).files?.[0];
+    setImage(event: Event): void {
+        const imageFile = (event.target as HTMLInputElement).files?.[0];
         if (imageFile?.type.match(/image\/*/)) {
-            const image = await new Promise((resolve, reject) => {
-                const reader = new FileReader();
-                reader.onload = (event: any): void => {
-                    resolve(event.target.result);
-                };
-                reader.onerror = (error): void => {
-                    reject(error);
-                };
-                reader.readAsDataURL(imageFile);
-            });
-            this.imageSelect.emit(image as string);
+            if (imageFile.size > 1000000) {
+                // eslint-disable-next-line no-alert
+                alert("The image is too large. Please upload an image less than 1MB.");
+                return;
+            }
+            this.imageSelect.emit(imageFile);
+            (event.target as HTMLInputElement).value = "";
+        }
+    }
+
+    // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+    removeImage(e: MouseEvent) {
+        e.stopPropagation();
+        // eslint-disable-next-line no-alert
+        if (confirm("Are you sure you want to remove the signature?")) {
+            this.image = "";
+            this.imageRemove.emit();
         }
     }
 }

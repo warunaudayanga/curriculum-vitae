@@ -7,7 +7,7 @@ import { Globals } from "../../configs/globals";
     templateUrl: "./cv-viewer.component.html",
     styleUrls: ["./cv-viewer.component.scss"],
 })
-export class CvViewerComponent {
+export class CVViewerComponent {
     @ViewChildren("page") pages!: QueryList<ElementRef<HTMLDivElement>>;
 
     @Input() cvData?: CVData;

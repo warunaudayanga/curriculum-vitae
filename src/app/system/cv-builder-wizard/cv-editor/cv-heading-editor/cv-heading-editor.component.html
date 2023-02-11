@@ -8,7 +8,8 @@
             [image]="header.image"
             [imageWidth]="configs.imageWidth"
             [imageHeight]="configs.imageHeight"
-            (imageSelect)="setImage($event)"
+            (imageSelect)="onImageSelect($event)"
+            (imageRemove)="setImage('')"
         ></app-cv-heading>
     </div>
     <div class="column-2 p-3 controls form-control">
@@ -99,3 +100,5 @@
         </div>
     </div>
 </div>
+
+<app-cv-image-cropper [aspectRatio]="configs.imageWidth / configs.imageHeight" [imageFile]="imageFile" (onCrop)="setImage($event)"></app-cv-image-cropper>

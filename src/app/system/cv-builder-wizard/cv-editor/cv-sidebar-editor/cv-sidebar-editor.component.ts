@@ -11,7 +11,7 @@ import { ConfigsStateModel } from "../../../../core/state/configs";
     templateUrl: "./cv-sidebar-editor.component.html",
     styleUrls: ["./cv-sidebar-editor.component.scss"],
 })
-export class CvSidebarEditorComponent {
+export class CVSidebarEditorComponent {
     sections: Section[] = [];
 
     preDefinedSections?: Section[];

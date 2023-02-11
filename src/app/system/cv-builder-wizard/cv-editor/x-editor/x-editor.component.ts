@@ -83,6 +83,17 @@ export class XEditorComponent implements AfterViewInit {
                 this.htmlChange.emit(this.html);
             }
         });
+        this.editor.textArea.nativeElement.addEventListener("paste", (e: ClipboardEvent) => {
+            // noinspection JSDeprecatedSymbols
+            if (window.document.execCommand) {
+                e.preventDefault();
+                const text = e.clipboardData?.getData("text/plain").replace(/\r?\n|\r|\t/g, " ");
+                if (text) {
+                    // noinspection JSDeprecatedSymbols
+                    window.document.execCommand("insertText", false, text);
+                }
+            }
+        });
     }
 
     focus(): void {

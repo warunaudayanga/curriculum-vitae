@@ -25,6 +25,8 @@ export class CVHeadingEditorComponent {
 
     limits: Limits<Changeable>;
 
+    imageFile?: File;
+
     constructor(private store: Store) {
         this.header = this.store.selectSnapshot(state => state.header);
         this.configs = this.store.selectSnapshot(state => state.configs);
@@ -59,16 +61,18 @@ export class CVHeadingEditorComponent {
         this.store.dispatch(new PatchHeaderInfo({ includeImage: this.header.includeImage }));
     }
 
-    setImage(image: string): void {
-        this.header.image = image;
+    setImage(base64Image: string): void {
+        this.header.image = base64Image;
         this.store.dispatch(new PatchHeaderInfo({ image: this.header.image }));
     }
 
     setImageWidth(): void {
+        this.header.image = "";
         this.store.dispatch(new PatchConfig({ imageWidth: this.configs.imageWidth }));
     }
 
     setImageHeight(): void {
+        this.header.image = "";
         this.store.dispatch(new PatchConfig({ imageHeight: this.configs.imageHeight }));
     }
 
@@ -101,5 +105,9 @@ export class CVHeadingEditorComponent {
     mouseUp(): void {
         clearInterval(this.waitTimer);
         clearInterval(this.repeatTimer);
+    }
+
+    onImageSelect(imageFile: File): void {
+        this.imageFile = imageFile;
     }
 }

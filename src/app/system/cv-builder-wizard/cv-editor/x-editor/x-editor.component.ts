@@ -75,14 +75,14 @@ export class XEditorComponent implements AfterViewInit {
                 }
             });
         });
-        this.editor.textArea.nativeElement.addEventListener("keydown", (e: KeyboardEvent) => {
-            if (e.key === "Enter" && !this.multiLine) {
-                e.preventDefault();
-                this.blur.emit();
-                this.html = trim(this.html || "");
-                this.htmlChange.emit(this.html);
-            }
-        });
+        // this.editor.textArea.nativeElement.addEventListener("keydown", (e: KeyboardEvent) => {
+        //     if (e.key === "Enter" && !this.multiLine) {
+        //         e.preventDefault();
+        //         this.blur.emit();
+        //         this.html = trim(this.html || "");
+        //         this.htmlChange.emit(this.html);
+        //     }
+        // });
         this.editor.textArea.nativeElement.addEventListener("paste", (e: ClipboardEvent) => {
             // noinspection JSDeprecatedSymbols
             if (window.document.execCommand) {

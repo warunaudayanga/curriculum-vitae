@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, ViewChild } from "@angular/core";
 import { Signature } from "../../../../core/interfaces/system.interfaces";
+import { Modal } from "bootstrap";
 
 @Component({
     selector: "app-x-signature",
@@ -25,7 +26,12 @@ export class XSignatureComponent implements AfterViewInit {
 
     editDate: boolean = false;
 
+    alertModal?: Modal;
+
+    alertMessage?: string;
+
     ngAfterViewInit(): void {
+        this.alertModal = new Modal("#signatureAlertModal");
         setTimeout(() => {
             this.name = this.signature?.name || "";
             this.sign = this.signature?.sign || "";
@@ -60,8 +66,8 @@ export class XSignatureComponent implements AfterViewInit {
         const sign = (e.target as HTMLInputElement).files?.[0];
         if (sign?.type.match(/image\/*/)) {
             if (sign.size > 1000000) {
-                // eslint-disable-next-line no-alert
-                alert("The signature image is too large. Please upload an image less than 1MB.");
+                this.alertMessage = "The signature image is too large. Please upload an image less than 1MB.";
+                this.alertModal?.show();
                 return;
             }
             this.sign = await new Promise((resolve, reject) => {

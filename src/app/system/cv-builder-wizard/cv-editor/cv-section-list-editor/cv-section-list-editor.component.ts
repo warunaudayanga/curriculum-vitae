@@ -1,14 +1,15 @@
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { SectionType } from "../../../../core/enums/section-type.enum";
 import { PreDefinedSection, Section } from "../../../../core/interfaces/system.interfaces";
 import { v4 as uuid } from "uuid";
+import { Modal } from "bootstrap";
 
 @Component({
     selector: "app-cv-section-list-editor",
     templateUrl: "./cv-section-list-editor.component.html",
     styleUrls: ["./cv-section-list-editor.component.scss"],
 })
-export class CVSectionListEditorComponent implements OnInit {
+export class CVSectionListEditorComponent implements OnInit, AfterViewInit {
     @Input() sections: Section[] = [];
 
     @Input() preDefined?: Section[];
@@ -19,6 +20,10 @@ export class CVSectionListEditorComponent implements OnInit {
 
     sectionTypes: SectionType[] = Object.values(SectionType);
 
+    alertModal?: Modal;
+
+    alertMessage?: string;
+
     constructor(private elementRef: ElementRef) {}
 
     ngOnInit(): void {
@@ -27,6 +32,10 @@ export class CVSectionListEditorComponent implements OnInit {
                 return ![SectionType.COLUMNS, SectionType.SIGNATURE].includes(type);
             });
         }
+    }
+
+    ngAfterViewInit(): void {
+        this.alertModal = new Modal("#sectionEditorAlertModal");
     }
 
     getPreDefinedTypes(): PreDefinedSection[] {
@@ -45,8 +54,8 @@ export class CVSectionListEditorComponent implements OnInit {
                 typeOrPreDefined === SectionType.SIGNATURE &&
                 this.sections.find(s => s.type === SectionType.SIGNATURE)
             ) {
-                // eslint-disable-next-line no-alert
-                alert("You can only have one signature section");
+                this.alertMessage = "You can only have one signature section";
+                this.alertModal?.show();
                 return;
             }
             if (typeOrPreDefined === SectionType.LIST) {

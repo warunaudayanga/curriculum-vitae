@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { v4 as uuid } from "uuid";
-import { THEME } from "../../../../core/interfaces/system.interfaces";
+import { ThemeStateModel } from "../../../../core/state/theme";
 
 @Component({
     selector: "app-x-theme",
@@ -10,7 +10,7 @@ import { THEME } from "../../../../core/interfaces/system.interfaces";
 export class XThemeComponent {
     @Input() active: boolean = false;
 
-    @Input() theme!: THEME;
+    @Input() theme!: ThemeStateModel;
 
     @Output() onSelect: EventEmitter<void> = new EventEmitter<void>();
 

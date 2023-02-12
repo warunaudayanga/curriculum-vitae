@@ -19,7 +19,7 @@ export class CVMainDetailsComponent implements OnInit, AfterViewInit {
 
     generatedSections: Section[] = [];
 
-    SECTION_SPACE = Globals.DEFAULTS.CONFIGS.SECTION_SPACE;
+    SECTION_SPACE = Globals.DEFAULTS.configs.sectionSpace;
 
     constructor(private elementRef: ElementRef<HTMLDivElement>) {}
 

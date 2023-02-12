@@ -1,51 +1,51 @@
 <ng-container *ngIf="section">
     <div class="title"
-         style="{{'font-size: ' + (configs?.sectionTitleFontSize ?? CONFIGS.SECTION_TITLE_FONT_SIZE) + 'px'}}">
+         style="{{'font-size: ' + (configs?.sectionTitleFontSize ?? CONFIGS.sectionTitleFontSize) + 'px'}}">
         {{trimTitle(section.title) | uppercase}}
     </div>
     <div class="hr"
-         style="{{'bottom: ' + (CONFIGS.SECTION_SEPARATOR_SPACE_MAX - (configs?.sectionSeparatorSpace ?? CONFIGS.SECTION_SEPARATOR_SPACE)) + 'px;'}}"></div>
+         style="{{'bottom: ' + (CONFIGS.sectionSeparatorSpaceMax - (configs?.sectionSeparatorSpace ?? CONFIGS.sectionSeparatorSpace)) + 'px;'}}"></div>
     <div *ngIf="section.type === SectionType.PARAGRAPH" class="paragraph"
          style="{{
-            'font-size: ' + (configs?.sectionTextFontSize ?? CONFIGS.SECTION_TEXT_FONT_SIZE) + 'px; ' +
-            'line-height: ' + (configs?.sectionTextLineHeight ?? CONFIGS.SECTION_TEXT_LINE_HEIGHT) + 'px;' +
-            'padding-top: ' + (configs?.sectionItemSpace ?? CONFIGS.SECTION_ITEM_SPACE) + 'px;'
+            'font-size: ' + (configs?.sectionTextFontSize ?? CONFIGS.sectionTextFontSize) + 'px; ' +
+            'line-height: ' + (configs?.sectionTextLineHeight ?? CONFIGS.sectionTextLineHeight) + 'px;' +
+            'padding-top: ' + (configs?.sectionItemSpace ?? CONFIGS.sectionItemSpace) + 'px;'
          }}"
          [innerHTML]="trim(section.paragraph, true)"></div>
     <div *ngIf="section.type === SectionType.LIST" class="list"
          style="{{
-            'font-size: ' + (configs?.sectionTextFontSize ?? CONFIGS.SECTION_TEXT_FONT_SIZE) + 'px; ' +
-            'line-height: ' + (configs?.sectionTextLineHeight ?? CONFIGS.SECTION_TEXT_LINE_HEIGHT) + 'px;' +
-            'padding-top: ' + (configs?.sectionItemSpace ?? CONFIGS.SECTION_ITEM_SPACE) + 'px;'
+            'font-size: ' + (configs?.sectionTextFontSize ?? CONFIGS.sectionTextFontSize) + 'px; ' +
+            'line-height: ' + (configs?.sectionTextLineHeight ?? CONFIGS.sectionTextLineHeight) + 'px;' +
+            'padding-top: ' + (configs?.sectionItemSpace ?? CONFIGS.sectionItemSpace) + 'px;'
          }}">
         <ul>
             <ng-container *ngFor="let item of section.list">
                 <li [innerHTML]="trim(item.title, true)"
-                    style="{{'padding-top: ' + (configs?.sectionListItemSpace ?? CONFIGS.SECTION_LIST_ITEM_SPACE) + 'px;'}}"></li>
+                    style="{{'padding-top: ' + (configs?.sectionListItemSpace ?? CONFIGS.sectionListItemSpace) + 'px;'}}"></li>
                 <ul *ngIf="item.list"
-                    style="{{'padding-top: ' + (configs?.sectionListItemSpace ?? CONFIGS.SECTION_LIST_ITEM_SPACE) + 'px;'}}">
+                    style="{{'padding-top: ' + (configs?.sectionListItemSpace ?? CONFIGS.sectionListItemSpace) + 'px;'}}">
                     <li *ngFor="let subItem of item.list" [innerHTML]="trim(subItem.title, true)"
-                        style="{{'padding-top: ' + (configs?.sectionListItemSpace ?? CONFIGS.SECTION_LIST_ITEM_SPACE) + 'px;'}}"></li>
+                        style="{{'padding-top: ' + (configs?.sectionListItemSpace ?? CONFIGS.sectionListItemSpace) + 'px;'}}"></li>
                 </ul>
             </ng-container>
         </ul>
     </div>
     <div *ngIf="section.type === SectionType.LIST_WITH_PARAGRAPH" class="list-with-paragraph"
          style="{{
-            'font-size: ' + (configs?.sectionTextFontSize ?? CONFIGS.SECTION_TEXT_FONT_SIZE) + 'px; ' +
-            'line-height: ' + (configs?.sectionTextLineHeight ?? CONFIGS.SECTION_TEXT_LINE_HEIGHT) + 'px;' +
-            'padding-top: ' + (configs?.sectionItemSpace ?? CONFIGS.SECTION_ITEM_SPACE) + 'px;'
+            'font-size: ' + (configs?.sectionTextFontSize ?? CONFIGS.sectionTextFontSize) + 'px; ' +
+            'line-height: ' + (configs?.sectionTextLineHeight ?? CONFIGS.sectionTextLineHeight) + 'px;' +
+            'padding-top: ' + (configs?.sectionItemSpace ?? CONFIGS.sectionItemSpace) + 'px;'
          }}">
         <div class="paragraph" [innerHTML]="trim(section.listWithParagraph?.title, true)"></div>
         <div class="list" *ngIf="section.listWithParagraph?.list">
-            <ul style="{{'padding-top: ' + (configs?.sectionListItemSpace ?? CONFIGS.SECTION_LIST_ITEM_SPACE) + 'px;'}}">
+            <ul style="{{'padding-top: ' + (configs?.sectionListItemSpace ?? CONFIGS.sectionListItemSpace) + 'px;'}}">
                 <ng-container *ngFor="let item of section.listWithParagraph?.list">
                     <li [innerHTML]="trim(item.title, true)"
-                        style="{{'padding-top: ' + (configs?.sectionListItemSpace ?? CONFIGS.SECTION_LIST_ITEM_SPACE) + 'px;'}}"></li>
+                        style="{{'padding-top: ' + (configs?.sectionListItemSpace ?? CONFIGS.sectionListItemSpace) + 'px;'}}"></li>
                     <ul *ngIf="item.list"
-                        style="{{'padding-top: ' + (configs?.sectionListItemSpace ?? CONFIGS.SECTION_LIST_ITEM_SPACE) + 'px;'}}">
+                        style="{{'padding-top: ' + (configs?.sectionListItemSpace ?? CONFIGS.sectionListItemSpace) + 'px;'}}">
                         <li *ngFor="let subItem of item.list" [innerHTML]="trim(subItem.title, true)"
-                            style="{{'padding-top: ' + (configs?.sectionListItemSpace ?? CONFIGS.SECTION_LIST_ITEM_SPACE) + 'px;'}}"></li>
+                            style="{{'padding-top: ' + (configs?.sectionListItemSpace ?? CONFIGS.sectionListItemSpace) + 'px;'}}"></li>
                     </ul>
                 </ng-container>
             </ul>
@@ -53,38 +53,38 @@
     </div>
     <div *ngIf="section.type === SectionType.NAME_VALUE_LIST" class="key-value-list"
          style="{{
-            'font-size: ' + (configs?.sectionTextFontSize ?? CONFIGS.SECTION_TEXT_FONT_SIZE) + 'px;' +
-            'line-height: ' + (configs?.sectionTextLineHeight ?? CONFIGS.SECTION_TEXT_LINE_HEIGHT) + 'px;' +
-            'padding-top: ' + (configs?.sectionItemSpace ?? CONFIGS.SECTION_ITEM_SPACE) + 'px;'
+            'font-size: ' + (configs?.sectionTextFontSize ?? CONFIGS.sectionTextFontSize) + 'px;' +
+            'line-height: ' + (configs?.sectionTextLineHeight ?? CONFIGS.sectionTextLineHeight) + 'px;' +
+            'padding-top: ' + (configs?.sectionItemSpace ?? CONFIGS.sectionItemSpace) + 'px;'
          }}">
         <table class="w-100">
             <tr *ngFor="let item of section.keyValueList">
                 <td class="key"
-                    style="{{'padding-top: ' + (configs?.sectionListItemSpace ?? CONFIGS.SECTION_LIST_ITEM_SPACE) + 'px;'}}">
+                    style="{{'padding-top: ' + (configs?.sectionListItemSpace ?? CONFIGS.sectionListItemSpace) + 'px;'}}">
                     <span class="bullet"
                           style="{{
-                          'font-size: ' + (configs?.sectionTextFontSize ?? CONFIGS.SECTION_TEXT_FONT_SIZE) + 'px;' +
-                          'line-height: ' + (configs?.sectionTextLineHeight ?? CONFIGS.SECTION_TEXT_LINE_HEIGHT) + 'px;'
+                          'font-size: ' + (configs?.sectionTextFontSize ?? CONFIGS.sectionTextFontSize) + 'px;' +
+                          'line-height: ' + (configs?.sectionTextLineHeight ?? CONFIGS.sectionTextLineHeight) + 'px;'
                           }}">&bull;</span><span
                     [innerHTML]="trim(item.title, true)"></span>
                 </td>
                 <td class="separator"
-                    style="{{'padding-top: ' + (configs?.sectionListItemSpace ?? CONFIGS.SECTION_LIST_ITEM_SPACE) + 'px;'}}">
+                    style="{{'padding-top: ' + (configs?.sectionListItemSpace ?? CONFIGS.sectionListItemSpace) + 'px;'}}">
                     :
                 </td>
                 <td class="value" [innerHTML]="trim(item.value, true)"
-                    style="{{'padding-top: ' + (configs?.sectionListItemSpace ?? CONFIGS.SECTION_LIST_ITEM_SPACE) + 'px;'}}"></td>
+                    style="{{'padding-top: ' + (configs?.sectionListItemSpace ?? CONFIGS.sectionListItemSpace) + 'px;'}}"></td>
             </tr>
         </table>
     </div>
     <div *ngIf="section.type === SectionType.COLUMNS" class="column"
          style="{{
-            'font-size: ' + (configs?.sectionTextFontSize ?? CONFIGS.SECTION_TEXT_FONT_SIZE) + 'px; ' +
-            'line-height: ' + (configs?.sectionTextLineHeight ?? CONFIGS.SECTION_TEXT_LINE_HEIGHT) + 'px;' +
-            'padding-top: ' + (configs?.sectionItemSpace ?? CONFIGS.SECTION_ITEM_SPACE) + 'px;'
+            'font-size: ' + (configs?.sectionTextFontSize ?? CONFIGS.sectionTextFontSize) + 'px; ' +
+            'line-height: ' + (configs?.sectionTextLineHeight ?? CONFIGS.sectionTextLineHeight) + 'px;' +
+            'padding-top: ' + (configs?.sectionItemSpace ?? CONFIGS.sectionItemSpace) + 'px;'
          }}">
         <div class="d-flex"
-             style="{{'padding-top: ' + (configs?.sectionListItemSpace ?? CONFIGS.SECTION_LIST_ITEM_SPACE) + 'px;'}}">
+             style="{{'padding-top: ' + (configs?.sectionListItemSpace ?? CONFIGS.sectionListItemSpace) + 'px;'}}">
             <div class="w-50">
                 <div *ngFor="let line of section.columns?.[0]?.lines; let i = index" [innerHTML]="trim(line, !i)"></div>
             </div>
@@ -95,9 +95,9 @@
     </div>
     <div *ngIf="section.type === SectionType.SIGNATURE" class="signature"
          style="{{
-            'font-size: ' + (configs?.sectionTextFontSize ?? CONFIGS.SECTION_TEXT_FONT_SIZE) + 'px; ' +
-            'line-height: ' + (configs?.sectionTextLineHeight ?? CONFIGS.SECTION_TEXT_LINE_HEIGHT) + 'px;' +
-            'padding-top: ' + (configs?.sectionItemSpace ?? CONFIGS.SECTION_ITEM_SPACE) + 'px;'
+            'font-size: ' + (configs?.sectionTextFontSize ?? CONFIGS.sectionTextFontSize) + 'px; ' +
+            'line-height: ' + (configs?.sectionTextLineHeight ?? CONFIGS.sectionTextLineHeight) + 'px;' +
+            'padding-top: ' + (configs?.sectionItemSpace ?? CONFIGS.sectionItemSpace) + 'px;'
          }}">
         <div class="d-flex">
             <table class="w-100 text-center" [class.mt-4]="!section.signature?.sign">

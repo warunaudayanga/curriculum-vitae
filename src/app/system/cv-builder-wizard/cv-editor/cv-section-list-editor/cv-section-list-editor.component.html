@@ -19,3 +19,20 @@
 ></app-cv-pick-section-type-popup>
 
 <button class="btn btn-lg btn-primary btn-floating btn-add" (click)="popup.open()"><i class="bi bi-plus-lg"></i></button>
+
+<div class="modal fade" id="sectionEditorAlertModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5">Alert</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div>{{alertMessage}}</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary px-4" data-bs-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>

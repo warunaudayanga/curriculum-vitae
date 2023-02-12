@@ -36,83 +36,83 @@ export class CVTuneUpPopupComponent {
 
     constructor(private elementRef: ElementRef<HTMLElement>, private store: Store) {
         this.configs = this.store.selectSnapshot(state => state.configs);
-        Object.keys(Globals.DEFAULTS.CONFIGS).forEach(key => {
+        Object.keys(Globals.DEFAULTS.configs).forEach(key => {
             if (!(key.endsWith("Min") || key.endsWith("Max"))) {
-                (this.configs as any)[toCamelCase(key)] ??= (Globals.DEFAULTS.CONFIGS as any)[key];
+                (this.configs as any)[toCamelCase(key)] ??= (Globals.DEFAULTS.configs as any)[key];
             }
         });
         this.limits = {
             mainContentPadding: {
-                min: Globals.DEFAULTS.CONFIGS.MAIN_CONTENT_PADDING_MIN,
-                max: Globals.DEFAULTS.CONFIGS.MAIN_CONTENT_PADDING_MAX,
+                min: Globals.DEFAULTS.configs.mainContentPaddingMin,
+                max: Globals.DEFAULTS.configs.mainContentPaddingMax,
             },
             sidebarPadding: {
-                min: Globals.DEFAULTS.CONFIGS.SIDEBAR_PADDING_MIN,
-                max: Globals.DEFAULTS.CONFIGS.SIDEBAR_PADDING_MAX,
+                min: Globals.DEFAULTS.configs.sidebarPaddingMin,
+                max: Globals.DEFAULTS.configs.sidebarPaddingMax,
             },
             sidebarSpace: {
-                min: Globals.DEFAULTS.CONFIGS.SIDEBAR_SPACE_MIN,
-                max: Globals.DEFAULTS.CONFIGS.SIDEBAR_SPACE_MAX,
+                min: Globals.DEFAULTS.configs.sidebarSpaceMin,
+                max: Globals.DEFAULTS.configs.sidebarSpaceMax,
             },
             headerFontSize: {
-                min: Globals.DEFAULTS.CONFIGS.HEADER_FONT_SIZE_MIN,
-                max: Globals.DEFAULTS.CONFIGS.HEADER_FONT_SIZE_MAX,
+                min: Globals.DEFAULTS.configs.headerFontSizeMin,
+                max: Globals.DEFAULTS.configs.headerFontSizeMax,
             },
             imageWidth: {
-                min: Globals.DEFAULTS.CONFIGS.IMAGE_WIDTH_MIN,
-                max: Globals.DEFAULTS.CONFIGS.IMAGE_WIDTH_MAX,
+                min: Globals.DEFAULTS.configs.imageWidthMin,
+                max: Globals.DEFAULTS.configs.imageWidthMax,
             },
             imageHeight: {
-                min: Globals.DEFAULTS.CONFIGS.IMAGE_HEIGHT_MIN,
-                max: Globals.DEFAULTS.CONFIGS.IMAGE_HEIGHT_MAX,
+                min: Globals.DEFAULTS.configs.imageHeightMin,
+                max: Globals.DEFAULTS.configs.imageHeightMax,
             },
             contactsFontSize: {
-                min: Globals.DEFAULTS.CONFIGS.CONTACTS_FONT_SIZE_MIN,
-                max: Globals.DEFAULTS.CONFIGS.CONTACTS_FONT_SIZE_MAX,
+                min: Globals.DEFAULTS.configs.contactsFontSizeMin,
+                max: Globals.DEFAULTS.configs.contactsFontSizeMax,
             },
             contactsIconSize: {
-                min: Globals.DEFAULTS.CONFIGS.CONTACTS_ICON_SIZE_MIN,
-                max: Globals.DEFAULTS.CONFIGS.CONTACTS_ICON_SIZE_MAX,
+                min: Globals.DEFAULTS.configs.contactsIconSizeMin,
+                max: Globals.DEFAULTS.configs.contactsIconSizeMax,
             },
             contactsSpace: {
-                min: Globals.DEFAULTS.CONFIGS.CONTACTS_SPACE_MIN,
-                max: Globals.DEFAULTS.CONFIGS.CONTACTS_SPACE_MAX,
+                min: Globals.DEFAULTS.configs.contactsSpaceMin,
+                max: Globals.DEFAULTS.configs.contactsSpaceMax,
             },
             contactsListSpace: {
-                min: Globals.DEFAULTS.CONFIGS.CONTACTS_LIST_SPACE_MIN,
-                max: Globals.DEFAULTS.CONFIGS.CONTACTS_LIST_SPACE_MAX,
+                min: Globals.DEFAULTS.configs.contactsListSpaceMin,
+                max: Globals.DEFAULTS.configs.contactsListSpaceMax,
             },
             sectionTitleFontSize: {
-                min: Globals.DEFAULTS.CONFIGS.SECTION_TITLE_FONT_SIZE_MIN,
-                max: Globals.DEFAULTS.CONFIGS.SECTION_TITLE_FONT_SIZE_MAX,
+                min: Globals.DEFAULTS.configs.sectionTitleFontSizeMin,
+                max: Globals.DEFAULTS.configs.sectionTitleFontSizeMax,
             },
             sectionTextFontSize: {
-                min: Globals.DEFAULTS.CONFIGS.SECTION_TEXT_FONT_SIZE_MIN,
-                max: Globals.DEFAULTS.CONFIGS.SECTION_TEXT_FONT_SIZE_MAX,
+                min: Globals.DEFAULTS.configs.sectionTextFontSizeMin,
+                max: Globals.DEFAULTS.configs.sectionTextFontSizeMax,
             },
             sectionSubTextFontSize: {
-                min: Globals.DEFAULTS.CONFIGS.SECTION_SUB_TEXT_FONT_SIZE_MIN,
-                max: Globals.DEFAULTS.CONFIGS.SECTION_SUB_TEXT_FONT_SIZE_MAX,
+                min: Globals.DEFAULTS.configs.sectionSubTextFontSizeMin,
+                max: Globals.DEFAULTS.configs.sectionSubTextFontSizeMax,
             },
             sectionTextLineHeight: {
-                min: Globals.DEFAULTS.CONFIGS.SECTION_TEXT_LINE_HEIGHT_MIN,
-                max: Globals.DEFAULTS.CONFIGS.SECTION_TEXT_LINE_HEIGHT_MAX,
+                min: Globals.DEFAULTS.configs.sectionTextLineHeightMin,
+                max: Globals.DEFAULTS.configs.sectionTextLineHeightMax,
             },
             sectionSpace: {
-                min: Globals.DEFAULTS.CONFIGS.SECTION_SPACE_MIN,
-                max: Globals.DEFAULTS.CONFIGS.SECTION_SPACE_MAX,
+                min: Globals.DEFAULTS.configs.sectionSpaceMin,
+                max: Globals.DEFAULTS.configs.sectionSpaceMax,
             },
             sectionItemSpace: {
-                min: Globals.DEFAULTS.CONFIGS.SECTION_ITEM_SPACE_MIN,
-                max: Globals.DEFAULTS.CONFIGS.SECTION_ITEM_SPACE_MAX,
+                min: Globals.DEFAULTS.configs.sectionItemSpaceMin,
+                max: Globals.DEFAULTS.configs.sectionItemSpaceMax,
             },
             sectionSeparatorSpace: {
-                min: Globals.DEFAULTS.CONFIGS.SECTION_SEPARATOR_SPACE_MIN,
-                max: Globals.DEFAULTS.CONFIGS.SECTION_SEPARATOR_SPACE_MAX,
+                min: Globals.DEFAULTS.configs.sectionSeparatorSpaceMin,
+                max: Globals.DEFAULTS.configs.sectionSeparatorSpaceMax,
             },
             sectionListItemSpace: {
-                min: Globals.DEFAULTS.CONFIGS.SECTION_LIST_ITEM_SPACE_MIN,
-                max: Globals.DEFAULTS.CONFIGS.SECTION_LIST_ITEM_SPACE_MAX,
+                min: Globals.DEFAULTS.configs.sectionListItemSpaceMin,
+                max: Globals.DEFAULTS.configs.sectionListItemSpaceMax,
             },
         };
     }

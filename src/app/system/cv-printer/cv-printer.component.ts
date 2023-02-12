@@ -5,6 +5,7 @@ import { Router } from "@angular/router";
 import { Modal } from "bootstrap";
 import { Settings, SettingsStateModel } from "../../core/state/settings";
 import PatchSettings = Settings.PatchSettings;
+import { AppService } from "../../app.service";
 
 @Component({
     selector: "app-cv-printer",
@@ -18,7 +19,7 @@ export class CVPrinterComponent implements AfterViewInit {
 
     warningModel?: Modal;
 
-    constructor(private store: Store, private router: Router) {
+    constructor(private store: Store, private router: Router, private app: AppService) {
         this.cvData = {
             header: this.store.selectSnapshot(state => state.header),
             contacts: this.store.selectSnapshot(state => state.contacts),
@@ -54,15 +55,6 @@ export class CVPrinterComponent implements AfterViewInit {
     }
 
     export(): void {
-        this.cvData!.importValidation = "4274";
-        let sJson = JSON.stringify(this.cvData);
-        let element = document.createElement("a");
-        const name = (this.cvData?.header?.title.replace(/\W/g, "") ?? "").toLocaleLowerCase() + "-cv.json";
-        element.setAttribute("href", "data:text/json;charset=UTF-8," + encodeURIComponent(sJson));
-        element.setAttribute("download", name);
-        element.style.display = "none";
-        document.body.appendChild(element);
-        element.click();
-        document.body.removeChild(element);
+        this.app.export();
     }
 }

@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, Output } from "@angular/core";
+import { Modal } from "bootstrap";
 
 @Component({
     selector: "app-cv-heading",
@@ -24,18 +25,23 @@ export class CVHeadingComponent implements AfterViewInit {
 
     @Output() imageRemove: EventEmitter<void> = new EventEmitter<void>();
 
+    alertModal?: Modal;
+
+    alertMessage?: string;
+
     constructor(private elementRef: ElementRef) {}
 
     ngAfterViewInit(): void {
         if (!this.includeImage || !this.image) this.elementRef.nativeElement.classList.add("no-image");
+        this.alertModal = new Modal("#headingAlertModal");
     }
 
     setImage(event: Event): void {
         const imageFile = (event.target as HTMLInputElement).files?.[0];
         if (imageFile?.type.match(/image\/*/)) {
             if (imageFile.size > 1000000) {
-                // eslint-disable-next-line no-alert
-                alert("The image is too large. Please upload an image less than 1MB.");
+                this.alertMessage = "The image is too large. Please upload an image less than 1MB.";
+                this.alertModal?.show();
                 return;
             }
             this.imageSelect.emit(imageFile);

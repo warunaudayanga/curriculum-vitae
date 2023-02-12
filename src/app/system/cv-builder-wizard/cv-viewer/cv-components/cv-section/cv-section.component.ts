@@ -15,7 +15,7 @@ export class CVSectionComponent {
 
     @Input() configs?: ConfigsStateModel;
 
-    CONFIGS = Globals.DEFAULTS.CONFIGS;
+    CONFIGS = Globals.DEFAULTS.configs;
 
     SectionType = SectionType;
 

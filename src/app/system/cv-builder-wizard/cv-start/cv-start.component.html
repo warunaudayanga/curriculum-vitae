@@ -3,14 +3,55 @@
         We recommend using the latest version of Chrome or Firefox for the best experience.
         You may experience issues with older versions or other browsers.
     </h2>
-    <button class="btn btn-lg btn-secondary btn-import-lg px-4 mb-4" (click)="input.click()">
-        <i class="bi bi-box-arrow-in-down"></i> Import CV JSON
+    <button *ngIf="settings?.hasChanged" class="btn btn-lg btn-primary btn-import-lg px-4 mb-4" (click)="continue()">
+        <i class="bi bi-caret-right-fill"></i> Continue Previous CV
     </button>
-    <button class="btn btn-lg btn-primary btn-import-lg px-4 mb-5" (click)="start()">
-        <i class="bi bi-caret-right-fill"></i> Start
+    <button class="btn btn-lg btn-primary btn-import-lg px-4 mb-4" (click)="showStartModal()">
+        <i class="bi bi-asterisk"></i> Create New CV
+    </button>
+    <button class="btn btn-lg btn-secondary btn-import-lg px-4 mb-5" (click)="showImportModal()">
+        <i class="bi bi-box-arrow-in-down"></i> Import CV JSON
     </button>
 </div>
 
 <input #input type="file" accept="application/json" class="d-none" (change)="onFileSelected($event)">
 <!--<button class="btn btn-lg btn-secondary btn-floating btn-import" (click)="input.click()"><i-->
 <!--    class="bi bi-box-arrow-in-down"></i></button>-->
+
+<div class="modal fade" id="startModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5">{{start? 'Create New CV' : 'Import CV'}}</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    All previous data will be lost. Are you sure you want to continue?
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary px-4" (click)="export()">EXPORT PREVIOUS CV</button>
+                <button type="button" class="btn btn-primary px-4" (click)="start? create() : import(input)">{{start ? 'CREATE' : 'IMPORT'}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="startAlertModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5">Alert</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div>{{alertMessage}}</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary px-4" data-bs-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+

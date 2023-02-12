@@ -55,17 +55,6 @@ export type Limits<Changeable extends string> = {
     };
 };
 
-export interface THEME {
-    NAME: string;
-    PRIMARY_COLOR: string;
-    ACCENT_COLOR: string;
-    SEPARATOR_COLOR: string;
-    SECONDARY_COLOR: string;
-    TEXT_COLOR: string;
-    MAIN_LINK_COLOR: string;
-    BACKGROUND_COLOR: string;
-}
-
 export interface CVData {
     header?: HeaderStateModel;
     contacts?: ContactsStateModel;

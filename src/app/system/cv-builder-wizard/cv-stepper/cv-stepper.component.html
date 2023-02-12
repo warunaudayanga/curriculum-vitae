@@ -51,7 +51,7 @@
     </div>
     <div class="content p-3 set-heading">
         <div *ngIf="activeIndex === 0" class="step-content">
-            <app-cv-start (onImport)="activate(1)"></app-cv-start>
+            <app-cv-start (onImport)="activate($event)"></app-cv-start>
         </div>
         <div *ngIf="activeIndex === 1" class="step-content">
             <app-cv-theme-editor></app-cv-theme-editor>

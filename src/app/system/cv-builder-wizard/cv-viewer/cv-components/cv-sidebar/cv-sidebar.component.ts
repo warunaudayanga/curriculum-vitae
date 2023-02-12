@@ -26,9 +26,9 @@ export class CVSidebarComponent implements OnInit, AfterViewInit {
 
     generatedSections: Section[] = [];
 
-    SECTION_SPACE = Globals.DEFAULTS.CONFIGS.SECTION_SPACE;
+    SECTION_SPACE = Globals.DEFAULTS.configs.sectionSpace;
 
-    SIDEBAR_PADDING = Globals.DEFAULTS.CONFIGS.SIDEBAR_PADDING;
+    SIDEBAR_PADDING = Globals.DEFAULTS.configs.sidebarPadding;
 
     constructor(private elementRef: ElementRef<HTMLDivElement>) {}
 

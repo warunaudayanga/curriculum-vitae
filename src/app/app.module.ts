@@ -54,6 +54,8 @@ import { CVPrintWarningComponent } from "./system/cv-printer/cv-print-warning/cv
 import { ImageCropperModule } from "ngx-image-cropper";
 import { CvImageCropperComponent } from "./system/cv-builder-wizard/cv-editor/cv-image-cropper/cv-image-cropper.component";
 import { SettingsState } from "./core/state/settings";
+import { ConfirmationDialogComponent } from "./system/shared/confirmation-dialof/confirmation-dialog.component";
+import { AlertDialogComponent } from "./system/shared/alert-dialog/alert-dialog.component";
 
 @NgModule({
     declarations: [
@@ -94,6 +96,8 @@ import { SettingsState } from "./core/state/settings";
         CVPrintTipsComponent,
         CVPrintWarningComponent,
         CvImageCropperComponent,
+        ConfirmationDialogComponent,
+        AlertDialogComponent,
     ],
     imports: [
         NgxsStoragePluginModule.forRoot({

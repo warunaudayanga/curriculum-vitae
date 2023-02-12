@@ -7,14 +7,14 @@ import { Globals } from "../../../system/configs/globals";
 @State<ThemeStateModel>({
     name: "theme",
     defaults: {
-        name: Globals.THEMES[0].NAME,
-        primaryColor: Globals.THEMES[0].PRIMARY_COLOR,
-        secondaryColor: Globals.THEMES[0].SECONDARY_COLOR,
-        accentColor: Globals.THEMES[0].ACCENT_COLOR,
-        textColor: Globals.THEMES[0].TEXT_COLOR,
-        separatorColor: Globals.THEMES[0].SEPARATOR_COLOR,
-        mainLinkColor: Globals.THEMES[0].MAIN_LINK_COLOR,
-        backgroundColor: Globals.THEMES[0].BACKGROUND_COLOR,
+        name: Globals.THEMES[0].name,
+        primaryColor: Globals.THEMES[0].primaryColor,
+        secondaryColor: Globals.THEMES[0].secondaryColor,
+        accentColor: Globals.THEMES[0].accentColor,
+        textColor: Globals.THEMES[0].textColor,
+        separatorColor: Globals.THEMES[0].separatorColor,
+        mainLinkColor: Globals.THEMES[0].mainLinkColor,
+        backgroundColor: Globals.THEMES[0].backgroundColor,
     },
 })
 @Injectable()

@@ -30,21 +30,21 @@ export class CVHeadingEditorComponent {
     constructor(private store: Store) {
         this.header = this.store.selectSnapshot(state => state.header);
         this.configs = this.store.selectSnapshot(state => state.configs);
-        this.configs.contactsFontSize ??= Globals.DEFAULTS.CONFIGS.CONTACTS_FONT_SIZE;
-        this.configs.imageWidth ??= Globals.DEFAULTS.CONFIGS.IMAGE_WIDTH;
-        this.configs.imageHeight ??= Globals.DEFAULTS.CONFIGS.IMAGE_HEIGHT;
+        this.configs.contactsFontSize ??= Globals.DEFAULTS.configs.contactsFontSize;
+        this.configs.imageWidth ??= Globals.DEFAULTS.configs.imageWidth;
+        this.configs.imageHeight ??= Globals.DEFAULTS.configs.imageHeight;
         this.limits = {
             headerFontSize: {
-                min: Globals.DEFAULTS.CONFIGS.HEADER_FONT_SIZE_MIN,
-                max: Globals.DEFAULTS.CONFIGS.HEADER_FONT_SIZE_MAX,
+                min: Globals.DEFAULTS.configs.headerFontSizeMin,
+                max: Globals.DEFAULTS.configs.headerFontSizeMax,
             },
             imageWidth: {
-                min: Globals.DEFAULTS.CONFIGS.IMAGE_WIDTH_MIN,
-                max: Globals.DEFAULTS.CONFIGS.IMAGE_WIDTH_MAX,
+                min: Globals.DEFAULTS.configs.imageWidthMin,
+                max: Globals.DEFAULTS.configs.imageWidthMax,
             },
             imageHeight: {
-                min: Globals.DEFAULTS.CONFIGS.IMAGE_HEIGHT_MIN,
-                max: Globals.DEFAULTS.CONFIGS.IMAGE_HEIGHT_MAX,
+                min: Globals.DEFAULTS.configs.imageHeightMin,
+                max: Globals.DEFAULTS.configs.imageHeightMax,
             },
         };
     }

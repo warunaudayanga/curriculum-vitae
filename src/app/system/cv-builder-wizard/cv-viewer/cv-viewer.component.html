@@ -3,40 +3,40 @@
         <div class="d-flex w-100 h-100">
             <div class="column-1">
                 <app-cv-heading
-                    [title]="cvData.header?.title ?? DEFAULTS.HEADER.TITLE"
-                    [fontSize]="cvData.configs?.headerFontSize ?? DEFAULTS.CONFIGS.HEADER_FONT_SIZE"
-                    [includeImage]="cvData.header?.includeImage ?? DEFAULTS.HEADER.INCLUDE_IMAGE"
-                    [image]="cvData.header?.image ?? DEFAULTS.HEADER.IMAGE"
-                    [imageWidth]="cvData.configs?.imageWidth ?? DEFAULTS.CONFIGS.IMAGE_WIDTH"
-                    [imageHeight]="cvData.configs?.imageHeight ?? DEFAULTS.CONFIGS.IMAGE_HEIGHT"
+                    [title]="cvData.header?.title ?? DEFAULTS.header.title"
+                    [fontSize]="cvData.configs?.headerFontSize ?? DEFAULTS.configs.headerFontSize"
+                    [includeImage]="cvData.header?.includeImage ?? DEFAULTS.header.includeImage"
+                    [image]="cvData.header?.image ?? DEFAULTS.header.image"
+                    [imageWidth]="cvData.configs?.imageWidth ?? DEFAULTS.configs.imageWidth"
+                    [imageHeight]="cvData.configs?.imageHeight ?? DEFAULTS.configs.imageHeight"
                 ></app-cv-heading>
                 <app-cv-contacts
                     style="{{
-                        'padding-top: ' + (cvData.configs?.contactsListSpace ?? DEFAULTS.CONFIGS.CONTACTS_LIST_SPACE) + 'px;' +
-                        'padding-inline: ' + (cvData.configs?.sidebarPadding ?? DEFAULTS.CONFIGS.SIDEBAR_PADDING) + 'px'
+                        'padding-top: ' + (cvData.configs?.contactsListSpace ?? DEFAULTS.configs.contactsListSpace) + 'px;' +
+                        'padding-inline: ' + (cvData.configs?.sidebarPadding ?? DEFAULTS.configs.sidebarPadding) + 'px'
                     }}"
                     [contacts]="cvData.contacts"
-                    [fontSize]="cvData.configs?.contactsFontSize ?? DEFAULTS.CONFIGS.CONTACTS_FONT_SIZE"
-                    [iconSize]="cvData.configs?.contactsIconSize ?? DEFAULTS.CONFIGS.CONTACTS_ICON_SIZE"
-                    [space]="cvData.configs?.contactsSpace ?? DEFAULTS.CONFIGS.CONTACTS_SPACE"
+                    [fontSize]="cvData.configs?.contactsFontSize ?? DEFAULTS.configs.contactsFontSize"
+                    [iconSize]="cvData.configs?.contactsIconSize ?? DEFAULTS.configs.contactsIconSize"
+                    [space]="cvData.configs?.contactsSpace ?? DEFAULTS.configs.contactsSpace"
                 ></app-cv-contacts>
                 <app-sidebar
                     style="{{
-                        'padding-top: ' + (cvData.configs?.sidebarSpace ?? DEFAULTS.CONFIGS.SIDEBAR_SPACE) + 'px'
+                        'padding-top: ' + (cvData.configs?.sidebarSpace ?? DEFAULTS.configs.sidebarSpace) + 'px'
                     }}"
                     [firstPage]="true"
-                    [sidebar]="cvData.sidebar ?? DEFAULTS.SIDEBAR.SECTIONS"
+                    [sidebar]="cvData.sidebar ?? DEFAULTS.sidebar.sections"
                     [configs]="cvData.configs"
                     (forward)="onPage1SidebarForward($event)"
                 ></app-sidebar>
             </div>
             <div
                 class="column-2 flex-fill"
-                style="{{'padding: ' + (cvData.configs?.mainContentPadding ?? DEFAULTS.CONFIGS.MAIN_CONTENT_PADDING) + 'px'}}"
+                style="{{'padding: ' + (cvData.configs?.mainContentPadding ?? DEFAULTS.configs.mainContentPadding) + 'px'}}"
             >
                 <app-main-details
                     class="h-100"
-                    [sections]="cvData.sections ?? DEFAULTS.SECTIONS.SECTIONS"
+                    [sections]="cvData.sections ?? DEFAULTS.sections.sections"
                     [configs]="cvData.configs"
                     (forward)="onPage1MainForward($event)"
                 ></app-main-details>
@@ -58,7 +58,7 @@
             </div>
             <div
                 class="column-2 flex-fill"
-                style="{{'padding: ' + (cvData.configs?.mainContentPadding ?? DEFAULTS.CONFIGS.MAIN_CONTENT_PADDING) + 'px'}}"
+                style="{{'padding: ' + (cvData.configs?.mainContentPadding ?? DEFAULTS.configs.mainContentPadding) + 'px'}}"
             >
                 <app-main-details
                     class="h-100"
@@ -84,7 +84,7 @@
             </div>
             <div
                 class="column-2 flex-fill"
-                style="{{'padding: ' + (cvData.configs?.mainContentPadding ?? DEFAULTS.CONFIGS.MAIN_CONTENT_PADDING) + 'px'}}"
+                style="{{'padding: ' + (cvData.configs?.mainContentPadding ?? DEFAULTS.configs.mainContentPadding) + 'px'}}"
             >
                 <app-main-details
                     class="h-100"
@@ -110,7 +110,7 @@
             </div>
             <div
                 class="column-2 flex-fill"
-                style="{{'padding: ' + (cvData.configs?.mainContentPadding ?? DEFAULTS.CONFIGS.MAIN_CONTENT_PADDING) + 'px'}}"
+                style="{{'padding: ' + (cvData.configs?.mainContentPadding ?? DEFAULTS.configs.mainContentPadding) + 'px'}}"
             >
                 <app-main-details
                     class="h-100"

@@ -6,6 +6,7 @@ import { Settings } from "./settings.actions";
 @State<SettingsStateModel>({
     name: "settings",
     defaults: {
+        hasChanged: false,
         mainTipShown: false,
         printTipShown: false,
         tuneUpTipShown: false,

@@ -10,6 +10,7 @@ export class AppService {
 
     export(): void {
         const cvData: CVData = {
+            theme: this.store.selectSnapshot(state => state.theme),
             header: this.store.selectSnapshot(state => state.header),
             contacts: this.store.selectSnapshot(state => state.contacts),
             configs: this.store.selectSnapshot(state => state.configs),

@@ -691,6 +691,7 @@ export class Globals {
             image: "",
         },
         configs: {
+            dynamics: {},
             mainContentPadding: 25,
             mainContentPaddingMin: 10,
             mainContentPaddingMax: 50,

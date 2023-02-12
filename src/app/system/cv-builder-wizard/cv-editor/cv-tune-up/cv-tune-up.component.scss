@@ -22,7 +22,25 @@ app-cv-viewer {
 .controls {
     position: relative;
 }
-.btn-tune {
+.btn-tune-left {
+    bottom: 110px;
+    left: 45px;
+}
+
+.btn-tune-right {
     bottom: 110px;
     right: 45px;
+}
+
+app-cv-tune-up-popup {
+    position: fixed;
+    height: calc(100% - 248px);
+}
+
+app-cv-tune-up-popup.left {
+    inset: auto auto 130px 45px
+}
+
+app-cv-tune-up-popup.right {
+    inset: auto 45px 130px auto
 }

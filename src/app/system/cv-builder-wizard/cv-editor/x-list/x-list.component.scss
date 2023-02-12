@@ -1,7 +1,7 @@
 ul {
     list-style-type: none;
 }
-li {
+:not(.dropdown-menu) > li {
     position: relative;
     &:before{
         display: inline-block;
@@ -26,4 +26,20 @@ li {
 }
 .main-controls {
     width: 110px;
+}
+.dropdown-toggle:after {
+    display: none;
+}
+.name-value-list {
+    gap: 8px;
+    .disc {
+    position: relative;
+    width: 24px;
+        i {
+            font-size: 8px;
+            position: absolute;
+            top: 15px;
+            left: 10px;
+        }
+    }
 }

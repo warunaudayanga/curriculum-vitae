@@ -40,6 +40,10 @@
 .key-value-list {
     color: $app-text-color;
 
+    table td:first-child {
+        width: auto;
+    }
+
     .key {
         position: relative;
         padding-left: 32px;

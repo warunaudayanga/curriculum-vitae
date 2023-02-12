@@ -114,9 +114,12 @@ body {
 .btn-primary {
     background-color: $app-primary-color;
     border-color: $app-primary-color;
-    &:hover, &:active, &:focus, &.active, &.focus {
+    &:hover, &:active, &:focus, &.active, &.focus, &:disabled {
         border-color:  $app-primary-color-hover !important;
         background-color: $app-primary-color-hover !important;
+    }
+    &:disabled {
+        opacity: 0.7;
     }
 }
 

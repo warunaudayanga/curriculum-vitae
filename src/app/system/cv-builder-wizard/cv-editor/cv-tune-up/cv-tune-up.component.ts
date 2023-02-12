@@ -17,6 +17,8 @@ export class CVTuneUpComponent implements AfterViewInit {
 
     reloading: boolean = false;
 
+    position: "left" | "right" = "right";
+
     constructor(private store: Store) {
         this.cvData = {
             header: this.store.selectSnapshot(state => state.header),

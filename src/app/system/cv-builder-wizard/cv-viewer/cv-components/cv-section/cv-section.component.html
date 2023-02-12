@@ -5,6 +5,7 @@
     </div>
     <div class="hr"
          style="{{'bottom: ' + (CONFIGS.sectionSeparatorSpaceMax - (configs?.sectionSeparatorSpace ?? CONFIGS.sectionSeparatorSpace)) + 'px;'}}"></div>
+
     <div *ngIf="section.type === SectionType.PARAGRAPH" class="paragraph"
          style="{{
             'font-size: ' + (configs?.sectionTextFontSize ?? CONFIGS.sectionTextFontSize) + 'px; ' +
@@ -12,6 +13,7 @@
             'padding-top: ' + (configs?.sectionItemSpace ?? CONFIGS.sectionItemSpace) + 'px;'
          }}"
          [innerHTML]="trim(section.paragraph, true)"></div>
+
     <div *ngIf="section.type === SectionType.LIST" class="list"
          style="{{
             'font-size: ' + (configs?.sectionTextFontSize ?? CONFIGS.sectionTextFontSize) + 'px; ' +
@@ -22,14 +24,40 @@
             <ng-container *ngFor="let item of section.list">
                 <li [innerHTML]="trim(item.title, true)"
                     style="{{'padding-top: ' + (configs?.sectionListItemSpace ?? CONFIGS.sectionListItemSpace) + 'px;'}}"></li>
-                <ul *ngIf="item.list"
-                    style="{{'padding-top: ' + (configs?.sectionListItemSpace ?? CONFIGS.sectionListItemSpace) + 'px;'}}">
+                <ul *ngIf="item.type === SubListType.LIST && item.list" style="{{'padding-top: ' + (configs?.sectionListItemSpace ?? CONFIGS.sectionListItemSpace) + 'px;'}}">
                     <li *ngFor="let subItem of item.list" [innerHTML]="trim(subItem.title, true)"
                         style="{{'padding-top: ' + (configs?.sectionListItemSpace ?? CONFIGS.sectionListItemSpace) + 'px;'}}"></li>
                 </ul>
+                <div *ngIf="item.type === SubListType.NAME_VALUE_LIST && item.list" class="key-value-list"
+                     style="{{
+                               'font-size: ' + (configs?.sectionTextFontSize ?? CONFIGS.sectionTextFontSize) + 'px; ' +
+                               'line-height: ' + (configs?.sectionTextLineHeight ?? CONFIGS.sectionTextLineHeight) + 'px;' +
+                               'padding-top: ' + (configs?.sectionItemSpace ?? CONFIGS.sectionItemSpace) + 'px;'
+                            }}">
+                    <table class="w-100">
+                        <tr *ngFor="let subItem of item.list">
+                            <span class="d-none">{{item.id}}</span>
+                            <td class="key"
+                                style="{{
+                                    'padding-top: ' + (configs?.sectionListItemSpace ?? CONFIGS.sectionListItemSpace) + 'px;' +
+                                     'width: ' + (configs?.dynamics?.[item.id]?.width ? configs?.dynamics?.[item.id]?.width + '%' : 'auto')
+                                }}">
+                            <span
+                                [innerHTML]="trim(subItem.title, true)"></span>
+                            </td>
+                            <td class="separator"
+                                style="{{'padding-top: ' + (configs?.sectionListItemSpace ?? CONFIGS.sectionListItemSpace) + 'px;'}}">
+                                :
+                            </td>
+                            <td class="value" [innerHTML]="trim(subItem.value, true)"
+                                style="{{'padding-top: ' + (configs?.sectionListItemSpace ?? CONFIGS.sectionListItemSpace) + 'px;'}}"></td>
+                        </tr>
+                    </table>
+                </div>
             </ng-container>
         </ul>
     </div>
+
     <div *ngIf="section.type === SectionType.LIST_WITH_PARAGRAPH" class="list-with-paragraph"
          style="{{
             'font-size: ' + (configs?.sectionTextFontSize ?? CONFIGS.sectionTextFontSize) + 'px; ' +
@@ -51,6 +79,7 @@
             </ul>
         </div>
     </div>
+
     <div *ngIf="section.type === SectionType.NAME_VALUE_LIST" class="key-value-list"
          style="{{
             'font-size: ' + (configs?.sectionTextFontSize ?? CONFIGS.sectionTextFontSize) + 'px;' +
@@ -60,7 +89,10 @@
         <table class="w-100">
             <tr *ngFor="let item of section.keyValueList">
                 <td class="key"
-                    style="{{'padding-top: ' + (configs?.sectionListItemSpace ?? CONFIGS.sectionListItemSpace) + 'px;'}}">
+                    style="{{
+                        'padding-top: ' + (configs?.sectionListItemSpace ?? CONFIGS.sectionListItemSpace) + 'px;' +
+                        'width: ' + (configs?.dynamics?.[section.id]?.width ? configs?.dynamics?.[section.id]?.width +'%' : 'auto')
+                    }}">
                     <span class="bullet"
                           style="{{
                           'font-size: ' + (configs?.sectionTextFontSize ?? CONFIGS.sectionTextFontSize) + 'px;' +
@@ -77,6 +109,7 @@
             </tr>
         </table>
     </div>
+
     <div *ngIf="section.type === SectionType.COLUMNS" class="column"
          style="{{
             'font-size: ' + (configs?.sectionTextFontSize ?? CONFIGS.sectionTextFontSize) + 'px; ' +
@@ -93,6 +126,7 @@
             </div>
         </div>
     </div>
+
     <div *ngIf="section.type === SectionType.SIGNATURE" class="signature"
          style="{{
             'font-size: ' + (configs?.sectionTextFontSize ?? CONFIGS.sectionTextFontSize) + 'px; ' +

@@ -3,17 +3,25 @@ import { ConfigsStateModel } from "../state/configs";
 import { HeaderStateModel } from "../state/header";
 import { ContactsStateModel } from "../state/contacts";
 import { ThemeStateModel } from "../state/theme";
-
-export interface SectionListItem {
-    id: string | number;
-    title: string;
-    list?: Omit<SectionListItem, "list">[];
-}
+import { SectionSubListType } from "../enums/section-list-type.enu";
 
 export interface SectionKeyValueListItem {
     id: string | number;
     title: string;
     value?: string;
+}
+
+export interface SectionSubListItem {
+    id: string | number;
+    title: string;
+}
+
+export interface SectionListItem {
+    id: string | number;
+    title: string;
+    type?: SectionSubListType;
+    listIndent?: number;
+    list?: (SectionSubListItem & SectionKeyValueListItem)[];
 }
 
 export interface Column {
@@ -38,6 +46,7 @@ export interface Section {
     paragraph?: string;
     listWithParagraph?: ListWithParagraph;
     list?: SectionListItem[];
+    listIndent?: number;
     keyValueList?: SectionKeyValueListItem[];
     columns?: [Column, Column];
     signature?: Signature;
@@ -54,6 +63,10 @@ export type Limits<Changeable extends string> = {
         max: number;
     };
 };
+
+export interface Dynamics {
+    [key: string | number]: { title: string; width: number };
+}
 
 export interface CVData {
     header?: HeaderStateModel;

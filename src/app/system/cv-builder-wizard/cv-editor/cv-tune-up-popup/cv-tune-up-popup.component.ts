@@ -1,12 +1,18 @@
 import { Component, ElementRef, EventEmitter, HostListener, Output } from "@angular/core";
 import { Config, ConfigsStateModel } from "../../../../core/state/configs";
 import { Store } from "@ngxs/store";
-import PatchConfigs = Config.PatchConfigs;
 import { toCamelCase, toTitleCase } from "../../../../core/utils/string.utils";
 import { Globals } from "../../../configs/globals";
-import { Limits } from "../../../../core/interfaces/system.interfaces";
+import { Dynamics, Limits, Section } from "../../../../core/interfaces/system.interfaces";
+import { SectionType } from "../../../../core/enums/section-type.enum";
+import { SectionSubListType } from "../../../../core/enums/section-list-type.enu";
+import PatchConfigs = Config.PatchConfigs;
+import PatchDynamics = Config.PatchDynamics;
 
-type Changeable = keyof Omit<ConfigsStateModel, `${keyof ConfigsStateModel}Min` | `${keyof ConfigsStateModel}Max`>;
+type Changeable = keyof Omit<
+    ConfigsStateModel,
+    `${keyof ConfigsStateModel}Min` | `${keyof ConfigsStateModel}Max` | "dynamics"
+>;
 
 @Component({
     selector: "app-cv-tune-up-popup",
@@ -34,13 +40,42 @@ export class CVTuneUpPopupComponent {
 
     limits: Limits<Changeable>;
 
+    SectionType = SectionType;
+
+    SubListType = SectionSubListType;
+
     constructor(private elementRef: ElementRef<HTMLElement>, private store: Store) {
         this.configs = this.store.selectSnapshot(state => state.configs);
+        const sections: Section[] = this.store.selectSnapshot(state => state.sections.sections) ?? [];
+        const sidebarSections: Section[] = this.store.selectSnapshot(state => state.sidebar.sections) ?? [];
+
         Object.keys(Globals.DEFAULTS.configs).forEach(key => {
             if (!(key.endsWith("Min") || key.endsWith("Max"))) {
                 (this.configs as any)[toCamelCase(key)] ??= (Globals.DEFAULTS.configs as any)[key];
             }
         });
+
+        const dynamics: Dynamics = {};
+        [...sections, ...sidebarSections].forEach(section => {
+            if (section.type === SectionType.NAME_VALUE_LIST) {
+                dynamics[section.id] = { title: section.title, width: 0 };
+            } else if (section.list?.some(item => item.type === SectionSubListType.NAME_VALUE_LIST)) {
+                section.list?.forEach(item => {
+                    if (item.type === SectionSubListType.NAME_VALUE_LIST) {
+                        dynamics[item.id] = { title: item.title, width: 0 };
+                    }
+                });
+            }
+        });
+
+        const activeDynamicsArr = Object.keys(this.configs.dynamics).filter(key => dynamics[key]);
+        let activeDynamics: Dynamics = {};
+        activeDynamicsArr.forEach(key => {
+            activeDynamics[key] = this.configs.dynamics[key];
+        });
+        this.configs.dynamics = { ...dynamics, ...activeDynamics };
+        this.store.dispatch(new PatchConfigs({ dynamics: activeDynamics }));
+
         this.limits = {
             mainContentPadding: {
                 min: Globals.DEFAULTS.configs.mainContentPaddingMin,
@@ -132,6 +167,10 @@ export class CVTuneUpPopupComponent {
         return Object.keys(this.limits) as Changeable[];
     }
 
+    getDynamicLimitKeys(): Changeable[] {
+        return Object.keys(this.limits) as Changeable[];
+    }
+
     open(): void {
         this.elementRef.nativeElement.style.display = "block";
         this.openTimeout = setTimeout(() => {
@@ -156,6 +195,21 @@ export class CVTuneUpPopupComponent {
         }
         this.configs[counter] += decrease ? -1 : +1;
         this.store.dispatch(new PatchConfigs({ [counter]: this.configs[counter] }));
+
+        this.reBuild();
+    }
+
+    clickDynamic(key: string | number, decrease?: boolean): void {
+        clearInterval(this.waitTimer);
+        clearInterval(this.repeatTimer);
+        if (decrease && this.configs.dynamics[key].width <= 0) {
+            return;
+        } else if (!decrease && this.configs.dynamics[key].width >= 100) {
+            return;
+        }
+        this.configs.dynamics[key].width += decrease ? -1 : +1;
+        this.store.dispatch(new PatchDynamics({ [key]: this.configs.dynamics[key] }));
+
         this.reBuild();
     }
 
@@ -169,6 +223,21 @@ export class CVTuneUpPopupComponent {
                 }
                 this.configs[counter] += decrease ? -1 : +1;
                 this.store.dispatch(new PatchConfigs({ [counter]: this.configs[counter] }));
+                this.reBuild();
+            }, 50);
+        }, 200);
+    }
+
+    mousedownDynamic(key: string | number, decrease?: boolean): void {
+        this.waitTimer = setTimeout(() => {
+            this.repeatTimer = setInterval(() => {
+                if (decrease && this.configs.dynamics[key].width <= 0) {
+                    return;
+                } else if (!decrease && this.configs.dynamics[key].width >= 100) {
+                    return;
+                }
+                this.configs.dynamics[key].width += decrease ? -1 : +1;
+                this.store.dispatch(new PatchDynamics({ [key]: this.configs.dynamics[key] }));
                 this.reBuild();
             }, 50);
         }, 200);
@@ -188,5 +257,13 @@ export class CVTuneUpPopupComponent {
                 this.reload.emit(false);
             });
         }, 2000);
+    }
+
+    getDynamics(): string[] {
+        return Object.keys(this.configs.dynamics);
+    }
+
+    removeFormat(title: string): string {
+        return title.replace(/<b>|<\/b>|<i>|<\/i>/g, " ");
     }
 }

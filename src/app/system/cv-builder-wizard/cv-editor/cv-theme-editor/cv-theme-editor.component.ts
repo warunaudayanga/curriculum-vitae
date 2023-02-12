@@ -173,6 +173,7 @@ export class CVThemeEditorComponent implements AfterViewInit {
             backgroundColor: Globals.DEFAULTS.theme.backgroundColor,
         },
         configs: {
+            dynamics: Globals.DEFAULTS.configs.dynamics,
             mainContentPadding: Globals.DEFAULTS.configs.mainContentPadding,
             mainContentPaddingMin: Globals.DEFAULTS.configs.mainContentPaddingMin,
             mainContentPaddingMax: Globals.DEFAULTS.configs.mainContentPaddingMax,

@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { SectionListItem } from "../../../../core/interfaces/system.interfaces";
 import { v4 as uuid } from "uuid";
+import { SectionSubListType } from "../../../../core/enums/section-list-type.enu";
+import { Dropdown } from "bootstrap";
 
 @Component({
     selector: "app-x-list",
@@ -11,6 +13,8 @@ export class XListComponent {
     @Input() list?: SectionListItem[];
 
     @Output() listChange: EventEmitter<SectionListItem[]> = new EventEmitter<SectionListItem[]>();
+
+    SubListType = SectionSubListType;
 
     addItem(id: string | number): void {
         const index = this.list!.indexOf(this.list!.find(item => item.id === id)!);
@@ -26,8 +30,10 @@ export class XListComponent {
         this.onChange();
     }
 
-    addSubList(id: string | number): void {
-        this.list!.find(item => item.id === id)!.list = [{ id: uuid(), title: "" }];
+    addSubList(id: string | number, type: SectionSubListType): void {
+        const item = this.list!.find(item => item.id === id)!;
+        item.type = type;
+        item.list = [{ id: uuid(), title: "" }];
         this.onChange();
     }
 
@@ -46,6 +52,9 @@ export class XListComponent {
                 if (item.list) {
                     item.list = item.list.filter(subItem => subItem.id !== id);
                 }
+                if (!item.list?.length) {
+                    item.type = undefined;
+                }
                 return item;
             });
         }
@@ -54,5 +63,15 @@ export class XListComponent {
 
     onChange(): void {
         this.listChange.emit(this.list);
+    }
+
+    toggleMenu(dropdown: HTMLButtonElement): void {
+        const dropdownMenu = new Dropdown(dropdown);
+        dropdownMenu.toggle();
+    }
+
+    closeMenu(dropdown: HTMLButtonElement): void {
+        const dropdownMenu = new Dropdown(dropdown);
+        dropdownMenu.hide();
     }
 }

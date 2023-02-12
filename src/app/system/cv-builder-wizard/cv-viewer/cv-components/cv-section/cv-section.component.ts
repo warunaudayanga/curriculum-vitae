@@ -4,6 +4,7 @@ import { Section } from "../../../../../core/interfaces/system.interfaces";
 import { trim } from "../../../../../core/utils/utils";
 import { ConfigsStateModel } from "../../../../../core/state/configs";
 import { Globals } from "../../../../configs/globals";
+import { SectionSubListType } from "../../../../../core/enums/section-list-type.enu";
 
 @Component({
     selector: "app-section",
@@ -18,6 +19,8 @@ export class CVSectionComponent {
     CONFIGS = Globals.DEFAULTS.configs;
 
     SectionType = SectionType;
+
+    SubListType = SectionSubListType;
 
     constructor() {}
 

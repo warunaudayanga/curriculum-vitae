@@ -1,4 +1,7 @@
+import { Dynamics } from "../../interfaces/system.interfaces";
+
 export interface ConfigsStateModel {
+    dynamics: Dynamics;
     mainContentPadding: number;
     mainContentPaddingMin: number;
     mainContentPaddingMax: number;

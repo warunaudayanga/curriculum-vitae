@@ -3,11 +3,13 @@ import { Action, Selector, State, StateContext, Store } from "@ngxs/store";
 import { ConfigsStateModel } from "./configs.model";
 import { Config } from "./configs.actions";
 import { Globals } from "src/app/system/configs/globals";
+import { Dynamics } from "../../interfaces/system.interfaces";
 
 // noinspection DuplicatedCode
 @State<ConfigsStateModel>({
     name: "configs",
     defaults: {
+        dynamics: {},
         mainContentPadding: Globals.DEFAULTS.configs.mainContentPadding,
         mainContentPaddingMin: Globals.DEFAULTS.configs.mainContentPaddingMin,
         mainContentPaddingMax: Globals.DEFAULTS.configs.mainContentPaddingMax,
@@ -73,9 +75,19 @@ export class ConfigsState {
         return state;
     }
 
+    @Selector()
+    static getDynamics(state: ConfigsStateModel): Dynamics {
+        return state.dynamics;
+    }
+
     @Action(Config.PatchConfigs)
     patchConfig({ patchState }: StateContext<ConfigsStateModel>, action: Config.PatchConfigs): void {
         patchState(action.payload);
+    }
+
+    @Action(Config.PatchDynamics)
+    patchDynamics({ getState, patchState }: StateContext<ConfigsStateModel>, action: Config.PatchDynamics): void {
+        patchState({ ...getState(), dynamics: { ...getState().dynamics, ...action.payload } });
     }
 
     @Action(Config.SetConfigs)

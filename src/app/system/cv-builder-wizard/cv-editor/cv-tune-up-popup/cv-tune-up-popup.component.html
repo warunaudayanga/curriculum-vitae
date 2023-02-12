@@ -1,4 +1,33 @@
 <div class="d-flex flex-column gap-3 p-2 h-100 overflow-auto">
+    <ng-container *ngIf="configs.dynamics">
+        <div class="fw-bold">SECTION SETTINGS</div>
+
+        <div>
+            <div class="ms-2 small fw-bold pb-3">NAME - VALUE SECTION INDENT</div>
+            <div *ngFor="let key of getDynamics()" class="ms-5">
+                <div class="small" [innerHTML]="removeFormat(configs.dynamics[key].title)"></div>
+                <div class="changer mt-1 mb-3">
+                    <div class="input-group input-group-sm">
+                        <button class="btn btn-outline-secondary" type="button"
+                                (click)="clickDynamic(key, true)"
+                                (mousedown)="mousedownDynamic(key, true)"
+                                (mouseup)="mouseUp()">
+                            <i class="bi bi-dash"></i>
+                        </button>
+                        <input type="text" class="form-control text-center" [(ngModel)]="configs.dynamics[key].width" readonly>
+                        <button class="btn btn-outline-secondary" type="button"
+                                (click)="clickDynamic(key)"
+                                (mousedown)="mousedownDynamic(key)"
+                                (mouseup)="mouseUp()">
+                            <i class="bi bi-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+
+
     <div class="fw-bold">THEME SETTINGS</div>
 
     <app-cv-theme-selector></app-cv-theme-selector>

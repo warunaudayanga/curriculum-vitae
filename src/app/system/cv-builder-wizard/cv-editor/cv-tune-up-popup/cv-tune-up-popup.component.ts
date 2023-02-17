@@ -42,8 +42,6 @@ export class CVTuneUpPopupComponent {
 
     SectionType = SectionType;
 
-    SubListType = SectionSubListType;
-
     constructor(private elementRef: ElementRef<HTMLElement>, private store: Store) {
         this.configs = this.store.selectSnapshot(state => state.configs);
         const sections: Section[] = this.store.selectSnapshot(state => state.sections.sections) ?? [];
@@ -89,9 +87,21 @@ export class CVTuneUpPopupComponent {
                 min: Globals.DEFAULTS.configs.sidebarSpaceMin,
                 max: Globals.DEFAULTS.configs.sidebarSpaceMax,
             },
-            headerFontSize: {
-                min: Globals.DEFAULTS.configs.headerFontSizeMin,
-                max: Globals.DEFAULTS.configs.headerFontSizeMax,
+            headerNameFontSize: {
+                min: Globals.DEFAULTS.configs.headerNameFontSizeMin,
+                max: Globals.DEFAULTS.configs.headerNameFontSizeMax,
+            },
+            headerNameLineHeight: {
+                min: Globals.DEFAULTS.configs.headerNameLineHeightMin,
+                max: Globals.DEFAULTS.configs.headerNameLineHeightMax,
+            },
+            headerTitleFontSize: {
+                min: Globals.DEFAULTS.configs.headerTitleFontSizeMin,
+                max: Globals.DEFAULTS.configs.headerTitleFontSizeMax,
+            },
+            headerTitleLineHeight: {
+                min: Globals.DEFAULTS.configs.headerTitleLineHeightMin,
+                max: Globals.DEFAULTS.configs.headerTitleLineHeightMax,
             },
             imageWidth: {
                 min: Globals.DEFAULTS.configs.imageWidthMin,
@@ -164,10 +174,6 @@ export class CVTuneUpPopupComponent {
     }
 
     getLimitKeys(): Changeable[] {
-        return Object.keys(this.limits) as Changeable[];
-    }
-
-    getDynamicLimitKeys(): Changeable[] {
         return Object.keys(this.limits) as Changeable[];
     }
 

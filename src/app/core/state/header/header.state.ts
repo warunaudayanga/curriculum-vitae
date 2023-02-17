@@ -6,6 +6,7 @@ import { Header } from "./header.actions";
 @State<HeaderStateModel>({
     name: "header",
     defaults: {
+        name: "",
         title: "",
         includeImage: true,
         image: "",

@@ -1,8 +1,12 @@
 <div class="d-flex h-100">
     <div class="column-1">
         <app-cv-heading
+            [name]="header.name"
             [title]="header.title"
-            [fontSize]="configs.headerFontSize"
+            [nameFontSize]="configs.headerNameFontSize"
+            [nameLineHeight]="configs.headerNameLineHeight"
+            [titleFontSize]="configs.headerTitleFontSize"
+            [titleLineHeight]="configs.headerTitleLineHeight"
             [includeImage]="header.includeImage"
             [image]="header.image"
             [imageWidth]="configs.imageWidth"
@@ -53,7 +57,7 @@
 
             <div class="d-flex mb-3 gap-3">
                 <div class="col-size-group">
-                    <label class="form-label">Font size</label>
+                    <label class="form-label">Name Font size</label>
                     <div>
                         <div class="input-group input-group-sm">
                             <button class="btn btn-outline-secondary" type="button"

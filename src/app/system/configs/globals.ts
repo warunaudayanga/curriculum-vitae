@@ -680,15 +680,16 @@ export class Globals {
 
     static DEFAULTS = {
         theme: Globals.THEMES[0],
+        header: {
+            name: "",
+            title: "",
+            includeImage: true,
+            image: "",
+        },
         contacts: {
             email: "",
             phoneNumbers: undefined,
             address: "",
-        },
-        header: {
-            title: "",
-            includeImage: true,
-            image: "",
         },
         configs: {
             dynamics: {},
@@ -701,9 +702,18 @@ export class Globals {
             sidebarSpace: 25,
             sidebarSpaceMin: 10,
             sidebarSpaceMax: 50,
-            headerFontSize: 30,
-            headerFontSizeMin: 20,
-            headerFontSizeMax: 50,
+            headerNameFontSize: 30,
+            headerNameFontSizeMin: 20,
+            headerNameFontSizeMax: 50,
+            headerNameLineHeight: 30,
+            headerNameLineHeightMin: 20,
+            headerNameLineHeightMax: 50,
+            headerTitleFontSize: 20,
+            headerTitleFontSizeMin: 13,
+            headerTitleFontSizeMax: 25,
+            headerTitleLineHeight: 20,
+            headerTitleLineHeightMin: 13,
+            headerTitleLineHeightMax: 25,
             imageWidth: 120,
             imageWidthMin: 120,
             imageWidthMax: 170,

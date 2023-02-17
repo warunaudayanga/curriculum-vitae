@@ -20,7 +20,7 @@ export class AppService {
         cvData.importValidation = "4274";
         let sJson = JSON.stringify(cvData);
         let element = document.createElement("a");
-        const name = (cvData?.header?.title.replace(/\W/g, "") ?? "").toLocaleLowerCase();
+        const name = (cvData?.header?.name.replace(/\W/g, "") ?? "").toLocaleLowerCase();
         const fileName = name ? `${name}-cv.json` : "cv.json";
         element.setAttribute("href", "data:text/json;charset=UTF-8," + encodeURIComponent(sJson));
         element.setAttribute("download", fileName);

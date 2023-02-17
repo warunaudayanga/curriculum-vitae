@@ -1,4 +1,5 @@
-<div class="title" style="{{'font-size: ' + fontSize + 'px'}}">{{title | uppercase}}</div>
+<div class="name" style="{{'font-size: ' + nameFontSize + 'px; line-height: ' + nameLineHeight + 'px'}}">{{name | uppercase}}</div>
+<div class="title" style="{{'font-size: ' + titleFontSize + 'px; line-height: ' + titleLineHeight + 'px'}}">{{title | uppercase}}</div>
 <div *ngIf="includeImage && (image || editable)" class="image" [class.editable]="editable" (click)="editable ? file.click() : undefined"
      style="{{'background-image: url(' + (image || (editable ? 'assets/images/avatar.jpeg': '')) + '); width: ' + imageWidth + 'px; height: ' + imageHeight + 'px;'}}">
     <i *ngIf="editable && !image" class="bi bi-camera-fill"></i>

@@ -3,8 +3,12 @@
         <div class="d-flex w-100 h-100">
             <div class="column-1">
                 <app-cv-heading
+                    [name]="cvData.header?.name ?? DEFAULTS.header.name"
                     [title]="cvData.header?.title ?? DEFAULTS.header.title"
-                    [fontSize]="cvData.configs?.headerFontSize ?? DEFAULTS.configs.headerFontSize"
+                    [nameFontSize]="cvData.configs?.headerNameFontSize ?? DEFAULTS.configs.headerNameFontSize"
+                    [nameLineHeight]="cvData.configs?.headerNameLineHeight ?? DEFAULTS.configs.headerNameLineHeight"
+                    [titleFontSize]="cvData.configs?.headerTitleFontSize ?? DEFAULTS.configs.headerTitleFontSize"
+                    [titleLineHeight]="cvData.configs?.headerTitleLineHeight ?? DEFAULTS.configs.headerTitleLineHeight"
                     [includeImage]="cvData.header?.includeImage ?? DEFAULTS.header.includeImage"
                     [image]="cvData.header?.image ?? DEFAULTS.header.image"
                     [imageWidth]="cvData.configs?.imageWidth ?? DEFAULTS.configs.imageWidth"

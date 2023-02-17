@@ -7,7 +7,13 @@ import PatchConfig = Config.PatchConfigs;
 import { Globals } from "../../../configs/globals";
 import { Limits } from "../../../../core/interfaces/system.interfaces";
 
-type Changeable = "headerFontSize" | "imageHeight" | "imageWidth";
+type Changeable =
+    | "headerNameFontSize"
+    | "headerNameLineHeight"
+    | "headerTitleFontSize"
+    | "headerTitleLineHeight"
+    | "imageHeight"
+    | "imageWidth";
 
 @Component({
     selector: "app-cv-heading-editor",
@@ -34,9 +40,21 @@ export class CVHeadingEditorComponent {
         this.configs.imageWidth ??= Globals.DEFAULTS.configs.imageWidth;
         this.configs.imageHeight ??= Globals.DEFAULTS.configs.imageHeight;
         this.limits = {
-            headerFontSize: {
-                min: Globals.DEFAULTS.configs.headerFontSizeMin,
-                max: Globals.DEFAULTS.configs.headerFontSizeMax,
+            headerNameFontSize: {
+                min: Globals.DEFAULTS.configs.headerNameFontSizeMin,
+                max: Globals.DEFAULTS.configs.headerNameFontSizeMax,
+            },
+            headerNameLineHeight: {
+                min: Globals.DEFAULTS.configs.headerNameLineHeightMin,
+                max: Globals.DEFAULTS.configs.headerNameLineHeightMax,
+            },
+            headerTitleFontSize: {
+                min: Globals.DEFAULTS.configs.headerTitleFontSizeMin,
+                max: Globals.DEFAULTS.configs.headerTitleFontSizeMax,
+            },
+            headerTitleLineHeight: {
+                min: Globals.DEFAULTS.configs.headerTitleLineHeightMin,
+                max: Globals.DEFAULTS.configs.headerTitleLineHeightMax,
             },
             imageWidth: {
                 min: Globals.DEFAULTS.configs.imageWidthMin,
@@ -49,12 +67,20 @@ export class CVHeadingEditorComponent {
         };
     }
 
+    setName(): void {
+        this.store.dispatch(new PatchHeaderInfo({ name: this.header.name }));
+    }
+
     setTitle(): void {
         this.store.dispatch(new PatchHeaderInfo({ title: this.header.title }));
     }
 
-    setFontSize(): void {
-        this.store.dispatch(new PatchConfig({ contactsFontSize: this.configs.contactsFontSize }));
+    setNameFontSize(): void {
+        this.store.dispatch(new PatchConfig({ headerNameFontSize: this.configs.headerNameFontSize }));
+    }
+
+    setTitleFontSize(): void {
+        this.store.dispatch(new PatchConfig({ headerTitleFontSize: this.configs.headerTitleFontSize }));
     }
 
     setIncludeImage(): void {

@@ -2,8 +2,12 @@
     <div class="column-1">
         <app-cv-heading
             [editable]="true"
+            [name]="header.name"
             [title]="header.title"
-            [fontSize]="configs.headerFontSize"
+            [nameFontSize]="configs.headerNameFontSize"
+            [nameLineHeight]="configs.headerNameLineHeight"
+            [titleFontSize]="configs.headerTitleFontSize"
+            [titleLineHeight]="configs.headerTitleLineHeight"
             [includeImage]="header.includeImage"
             [image]="header.image"
             [imageWidth]="configs.imageWidth"
@@ -14,30 +18,98 @@
     </div>
     <div class="column-2 p-3 controls form-control">
         <div class="editor">
-            <div class="d-flex mb-3 gap-3">
-                <div class="col">
-                    <label class="form-label">Title</label>
-                    <div class="row align-items-center">
-                        <div class="col">
-                            <input type="text" class="form-control form-control-sm" placeholder="Enter your name..."
-                                   [(ngModel)]="header.title" (ngModelChange)="setTitle()">
-                        </div>
+            <div>
+                <label class="form-label">Name</label>
+                <div class="row align-items-center">
+                    <div class="col">
+                        <input type="text" class="form-control form-control-sm" placeholder="Enter your name..."
+                               [(ngModel)]="header.name" (ngModelChange)="setName()">
                     </div>
                 </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Title</label>
+                <div class="row align-items-center">
+                    <div class="col">
+                        <input type="text" class="form-control form-control-sm" placeholder="Enter title..."
+                               [(ngModel)]="header.title" (ngModelChange)="setTitle()">
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex mb-3 gap-3">
                 <div class="col-size-group">
-                    <label class="form-label">Font size</label>
+                    <label class="form-label">Name Font size</label>
                     <div class="input-group input-group-sm">
                         <button class="btn btn-outline-secondary" type="button"
-                                (click)="click('headerFontSize', true)"
-                                (mousedown)="mousedown('headerFontSize', true)"
+                                (click)="click('headerNameFontSize', true)"
+                                (mousedown)="mousedown('headerNameFontSize', true)"
                                 (mouseup)="mouseUp()">
                             <i class="bi bi-dash"></i>
                         </button>
-                        <input type="text" class="form-control" [(ngModel)]="configs.headerFontSize"
-                               (ngModelChange)="setFontSize()" readonly>
+                        <input type="text" class="form-control" [(ngModel)]="configs.headerNameFontSize"
+                               (ngModelChange)="setNameFontSize()" readonly>
                         <button class="btn btn-outline-secondary" type="button"
-                                (click)="click('headerFontSize')"
-                                (mousedown)="mousedown('headerFontSize')"
+                                (click)="click('headerNameFontSize')"
+                                (mousedown)="mousedown('headerNameFontSize')"
+                                (mouseup)="mouseUp()">
+                            <i class="bi bi-plus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-size-group">
+                    <label class="form-label">Title Font size</label>
+                    <div class="input-group input-group-sm">
+                        <button class="btn btn-outline-secondary" type="button"
+                                (click)="click('headerTitleFontSize', true)"
+                                (mousedown)="mousedown('headerTitleFontSize', true)"
+                                (mouseup)="mouseUp()">
+                            <i class="bi bi-dash"></i>
+                        </button>
+                        <input type="text" class="form-control" [(ngModel)]="configs.headerTitleFontSize"
+                               (ngModelChange)="setTitleFontSize()" readonly>
+                        <button class="btn btn-outline-secondary" type="button"
+                                (click)="click('headerTitleFontSize')"
+                                (mousedown)="mousedown('headerTitleFontSize')"
+                                (mouseup)="mouseUp()">
+                            <i class="bi bi-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex mb-3 gap-3">
+                <div class="col-size-group">
+                    <label class="form-label">Name Line Height</label>
+                    <div class="input-group input-group-sm">
+                        <button class="btn btn-outline-secondary" type="button"
+                                (click)="click('headerNameLineHeight', true)"
+                                (mousedown)="mousedown('headerNameLineHeight', true)"
+                                (mouseup)="mouseUp()">
+                            <i class="bi bi-dash"></i>
+                        </button>
+                        <input type="text" class="form-control" [(ngModel)]="configs.headerNameLineHeight"
+                               (ngModelChange)="setNameFontSize()" readonly>
+                        <button class="btn btn-outline-secondary" type="button"
+                                (click)="click('headerNameLineHeight')"
+                                (mousedown)="mousedown('headerNameLineHeight')"
+                                (mouseup)="mouseUp()">
+                            <i class="bi bi-plus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-size-group">
+                    <label class="form-label">Title Line Height</label>
+                    <div class="input-group input-group-sm">
+                        <button class="btn btn-outline-secondary" type="button"
+                                (click)="click('headerTitleLineHeight', true)"
+                                (mousedown)="mousedown('headerTitleLineHeight', true)"
+                                (mouseup)="mouseUp()">
+                            <i class="bi bi-dash"></i>
+                        </button>
+                        <input type="text" class="form-control" [(ngModel)]="configs.headerTitleLineHeight"
+                               (ngModelChange)="setTitleFontSize()" readonly>
+                        <button class="btn btn-outline-secondary" type="button"
+                                (click)="click('headerTitleLineHeight')"
+                                (mousedown)="mousedown('headerTitleLineHeight')"
                                 (mouseup)="mouseUp()">
                             <i class="bi bi-plus"></i>
                         </button>

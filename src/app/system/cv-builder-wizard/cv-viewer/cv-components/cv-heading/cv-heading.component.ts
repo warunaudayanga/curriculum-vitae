@@ -9,9 +9,17 @@ import { Modal } from "bootstrap";
 export class CVHeadingComponent implements AfterViewInit {
     @Input() editable: boolean = false;
 
+    @Input() name: string = "";
+
     @Input() title: string = "";
 
-    @Input() fontSize: number = 25;
+    @Input() nameFontSize: number = 25;
+
+    @Input() nameLineHeight: number = 25;
+
+    @Input() titleFontSize: number = 20;
+
+    @Input() titleLineHeight: number = 20;
 
     @Input() includeImage: boolean = true;
 

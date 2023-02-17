@@ -36,6 +36,8 @@ export class CVTuneUpComponent implements AfterViewInit {
             tipModel.show();
             this.store.dispatch(new PatchSettings({ tuneUpTipShown: true }));
         }
+        this.reload(true);
+        setTimeout(() => this.reload(false));
     }
 
     reload(reload: boolean): void {

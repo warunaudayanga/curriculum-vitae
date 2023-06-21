@@ -30,15 +30,15 @@ export class CVContactsComponent implements AfterViewInit {
     }
 
     getLinkedInId(): string {
-        return this.contacts?.linkedIn?.split("https://www.linkedin.com/in/")?.[1]?.split(/\/[\W\w]*/)?.[0] ?? "";
+        return this.contacts?.linkedIn?.split("linkedin.com/in/")?.[1]?.split(/\/[\W\w]*/)?.[0] ?? "";
     }
 
     getGitHubId(): string {
-        return this.contacts?.gitHub?.split("https://github.com/")?.[1]?.split(/\/[\W\w]*/)?.[0] ?? "";
+        return this.contacts?.gitHub?.split("github.com/")?.[1]?.split(/\/[\W\w]*/)?.[0] ?? "";
     }
 
     getFacebookId(): string {
-        return this.contacts?.facebook?.split("https://www.facebook.com/")?.[1]?.split(/\/[\W\w]*/)?.[0] ?? "";
+        return this.contacts?.facebook?.split("facebook.com/")?.[1]?.split(/\/[\W\w]*/)?.[0] ?? "";
     }
 
     getUrlId(): string {

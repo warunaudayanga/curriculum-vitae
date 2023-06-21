@@ -61,7 +61,7 @@ export class CVHeadingComponent implements AfterViewInit {
     removeImage(e: MouseEvent) {
         e.stopPropagation();
         // eslint-disable-next-line no-alert
-        if (confirm("Are you sure you want to remove the signature?")) {
+        if (confirm("Are you sure you want to remove the profile image?")) {
             this.image = "";
             this.imageRemove.emit();
         }

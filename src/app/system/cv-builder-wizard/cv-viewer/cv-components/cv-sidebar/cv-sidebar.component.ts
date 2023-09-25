@@ -18,6 +18,8 @@ export class CVSidebarComponent implements OnInit, AfterViewInit {
 
     @Input() configs?: ConfigsStateModel;
 
+    @Input() refereesUpon?: boolean;
+
     @Output() forward: EventEmitter<Section[]> = new EventEmitter<Section[]>();
 
     @Input() test?: boolean = false;

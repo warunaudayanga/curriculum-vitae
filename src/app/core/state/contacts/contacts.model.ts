@@ -6,4 +6,5 @@ export interface ContactsStateModel {
     gitHub?: string;
     facebook?: string;
     url?: string;
+    refereesUponRequest?: boolean;
 }

@@ -162,6 +162,7 @@ export class CVThemeEditorComponent implements AfterViewInit {
             email: "example@mail.com",
             phoneNumbers: ["+94 77 477 4777", "+94 77 488 4888"],
             address: "No. 1/1, 2nd Lane, Kottawa, Matara.",
+            refereesUponRequest: false,
         },
         theme: {
             name: Globals.DEFAULTS.theme.name,

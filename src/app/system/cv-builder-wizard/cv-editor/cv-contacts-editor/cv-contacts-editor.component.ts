@@ -59,6 +59,10 @@ export class CVContactsEditorComponent {
         this.store.dispatch(new PatchContacts({ email: this.contacts.email }));
     }
 
+    setRefereesUpon(): void {
+        this.store.dispatch(new PatchContacts({ refereesUponRequest: this.contacts.refereesUponRequest }));
+    }
+
     setPhoneNumbers(): void {
         this.store.dispatch(new PatchContacts({ phoneNumbers: this.contacts.phoneNumbers }));
     }

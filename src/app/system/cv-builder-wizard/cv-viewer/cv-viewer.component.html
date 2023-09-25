@@ -31,6 +31,7 @@
                     [firstPage]="true"
                     [sidebar]="cvData.sidebar ?? DEFAULTS.sidebar.sections"
                     [configs]="cvData.configs"
+                    [refereesUpon]="cvData.contacts?.refereesUponRequest ?? DEFAULTS.contacts.refereesUponRequest"
                     (forward)="onPage1SidebarForward($event)"
                 ></app-sidebar>
             </div>

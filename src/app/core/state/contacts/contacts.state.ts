@@ -13,6 +13,7 @@ import { Contacts } from "./contacts.actions";
         gitHub: undefined,
         facebook: undefined,
         url: undefined,
+        refereesUponRequest: undefined,
     },
 })
 @Injectable()

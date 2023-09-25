@@ -690,6 +690,7 @@ export class Globals {
             email: "",
             phoneNumbers: undefined,
             address: "",
+            refereesUponRequest: undefined,
         },
         configs: {
             dynamics: {},

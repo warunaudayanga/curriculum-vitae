@@ -102,6 +102,8 @@ export class CVStartComponent implements AfterViewInit {
                         email: json.contacts?.email ?? Globals.DEFAULTS.contacts.email,
                         phoneNumbers: json.contacts?.phoneNumbers ?? Globals.DEFAULTS.contacts.phoneNumbers,
                         address: json.contacts?.address ?? Globals.DEFAULTS.contacts.address,
+                        refereesUponRequest:
+                            json.contacts?.refereesUponRequest ?? Globals.DEFAULTS.contacts.refereesUponRequest,
                     },
                     theme: {
                         name: json.theme?.name ?? Globals.DEFAULTS.theme.name,

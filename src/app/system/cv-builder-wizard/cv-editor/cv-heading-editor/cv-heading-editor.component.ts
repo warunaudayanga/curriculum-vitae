@@ -25,9 +25,9 @@ export class CVHeadingEditorComponent {
 
     configs: ConfigsStateModel;
 
-    waitTimer?: NodeJS.Timer;
+    waitTimeout?: NodeJS.Timeout;
 
-    repeatTimer?: NodeJS.Timer;
+    repeatTimeout?: NodeJS.Timeout;
 
     limits: Limits<Changeable>;
 
@@ -103,8 +103,8 @@ export class CVHeadingEditorComponent {
     }
 
     click(changeable: Changeable, decrease?: boolean): void {
-        clearInterval(this.waitTimer);
-        clearInterval(this.repeatTimer);
+        clearInterval(this.waitTimeout);
+        clearInterval(this.repeatTimeout);
         if (decrease && this.configs[changeable] <= this.limits![changeable].min) {
             return;
         } else if (!decrease && this.configs[changeable] >= this.limits![changeable].max) {
@@ -115,8 +115,8 @@ export class CVHeadingEditorComponent {
     }
 
     mousedown(changeable: Changeable, decrease?: boolean): void {
-        this.waitTimer = setTimeout(() => {
-            this.repeatTimer = setInterval(() => {
+        this.waitTimeout = setTimeout(() => {
+            this.repeatTimeout = setInterval(() => {
                 if (decrease && this.configs[changeable] <= this.limits![changeable].min) {
                     return;
                 } else if (!decrease && this.configs[changeable] >= this.limits![changeable].max) {
@@ -129,8 +129,8 @@ export class CVHeadingEditorComponent {
     }
 
     mouseUp(): void {
-        clearInterval(this.waitTimer);
-        clearInterval(this.repeatTimer);
+        clearInterval(this.waitTimeout);
+        clearInterval(this.repeatTimeout);
     }
 
     onImageSelect(imageFile: File): void {

@@ -30,13 +30,13 @@ export class CVTuneUpPopupComponent {
 
     configs: ConfigsStateModel;
 
-    waitTimer?: NodeJS.Timer;
+    waitTimeout?: NodeJS.Timeout;
 
-    repeatTimer?: NodeJS.Timer;
+    repeatTimeout?: NodeJS.Timeout;
 
-    rebuildTimer?: NodeJS.Timer;
+    rebuildTimeout?: NodeJS.Timeout;
 
-    rebuildFinishTimer?: NodeJS.Timer;
+    rebuildFinishTimeout?: NodeJS.Timeout;
 
     limits: Limits<Changeable>;
 
@@ -192,8 +192,8 @@ export class CVTuneUpPopupComponent {
     }
 
     click(counter: Changeable, decrease?: boolean): void {
-        clearInterval(this.waitTimer);
-        clearInterval(this.repeatTimer);
+        clearInterval(this.waitTimeout);
+        clearInterval(this.repeatTimeout);
         if (decrease && this.configs[counter] <= this.limits![counter].min) {
             return;
         } else if (!decrease && this.configs[counter] >= this.limits![counter].max) {
@@ -206,8 +206,8 @@ export class CVTuneUpPopupComponent {
     }
 
     clickDynamic(key: string | number, decrease?: boolean): void {
-        clearInterval(this.waitTimer);
-        clearInterval(this.repeatTimer);
+        clearInterval(this.waitTimeout);
+        clearInterval(this.repeatTimeout);
         if (decrease && this.configs.dynamics[key].width <= 0) {
             return;
         } else if (!decrease && this.configs.dynamics[key].width >= 100) {
@@ -220,8 +220,8 @@ export class CVTuneUpPopupComponent {
     }
 
     mousedown(counter: Changeable, decrease?: boolean): void {
-        this.waitTimer = setTimeout(() => {
-            this.repeatTimer = setInterval(() => {
+        this.waitTimeout = setTimeout(() => {
+            this.repeatTimeout = setInterval(() => {
                 if (decrease && this.configs[counter] <= this.limits![counter].min) {
                     return;
                 } else if (!decrease && this.configs[counter] >= this.limits![counter].max) {
@@ -235,8 +235,8 @@ export class CVTuneUpPopupComponent {
     }
 
     mousedownDynamic(key: string | number, decrease?: boolean): void {
-        this.waitTimer = setTimeout(() => {
-            this.repeatTimer = setInterval(() => {
+        this.waitTimeout = setTimeout(() => {
+            this.repeatTimeout = setInterval(() => {
                 if (decrease && this.configs.dynamics[key].width <= 0) {
                     return;
                 } else if (!decrease && this.configs.dynamics[key].width >= 100) {
@@ -250,16 +250,16 @@ export class CVTuneUpPopupComponent {
     }
 
     mouseUp(): void {
-        clearInterval(this.waitTimer);
-        clearInterval(this.repeatTimer);
+        clearInterval(this.waitTimeout);
+        clearInterval(this.repeatTimeout);
     }
 
     reBuild(): void {
-        clearTimeout(this.rebuildTimer);
-        clearTimeout(this.rebuildFinishTimer);
-        this.rebuildTimer = setTimeout(() => {
+        clearTimeout(this.rebuildTimeout);
+        clearTimeout(this.rebuildFinishTimeout);
+        this.rebuildTimeout = setTimeout(() => {
             this.reload.emit(true);
-            this.rebuildFinishTimer = setTimeout(() => {
+            this.rebuildFinishTimeout = setTimeout(() => {
                 this.reload.emit(false);
             });
         }, 2000);

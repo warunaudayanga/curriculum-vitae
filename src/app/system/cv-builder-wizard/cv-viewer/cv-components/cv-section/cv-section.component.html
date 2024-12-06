@@ -4,7 +4,7 @@
         {{trimTitle(section.title) | uppercase}}
     </div>
     <div class="hr"
-         style="{{'bottom: ' + (CONFIGS.sectionSeparatorSpaceMax - (configs?.sectionSeparatorSpace ?? CONFIGS.sectionSeparatorSpace)) + 'px;'}}"></div>
+         style="{{'bottom: ' + (8 - (configs?.sectionSeparatorSpace ?? CONFIGS.sectionSeparatorSpace)) + 'px;'}}"></div>
 
     <div *ngIf="section.type === SectionType.PARAGRAPH" class="paragraph"
          style="{{

@@ -753,7 +753,7 @@ export class Globals {
             sectionItemSpaceMax: 500,
             sectionSeparatorSpace: 8,
             sectionSeparatorSpaceMin: 0,
-            sectionSeparatorSpaceMax: 500,
+            sectionSeparatorSpaceMax: 20,
             sectionListItemSpace: 2,
             sectionListItemSpaceMin: 0,
             sectionListItemSpaceMax: 500,
